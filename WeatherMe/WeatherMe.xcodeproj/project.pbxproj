@@ -15,7 +15,6 @@
 		1B1710EB1F897C3F0045F064 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B1710E91F897C3F0045F064 /* LaunchScreen.storyboard */; };
 		1B1710F61F897C3F0045F064 /* WeatherMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1710F51F897C3F0045F064 /* WeatherMeTests.swift */; };
 		1B1711011F897C3F0045F064 /* WeatherMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1711001F897C3F0045F064 /* WeatherMeUITests.swift */; };
-		1B17110F1F897D490045F064 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B17110E1F897D490045F064 /* Secrets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +49,6 @@
 		1B1710FC1F897C3F0045F064 /* WeatherMeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherMeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B1711001F897C3F0045F064 /* WeatherMeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMeUITests.swift; sourceTree = "<group>"; };
 		1B1711021F897C3F0045F064 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1B17110E1F897D490045F064 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +101,6 @@
 			children = (
 				1B1710DD1F897C3F0045F064 /* AppDelegate.swift */,
 				1B1710DF1F897C3F0045F064 /* ViewController.swift */,
-				1B17110E1F897D490045F064 /* Secrets.swift */,
 				1B1710E11F897C3F0045F064 /* Main.storyboard */,
 				1B1710E71F897C3F0045F064 /* Assets.xcassets */,
 				1B1710E91F897C3F0045F064 /* LaunchScreen.storyboard */,
@@ -266,7 +263,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B1710E01F897C3F0045F064 /* ViewController.swift in Sources */,
-				1B17110F1F897D490045F064 /* Secrets.swift in Sources */,
 				1B1710E61F897C3F0045F064 /* WeatherMe.xcdatamodeld in Sources */,
 				1B1710DE1F897C3F0045F064 /* AppDelegate.swift in Sources */,
 			);
