@@ -17,6 +17,7 @@
 		1B1711011F897C3F0045F064 /* WeatherMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1711001F897C3F0045F064 /* WeatherMeUITests.swift */; };
 		1B1711111F897EDE0045F064 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1711101F897EDE0045F064 /* Secrets.swift */; };
 		1B1711131F897FC70045F064 /* DarkSkyAPIClient .swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1711121F897FC70045F064 /* DarkSkyAPIClient .swift */; };
+		1B1711151F8C1AB80045F064 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1711141F8C1AB80045F064 /* CurrentWeather.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		1B1711021F897C3F0045F064 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B1711101F897EDE0045F064 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		1B1711121F897FC70045F064 /* DarkSkyAPIClient .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DarkSkyAPIClient .swift"; sourceTree = "<group>"; };
+		1B1711141F8C1AB80045F064 /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				1B1710DD1F897C3F0045F064 /* AppDelegate.swift */,
 				1B1711121F897FC70045F064 /* DarkSkyAPIClient .swift */,
 				1B1710DF1F897C3F0045F064 /* ViewController.swift */,
+				1B1711141F8C1AB80045F064 /* CurrentWeather.swift */,
 				1B1710E11F897C3F0045F064 /* Main.storyboard */,
 				1B1711101F897EDE0045F064 /* Secrets.swift */,
 				1B1710E71F897C3F0045F064 /* Assets.xcassets */,
@@ -272,6 +275,7 @@
 				1B1711111F897EDE0045F064 /* Secrets.swift in Sources */,
 				1B1710E61F897C3F0045F064 /* WeatherMe.xcdatamodeld in Sources */,
 				1B1711131F897FC70045F064 /* DarkSkyAPIClient .swift in Sources */,
+				1B1711151F8C1AB80045F064 /* CurrentWeather.swift in Sources */,
 				1B1710DE1F897C3F0045F064 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
