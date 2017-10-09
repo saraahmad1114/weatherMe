@@ -27,7 +27,7 @@ class CurrentWeather {
         self.temperature = temperature
         self.humidity = humidity
         self.cloudCover = cloudCover
-        self.timeZone = string
+        self.timeZone = timeZone
     }
     
     
