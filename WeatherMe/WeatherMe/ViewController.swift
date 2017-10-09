@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-//        DarkSkyAPIClient.getWeatherInformation(lat: 37.8267, lng: -122.4233) { (jsonDictionary) in
+//        DarkSkyAPIClient.getWeatherInformation(lat: 40.7380, lng: -73.8801) { (jsonDictionary) in
 //            print("***********************")
 //            print(jsonDictionary)
 //            print("***********************")

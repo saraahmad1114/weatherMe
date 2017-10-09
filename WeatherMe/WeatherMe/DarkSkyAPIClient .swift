@@ -30,7 +30,9 @@ class DarkSkyAPIClient {
             
             guard let unwrappedJsonResponseDictionary = jsonResponseDictionary else {print("unwrappedJsonResponseDictionary did not unwrap"); return}
             
-            jsonDictionary = unwrappedJsonResponseDictionary!
+            guard let json = unwrappedJsonResponseDictionary else {print("did not unwrap json"); return}
+            
+            jsonDictionary = json
             
             completion(jsonDictionary)
         }
