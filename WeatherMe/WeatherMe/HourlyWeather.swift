@@ -11,21 +11,25 @@ import Foundation
 class HourlyWeather {
     
     var time: Double
-    var summary: String
     var icon: String
+    var summary: String
+    var hourlyIcon: String
     var percipitationProbability: Double
     var temperature: Double
     var humidity: Double
     var cloudCover: Double
+    var overallSummary: String
     
-    init(time: Double, summary: String, icon: String, percipitationProbability: Double, temperature: Double, humidity: Double, cloudCover: Double) {
+    init(time: Double, icon: String, summary: String, hourlyIcon: String, percipitationProbability: Double, temperature: Double, humidity: Double, cloudCover: Double, overallSummary: String) {
         self.time = time
-        self.summary = summary
         self.icon = icon
+        self.summary = summary
+        self.hourlyIcon = hourlyIcon
         self.percipitationProbability = percipitationProbability
         self.temperature = temperature
         self.humidity = humidity
         self.cloudCover = cloudCover
+        self.overallSummary = overallSummary
     }
     
 }
