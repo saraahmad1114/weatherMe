@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DailyWeather {
+class DailyWeather{
     
     var dailyTopSummary: String
     var dailyTopIcon: String
