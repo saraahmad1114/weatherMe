@@ -20,6 +20,7 @@
 		1B1711151F8C1AB80045F064 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1711141F8C1AB80045F064 /* CurrentWeather.swift */; };
 		1B1711171F8C1C020045F064 /* HourlyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1711161F8C1C020045F064 /* HourlyWeather.swift */; };
 		1B1711191F8C46A90045F064 /* DailyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1711181F8C46A90045F064 /* DailyWeather.swift */; };
+		1BBDAA9E1F8F262000C63F48 /* WeatherDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBDAA9D1F8F262000C63F48 /* WeatherDataStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		1B1711141F8C1AB80045F064 /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 		1B1711161F8C1C020045F064 /* HourlyWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeather.swift; sourceTree = "<group>"; };
 		1B1711181F8C46A90045F064 /* DailyWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeather.swift; sourceTree = "<group>"; };
+		1BBDAA9D1F8F262000C63F48 /* WeatherDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 			children = (
 				1B1710DD1F897C3F0045F064 /* AppDelegate.swift */,
 				1B1711121F897FC70045F064 /* DarkSkyAPIClient .swift */,
+				1BBDAA9D1F8F262000C63F48 /* WeatherDataStore.swift */,
 				1B1710DF1F897C3F0045F064 /* ViewController.swift */,
 				1B1711141F8C1AB80045F064 /* CurrentWeather.swift */,
 				1B1711161F8C1C020045F064 /* HourlyWeather.swift */,
@@ -283,6 +286,7 @@
 				1B1710E61F897C3F0045F064 /* WeatherMe.xcdatamodeld in Sources */,
 				1B1711131F897FC70045F064 /* DarkSkyAPIClient .swift in Sources */,
 				1B1711151F8C1AB80045F064 /* CurrentWeather.swift in Sources */,
+				1BBDAA9E1F8F262000C63F48 /* WeatherDataStore.swift in Sources */,
 				1B1710DE1F897C3F0045F064 /* AppDelegate.swift in Sources */,
 				1B1711171F8C1C020045F064 /* HourlyWeather.swift in Sources */,
 			);
