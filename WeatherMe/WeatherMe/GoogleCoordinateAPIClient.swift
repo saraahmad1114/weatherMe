@@ -10,7 +10,14 @@ import Foundation
 
 class GoogleCoordinateAPIClient {
     
-    
+    class func getCoordinateInformation () -> (){
+        
+        
+        
+        
+        
+        
+    }
     
     
     
