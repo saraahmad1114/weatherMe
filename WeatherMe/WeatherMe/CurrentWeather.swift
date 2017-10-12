@@ -20,6 +20,7 @@ class CurrentWeather {
     var timeZone: String
     
     init(time: Double, summary: String, icon: String, precipitationProbability: Double, temperature: Double, humidity: Double, cloudCover: Double, timeZone: String) {
+        
         self.time = time
         self.summary = summary
         self.icon = icon
