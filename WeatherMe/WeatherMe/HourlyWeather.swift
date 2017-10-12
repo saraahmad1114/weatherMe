@@ -10,26 +10,26 @@ import Foundation
 
 class HourlyWeather {
     
-    var summary: String
-    var icon: String
-    var time: Double
-    var dailySummary: String
-    var dailyIcon: String
-    var precipProbability: Double
-    var temperature: Double
-    var humidity: Double
-    var cloudCover: Double
+    var hourlyTopsummary: String
+    var hourlyTopIcon: String
+    var hourlyTime: Double
+    var hourlyBottomSummary: String
+    var hourlyBottomIcon: String
+    var hourlyPrecipProbability: Double
+    var hourlyTemperature: Double
+    var hourlyHumidity: Double
+    var hourlyCloudCover: Double
     
-    init(summary: String, icon: String, time: Double, dailySummary: String, dailyIcon: String, precipProbability: Double, temperature: Double, humidity: Double, cloudCover: Double ) {
-        self.summary = summary
-        self.icon = icon
-        self.time = time
-        self.dailySummary = dailySummary
-        self.dailyIcon = dailyIcon
-        self.precipProbability = precipProbability
-        self.temperature = temperature
-        self.humidity = humidity
-        self.cloudCover = cloudCover
+    init(hourlyTopsummary: String, hourlyTopIcon: String, hourlyTime: Double, hourlyBottomSummary: String, hourlyBottomIcon: String, hourlyPrecipProbability: Double, hourlyTemperature: Double, hourlyHumidity: Double, hourlyCloudCover: Double ) {
+        self.hourlyTopsummary = hourlyTopsummary
+        self.hourlyTopIcon = hourlyTopIcon
+        self.hourlyTime = hourlyTime
+        self.hourlyBottomSummary = hourlyBottomSummary
+        self.hourlyBottomIcon = hourlyBottomIcon
+        self.hourlyPrecipProbability = hourlyPrecipProbability
+        self.hourlyTemperature = hourlyTemperature
+        self.hourlyHumidity = hourlyHumidity
+        self.hourlyCloudCover = hourlyCloudCover
     }
     
 }
