@@ -14,12 +14,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-//        DarkSkyAPIClient.getWeatherInformation(lat: 40.7380, lng: -73.8801) { (jsonDictionary) in
-//            print("***********************")
-//            print(jsonDictionary)
-//            print("***********************")
-//
-//        }
+        GoogleCoordinateAPIClient.getCoordinateInformation(zipCode: "11373") { (jsonDictionary) in
+            print("***************************")
+            print(jsonDictionary)
+            print("***************************")
+        }
     }
 
     override func didReceiveMemoryWarning() {

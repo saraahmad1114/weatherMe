@@ -10,11 +10,12 @@ import Foundation
 
 class GoogleCoordinateAPIClient {
     
-    class func getCoordinateInformation (zipCode: String, completion:@escaping([String: Any])->Void){
-        
+    class func getCoordinateInformation (zipCode: String, completion:@escaping([String: Any])->Void)
+    
+    {
         var jsonDictionary = [String: Any]()
         
-        let url = "https://maps.googleapis.com/maps/api/geocode/json?address=\(zipCode)+CA&key=\(Secrets.googleCoordinateApiKey)"
+        let url = "https://maps.googleapis.com/maps/api/geocode/json?address=\(zipCode)&key=\(Secrets.googleCoordinateApiKey)"
         
         let convertedUrl = URL(string: url)
         
@@ -30,7 +31,9 @@ class GoogleCoordinateAPIClient {
             
             guard let unwrappedJson = json else {print("unwrappedJson did not unwrap"); return }
             
-            jsonDictionary = unwrappedJson
+            guard let unwrappedJsonTwo = unwrappedJson else {print("unwrapped"); return}
+            
+            jsonDictionary = unwrappedJsonTwo
             
             completion(jsonDictionary)
         }
