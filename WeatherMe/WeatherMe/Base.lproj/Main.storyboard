@@ -25,6 +25,21 @@
             </objects>
             <point key="canvasLocation" x="479.19999999999999" y="133.5832083958021"/>
         </scene>
+        <!--Current Weather View Controller-->
+        <scene sceneID="aYc-f0-ico">
+            <objects>
+                <viewController id="b5t-Mc-dlX" customClass="CurrentWeatherViewController" customModule="WeatherMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NoT-fH-rtE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="15D-Tl-pZf"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iji-GI-mfx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1206" y="134"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="E7S-tF-c08">
             <objects>
