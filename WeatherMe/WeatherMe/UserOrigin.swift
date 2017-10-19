@@ -10,7 +10,9 @@ import Foundation
 
 class UserOrigin {
     
-    //implementing Core location to find user location 
+    //implementing Core location to find user location
+    
+    
     
     
     

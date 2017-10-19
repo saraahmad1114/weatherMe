@@ -14,11 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        GoogleCoordinateAPIClient.getCoordinateInformation(zipCode: "11373") { (jsonDictionary) in
-            print("***************************")
-            print(jsonDictionary)
-            print("***************************")
-        }
+      
     }
 
     override func didReceiveMemoryWarning() {
