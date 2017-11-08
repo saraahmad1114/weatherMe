@@ -10,7 +10,7 @@ import Foundation
 
 class DarkSkyAPIClient {
     
-    class func getWeatherInformation(lat: Double, lng: Double, completion:@escaping([String: Any])->Void) {
+    class func getWeatherInformation(lat: Double, lng: Double, completion:@escaping([String: Any])->()) {
         
         var jsonDictionary = [String: Any]()
         
@@ -26,17 +26,16 @@ class DarkSkyAPIClient {
             
             guard let unwrappedData = data else {print("data did not unwrap"); return}
             
-            let jsonResponseDictionary = try? JSONSerialization.jsonObject(with: unwrappedData, options: []) as? [String: Any]
+            let jsonResponseDictionary = try? JSONSerialization.jsonObject(with: unwrappedData, options: []) as! [String: Any]
             
             guard let unwrappedJsonResponseDictionary = jsonResponseDictionary else {print("unwrappedJsonResponseDictionary did not unwrap"); return}
             
-            guard let json = unwrappedJsonResponseDictionary else {print("did not unwrap json"); return}
-            
-            jsonDictionary = json
+            jsonDictionary = unwrappedJsonResponseDictionary
             
             completion(jsonDictionary)
         }
-    task.resume()
+        
+        task.resume()
     
     }
     
