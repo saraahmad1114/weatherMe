@@ -14,6 +14,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        //Add two buttons
+        //1. one to input zipcode
+        //2. next one to use core location 
       
     }
 
