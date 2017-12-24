@@ -10,6 +10,7 @@ import Foundation
 
 class GoogleCoordinateAPIJsonParser{
     
-    
+    static let sharedInstance = GoogleCoordinateAPIJsonParser()
+    private init() {}
     
 }
