@@ -16,7 +16,9 @@ class ViewController: UIViewController {
         
         //Add two buttons
         //1. one to input zipcode
-        //2. next one to use core location 
+        //2. next one to use core location
+        
+        //core location
       
     }
 
