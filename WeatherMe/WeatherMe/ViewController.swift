@@ -9,17 +9,14 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate{
+    
+    var locationManager = CLLocationManager()
+    var currentLocation: CLLocation?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        //Add two buttons
-        //1. one to input zipcode
-        //2. next one to use core location
-        
-        //core location
+      
       
     }
 
