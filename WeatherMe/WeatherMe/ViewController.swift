@@ -24,7 +24,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     func locationAuthStatus() {
-        
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse{
+            self.currentLocation = self.locationManager.location
+        } else {
+            self.locationManager.requestWhenInUseAuthorization()
+        }
         
     }
 
