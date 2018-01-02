@@ -20,6 +20,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startMonitoringSignificantLocationChanges()
+    }
+    
+    func locationAuthStatus() {
+        
+        
     }
 
 
