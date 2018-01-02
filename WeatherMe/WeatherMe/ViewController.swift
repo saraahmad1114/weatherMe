@@ -12,6 +12,7 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate{
     
     let locationManager = CLLocationManager()
+    var currentLocation: CLLocation!
 
     override func viewDidLoad() {
         super.viewDidLoad()
