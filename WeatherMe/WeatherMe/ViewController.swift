@@ -16,6 +16,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestWhenInUseAuthorization()
     }
 
 
