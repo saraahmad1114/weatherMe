@@ -28,6 +28,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
             self.currentLocation = self.locationManager.location
         } else {
             self.locationManager.requestWhenInUseAuthorization()
+            locationAuthStatus()
         }
         
     }
