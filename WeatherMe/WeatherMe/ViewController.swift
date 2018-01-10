@@ -9,7 +9,7 @@
 import UIKit
 //import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate{
+class ViewController: UIViewController{
     
 //    let locationManager = CLLocationManager()
 //    var currentLocation: CLLocation!
