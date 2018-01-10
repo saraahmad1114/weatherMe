@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CoreLocation
+//import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate{
     
