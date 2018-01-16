@@ -13,4 +13,6 @@ class GoogleCoordinateAPIJsonParser{
     static let sharedInstance = GoogleCoordinateAPIJsonParser()
     private init() {}
     
+    
+    
 }
