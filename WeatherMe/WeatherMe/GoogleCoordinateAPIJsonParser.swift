@@ -12,7 +12,7 @@ class GoogleCoordinateAPIJsonParser{
     
     static let sharedInstance = GoogleCoordinateAPIJsonParser()
     private init() {}
-    //finish up Datestore 
+    //fin
     
     
 }
