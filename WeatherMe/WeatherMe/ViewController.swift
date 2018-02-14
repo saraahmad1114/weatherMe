@@ -12,35 +12,24 @@ import CoreLocation
 class ViewController: UIViewController{
     
     var gradientLayer: CAGradientLayer!
-
+    @IBOutlet weak var insertZipcodeLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let placeholder = NSAttributedString(string: "Enter here", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
-        
-//        self.zipCodeTextField = UITextField(frame: CGRect(x: 50, y: 100, width: 200, height: 20))
-//        self.zipCodeTextField.attributedPlaceholder = placeholder
-//        self.zipCodeTextField.textColor = UIColor.black
-////        self.zipCodeTextField.delegate = self as! UITextFieldDelegate
-//        self.zipCodeTextField.borderStyle = UITextBorderStyle.roundedRect
-//
-//       // self.zipCodeTextField.background = UIColor.white
-//        self.zipCodeTextField.clearsOnBeginEditing = true
-//        view.addSubview(self.zipCodeTextField)
-        
+       createGradientLayer()
     }
     
     func createGradientLayer() {
         self.gradientLayer = CAGradientLayer()
         self.gradientLayer.frame = self.view.bounds
         self.gradientLayer.colors = [UIColor.white.cgColor, UIColor.cyan.cgColor]
-        self.view.layer.addSublayer(gradientLayer)
+        self.view.layer.insertSublayer(gradientLayer, at:0)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        createGradientLayer()
+        self.insertZipcodeLabel.textColor = UIColor.gray
     }
 
     override func didReceiveMemoryWarning() {
