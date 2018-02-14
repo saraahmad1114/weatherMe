@@ -20,7 +20,7 @@ class ViewController: UIViewController{
     func createGradientLayer() {
         self.gradientLayer = CAGradientLayer()
         self.gradientLayer.frame = self.view.bounds
-        self.gradientLayer.colors = [UIColor.white.cgColor, UIColor.blue.cgColor]
+        self.gradientLayer.colors = [UIColor.white.cgColor, UIColor.cyan.cgColor]
         self.view.layer.addSublayer(gradientLayer)
     }
 
