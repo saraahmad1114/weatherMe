@@ -35,10 +35,14 @@ class ViewController: UIViewController{
           textfield.borderStyle = UITextBorderStyle.roundedRect
           textfield.clearsOnBeginEditing = true
     }
+    
+    func createCustomLabel (label: UILabel){
+        label.textColor = UIColor.gray
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.insertZipcodeLabel.textColor = UIColor.gray
+        createCustomLabel(label: self.insertZipcodeLabel)
     }
 
     override func didReceiveMemoryWarning() {
