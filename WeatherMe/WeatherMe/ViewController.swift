@@ -11,27 +11,12 @@ import CoreLocation
 
 class ViewController: UIViewController{
     
-//    let locationManager = CLLocationManager()
-//    var currentLocation: CLLocation!
+    var gradientLayer: CAGradientLayer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        self.locationManager.delegate = self
-//        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//        self.locationManager.requestWhenInUseAuthorization()
-//        self.locationManager.startMonitoringSignificantLocationChanges()
+
     }
-    
-//    func locationAuthStatus() {
-//        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse{
-//            self.currentLocation = self.locationManager.location
-//        } else {
-//            self.locationManager.requestWhenInUseAuthorization()
-//            locationAuthStatus()
-//        }
-//
-//    }
 
 
     override func didReceiveMemoryWarning() {
