@@ -15,6 +15,9 @@ class ViewController: UIViewController{
     @IBOutlet weak var insertZipcodeLabel: UILabel!
     @IBOutlet weak var zipCodeTextField: UITextField!
     @IBOutlet weak var checkZipCodeButton: UIButton!
+    @IBOutlet weak var orLabel: UILabel!
+    @IBOutlet weak var findMyLocationButton: UIButton!
+    @IBOutlet weak var getWeatherForecastButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -22,6 +25,9 @@ class ViewController: UIViewController{
         createGradientLayer()
         createCustomTextField(textfield: self.zipCodeTextField)
         self.checkZipCodeButton.tintColor = UIColor.gray
+        self.findMyLocationButton.tintColor = UIColor.gray
+        self.getWeatherForecastButton.tintColor = UIColor.gray
+        
     }
     
     func createGradientLayer() {
@@ -46,6 +52,7 @@ class ViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         createCustomLabel(label: self.insertZipcodeLabel)
+        createCustomLabel(label: self.orLabel)
     }
     
     func isZipCodeValid(text: String) -> Bool

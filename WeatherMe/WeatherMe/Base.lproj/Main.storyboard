@@ -36,15 +36,36 @@
                                     <action selector="checkZipCodeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HFs-PO-Usj"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ef-TZ-Pl9">
+                                <rect key="frame" x="150" y="284" width="19" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ji-wd-sBA">
+                                <rect key="frame" x="112" y="337" width="122" height="30"/>
+                                <state key="normal" title="Find My Location!"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPB-86-Klq">
+                                <rect key="frame" x="101" y="414" width="150" height="30"/>
+                                <state key="normal" title="Get Weather Forecast"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="9Ji-wd-sBA" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="-14.5" id="8nm-Sy-6Eu"/>
                             <constraint firstItem="yAb-Qj-yle" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="-9" id="AEx-Q7-F30"/>
                             <constraint firstItem="8nK-Lg-Yhq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="101" id="Atg-jz-0gf"/>
+                            <constraint firstItem="9Ji-wd-sBA" firstAttribute="leading" secondItem="dPB-86-Klq" secondAttribute="leading" constant="11" id="Gkb-ra-qWc"/>
                             <constraint firstItem="c7O-Pk-aUA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="67" id="Gmj-Y9-pnl"/>
                             <constraint firstItem="c7O-Pk-aUA" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="-9" id="HFl-gL-EJz"/>
                             <constraint firstItem="yAb-Qj-yle" firstAttribute="top" secondItem="8nK-Lg-Yhq" secondAttribute="bottom" constant="25" id="NkS-xd-7h0"/>
+                            <constraint firstItem="9Ji-wd-sBA" firstAttribute="top" secondItem="9ef-TZ-Pl9" secondAttribute="bottom" constant="32" id="Rd6-cA-0sY"/>
+                            <constraint firstItem="9ef-TZ-Pl9" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="-28" id="StH-rb-wDy"/>
+                            <constraint firstItem="dPB-86-Klq" firstAttribute="top" secondItem="9Ji-wd-sBA" secondAttribute="bottom" constant="47" id="VO4-cb-BV8"/>
+                            <constraint firstItem="dPB-86-Klq" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="-11.5" id="gY5-ft-D16"/>
                             <constraint firstItem="8nK-Lg-Yhq" firstAttribute="top" secondItem="c7O-Pk-aUA" secondAttribute="bottom" constant="17" id="n2T-m8-apf"/>
+                            <constraint firstItem="9ef-TZ-Pl9" firstAttribute="top" secondItem="yAb-Qj-yle" secondAttribute="bottom" constant="30" id="oV3-So-2nT"/>
                             <constraint firstItem="8nK-Lg-Yhq" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="-2" id="sgR-Dv-42F"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -52,7 +73,10 @@
                     <navigationItem key="navigationItem" title="Weather Location" id="O1T-6e-Ahq"/>
                     <connections>
                         <outlet property="checkZipCodeButton" destination="yAb-Qj-yle" id="v93-Jc-qh3"/>
+                        <outlet property="findMyLocationButton" destination="9Ji-wd-sBA" id="g0B-gu-rS2"/>
+                        <outlet property="getWeatherForecastButton" destination="dPB-86-Klq" id="1it-4e-7cl"/>
                         <outlet property="insertZipcodeLabel" destination="c7O-Pk-aUA" id="Xdb-lu-w8p"/>
+                        <outlet property="orLabel" destination="9ef-TZ-Pl9" id="82B-mj-PNa"/>
                         <outlet property="zipCodeTextField" destination="8nK-Lg-Yhq" id="zct-dL-Cvh"/>
                     </connections>
                 </viewController>
