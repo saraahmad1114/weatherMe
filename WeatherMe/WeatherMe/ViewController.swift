@@ -13,8 +13,22 @@ class ViewController: UIViewController{
     
     var gradientLayer: CAGradientLayer!
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let placeholder = NSAttributedString(string: "Enter here", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+        
+//        self.zipCodeTextField = UITextField(frame: CGRect(x: 50, y: 100, width: 200, height: 20))
+//        self.zipCodeTextField.attributedPlaceholder = placeholder
+//        self.zipCodeTextField.textColor = UIColor.black
+////        self.zipCodeTextField.delegate = self as! UITextFieldDelegate
+//        self.zipCodeTextField.borderStyle = UITextBorderStyle.roundedRect
+//
+//       // self.zipCodeTextField.background = UIColor.white
+//        self.zipCodeTextField.clearsOnBeginEditing = true
+//        view.addSubview(self.zipCodeTextField)
+        
     }
     
     func createGradientLayer() {
