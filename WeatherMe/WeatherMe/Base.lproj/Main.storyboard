@@ -29,12 +29,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yAb-Qj-yle">
+                                <rect key="frame" x="125" y="224" width="107" height="30"/>
+                                <state key="normal" title="Check ZipCode"/>
+                                <connections>
+                                    <action selector="checkZipCodeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HFs-PO-Usj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="yAb-Qj-yle" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="-9" id="AEx-Q7-F30"/>
                             <constraint firstItem="8nK-Lg-Yhq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="101" id="Atg-jz-0gf"/>
                             <constraint firstItem="c7O-Pk-aUA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="67" id="Gmj-Y9-pnl"/>
                             <constraint firstItem="c7O-Pk-aUA" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="-9" id="HFl-gL-EJz"/>
+                            <constraint firstItem="yAb-Qj-yle" firstAttribute="top" secondItem="8nK-Lg-Yhq" secondAttribute="bottom" constant="25" id="NkS-xd-7h0"/>
                             <constraint firstItem="8nK-Lg-Yhq" firstAttribute="top" secondItem="c7O-Pk-aUA" secondAttribute="bottom" constant="17" id="n2T-m8-apf"/>
                             <constraint firstItem="8nK-Lg-Yhq" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="-2" id="sgR-Dv-42F"/>
                         </constraints>
@@ -42,6 +51,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Weather Location" id="O1T-6e-Ahq"/>
                     <connections>
+                        <outlet property="checkZipCodeButton" destination="yAb-Qj-yle" id="v93-Jc-qh3"/>
                         <outlet property="insertZipcodeLabel" destination="c7O-Pk-aUA" id="Xdb-lu-w8p"/>
                         <outlet property="zipCodeTextField" destination="8nK-Lg-Yhq" id="zct-dL-Cvh"/>
                     </connections>
