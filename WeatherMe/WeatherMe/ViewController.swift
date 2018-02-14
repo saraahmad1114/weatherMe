@@ -13,11 +13,17 @@ class ViewController: UIViewController{
     
     var gradientLayer: CAGradientLayer!
     @IBOutlet weak var insertZipcodeLabel: UILabel!
-    
+    @IBOutlet weak var zipCodeTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       createGradientLayer()
+        createGradientLayer()
+        
+        let placeholder = NSAttributedString(string: "Enter ZipCode Here", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+        self.zipCodeTextField.attributedPlaceholder = placeholder
+        self.zipCodeTextField.textColor = UIColor.gray
+        self.zipCodeTextField.borderStyle = UITextBorderStyle.roundedRect
+        self.zipCodeTextField.clearsOnBeginEditing = true
     }
     
     func createGradientLayer() {

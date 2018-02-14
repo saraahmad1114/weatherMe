@@ -23,17 +23,27 @@
                                 <color key="textColor" red="0.018401015228426409" green="0.018401015228426409" blue="0.018401015228426409" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8nK-Lg-Yhq">
+                                <rect key="frame" x="101" y="169" width="169" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="8nK-Lg-Yhq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="101" id="Atg-jz-0gf"/>
                             <constraint firstItem="c7O-Pk-aUA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="67" id="Gmj-Y9-pnl"/>
                             <constraint firstItem="c7O-Pk-aUA" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="-9" id="HFl-gL-EJz"/>
+                            <constraint firstItem="8nK-Lg-Yhq" firstAttribute="top" secondItem="c7O-Pk-aUA" secondAttribute="bottom" constant="17" id="n2T-m8-apf"/>
+                            <constraint firstItem="8nK-Lg-Yhq" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="-2" id="sgR-Dv-42F"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Weather Location" id="O1T-6e-Ahq"/>
                     <connections>
                         <outlet property="insertZipcodeLabel" destination="c7O-Pk-aUA" id="Xdb-lu-w8p"/>
+                        <outlet property="zipCodeTextField" destination="8nK-Lg-Yhq" id="zct-dL-Cvh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
