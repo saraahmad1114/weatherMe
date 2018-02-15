@@ -23,6 +23,7 @@
 		1BBDAAA41F900CCB00C63F48 /* GoogleCoordinateAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBDAAA31F900CCB00C63F48 /* GoogleCoordinateAPIClient.swift */; };
 		1BBDAAA61F91B85A00C63F48 /* GoogleCoordinateAPIJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBDAAA51F91B85A00C63F48 /* GoogleCoordinateAPIJsonParser.swift */; };
 		1BBDAAE71F96FF8800C63F48 /* CurrentWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBDAAE61F96FF8800C63F48 /* CurrentWeatherViewController.swift */; };
+		58D194E820362B9B0028DA5C /* WeatherForecastDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D194E720362B9B0028DA5C /* WeatherForecastDatastore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		1BBDAAA31F900CCB00C63F48 /* GoogleCoordinateAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCoordinateAPIClient.swift; sourceTree = "<group>"; };
 		1BBDAAA51F91B85A00C63F48 /* GoogleCoordinateAPIJsonParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCoordinateAPIJsonParser.swift; sourceTree = "<group>"; };
 		1BBDAAE61F96FF8800C63F48 /* CurrentWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherViewController.swift; sourceTree = "<group>"; };
+		58D194E720362B9B0028DA5C /* WeatherForecastDatastore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastDatastore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				1B1711101F897EDE0045F064 /* Secrets.swift */,
 				1B1710E71F897C3F0045F064 /* Assets.xcassets */,
 				1B1710E91F897C3F0045F064 /* LaunchScreen.storyboard */,
+				58D194E720362B9B0028DA5C /* WeatherForecastDatastore.swift */,
 				1B1710EC1F897C3F0045F064 /* Info.plist */,
 				1B1710E41F897C3F0045F064 /* WeatherMe.xcdatamodeld */,
 			);
@@ -297,6 +300,7 @@
 				1B1710DE1F897C3F0045F064 /* AppDelegate.swift in Sources */,
 				1BBDAAA41F900CCB00C63F48 /* GoogleCoordinateAPIClient.swift in Sources */,
 				1B1711171F8C1C020045F064 /* HourlyWeather.swift in Sources */,
+				58D194E820362B9B0028DA5C /* WeatherForecastDatastore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
