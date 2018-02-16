@@ -41,9 +41,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need your location to find the weather forecast in your area</string>
 	<key>CFBundleDisplayName</key>
 	<string></string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Please provide us with permisson, we will then provide you with the forecast in your area</string>
 </dict>
 </plist>

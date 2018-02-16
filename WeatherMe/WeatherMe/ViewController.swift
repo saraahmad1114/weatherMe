@@ -11,6 +11,9 @@ import CoreLocation
 
 class ViewController: UIViewController{
     
+    var locationManager: CLLocationManager?
+    var currentLocation: CLLocation?
+    
     var gradientLayer: CAGradientLayer!
     @IBOutlet weak var insertZipcodeLabel: UILabel!
     @IBOutlet weak var zipCodeTextField: UITextField!
@@ -27,7 +30,6 @@ class ViewController: UIViewController{
         self.checkZipCodeButton.tintColor = UIColor.gray
         self.findMyLocationButton.tintColor = UIColor.gray
         self.getWeatherForecastButton.tintColor = UIColor.gray
-        
     }
     
     func createGradientLayer() {
@@ -37,7 +39,7 @@ class ViewController: UIViewController{
         self.view.layer.insertSublayer(gradientLayer, at:0)
     }
     
-    func createCustomTextField (textfield: UITextField){
+    func createCustomTextField (textfield: UITextField) {
           let placeholder = NSAttributedString(string: "Enter ZipCode Here", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
           textfield.attributedPlaceholder = placeholder
           textfield.textColor = UIColor.gray
@@ -55,22 +57,19 @@ class ViewController: UIViewController{
         createCustomLabel(label: self.orLabel)
     }
     
-    func isZipCodeValid(text: String) -> Bool
-    {
+    func isZipCodeValid(text: String) -> Bool {
         let zipCodeTestPredicate = NSPredicate (format:"SELF MATCHES %@","(^[0-9]{5}(-[0-9]{4})?$)")
         return zipCodeTestPredicate.evaluate(with: zipCodeTextField.text)
     }
     
     @IBAction func checkZipCodeButtonTapped(_ sender: Any) {
-        if self.zipCodeTextField.text?.count == 5 && isZipCodeValid(text: self.zipCodeTextField.text!) == true
-        {
+        if self.zipCodeTextField.text?.count == 5 && isZipCodeValid(text: self.zipCodeTextField.text!) == true {
             let alertController = UIAlertController(title: "Correct Zipcode", message: "Correct zipCode Input!", preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alertController.addAction(defaultAction)
             present(alertController, animated: true, completion: nil)
         }
-            
-        else  {
+        else {
             let alertController = UIAlertController(title: "Incorrect Zipcode", message: "Invalid zipcode input!", preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alertController.addAction(defaultAction)
@@ -78,11 +77,35 @@ class ViewController: UIViewController{
         }
     }
     
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    @IBAction func findMyLocationButtonTapped(_ sender: Any) {
+        self.locationManager = CLLocationManager()
+        self.locationManager?.delegate = self as? CLLocationManagerDelegate
+        self.locationManager?.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        self.locationManager?.requestWhenInUseAuthorization()
     }
+    
+    
+}
 
+extension ViewController: CLLocationManagerDelegate{
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if self.currentLocation == nil {
+            self.currentLocation = locations.first
+            //this works just fine
+            print("**************************")
+            print(self.currentLocation)
+            print("**************************")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            self.locationManager?.startUpdatingLocation()
+        }
+        else if status == .notDetermined || status == .denied || status == .restricted {
+            self.locationManager?.requestWhenInUseAuthorization()
+        }
+    }
 }
 
 
