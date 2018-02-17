@@ -10,7 +10,7 @@ import Foundation
 
 class CurrentWeather {
     
-    var currentTime: Double
+    
     var currentSummary: String
     var currentIcon: String
     var currentPrecipitationProbability: Double
@@ -19,9 +19,9 @@ class CurrentWeather {
     var currentCloudCover: Double
     var currentTimezone: String
     
-    init(currentTime: Double, currentSummary: String, currentIcon: String, currentPrecipitationProbability: Double, currentTemperature: Double, currentHumidity: Double, currentCloudCover: Double, currentTimezone: String) {
+    init(currentSummary: String, currentIcon: String, currentPrecipitationProbability: Double, currentTemperature: Double, currentHumidity: Double, currentCloudCover: Double, currentTimezone: String) {
         
-        self.currentTime = currentTime
+       
         self.currentSummary = currentSummary
         self.currentIcon = currentIcon
         self.currentPrecipitationProbability = currentPrecipitationProbability
