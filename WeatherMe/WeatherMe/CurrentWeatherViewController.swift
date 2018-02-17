@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import CoreLocation
 
 class CurrentWeatherViewController: UIViewController {
+    
+    var coordinateHolder: CLLocation?
+    var zipCode: String? 
 
     override func viewDidLoad() {
         super.viewDidLoad()
