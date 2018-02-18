@@ -9,27 +9,18 @@
 import Foundation
 
 class HourlyWeather {
+
+    var hourlyTime: Double?
+    var hourlyTemperature: Double?
     
-    var hourlyTopsummary: String
-    var hourlyTopIcon: String
-    var hourlyTime: Double
-    var hourlyBottomSummary: String
-    var hourlyBottomIcon: String
-    var hourlyPrecipProbability: Double
-    var hourlyTemperature: Double
-    var hourlyHumidity: Double
-    var hourlyCloudCover: Double
-    
-    init(hourlyTopsummary: String, hourlyTopIcon: String, hourlyTime: Double, hourlyBottomSummary: String, hourlyBottomIcon: String, hourlyPrecipProbability: Double, hourlyTemperature: Double, hourlyHumidity: Double, hourlyCloudCover: Double ) {
-        self.hourlyTopsummary = hourlyTopsummary
-        self.hourlyTopIcon = hourlyTopIcon
-        self.hourlyTime = hourlyTime
-        self.hourlyBottomSummary = hourlyBottomSummary
-        self.hourlyBottomIcon = hourlyBottomIcon
-        self.hourlyPrecipProbability = hourlyPrecipProbability
-        self.hourlyTemperature = hourlyTemperature
-        self.hourlyHumidity = hourlyHumidity
-        self.hourlyCloudCover = hourlyCloudCover
+    init(jsonDictionary: [String: Any]) {
+        guard
+            let time = jsonDictionary["time"] as? Double,
+            let temperature = jsonDictionary["temperature"] as? Double
+            else {print("did not unwrap hourlyWeather"); return}
+        
+        self.hourlyTime = time
+        self.hourlyTemperature = temperature
     }
     
 }
