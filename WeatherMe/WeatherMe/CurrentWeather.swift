@@ -9,7 +9,7 @@
 import Foundation
 
 class CurrentWeather {
-
+    
     var currentSummary: String?
     var currentIcon: String?
     var currentPrecipProbability: Double?
