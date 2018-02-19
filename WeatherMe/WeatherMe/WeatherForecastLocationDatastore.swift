@@ -15,8 +15,9 @@ class WeatherForecastLocationDatastore{
     
     var currentWeatherArray = [CurrentWeather]()
     var hourlyWeatherArray = [HourlyWeather]()
+    var dailyWeatherArray = [DailyWeather]()
     
-    func getWeatherForecastInformation(lat: Double, lng: Double, completion:@escaping ([CurrentWeather], [HourlyWeather]) -> ()){
+    func getWeatherForecastInformation(lat: Double, lng: Double, completion:@escaping ([CurrentWeather], [HourlyWeather], [DailyWeather]) -> ()){
         
         let newLng = -1 * lng
         
@@ -50,51 +51,46 @@ class WeatherForecastLocationDatastore{
             
             guard let ozone = currentDictionary["ozone"] as? Double else{print("did not unwrap currentOzone"); return}
             
-            //Current Weather forecast Object
             let currentWeatherForecastObj = CurrentWeather.init(currentSummary: summary, currentIcon: icon, currentPrecipProbability: precipProb, currentTemperature: temperature, currentDewPoint: dewPoint, currentHumidity: humidity, currentPressure: pressure, currentWindSpeed: windSpeed, currentCloudCover: cloudCover, currentUVIndex: uVIndex, currentVisibility: visibility, currentOzone: ozone)
             
             self.currentWeatherArray.append(currentWeatherForecastObj)
-            
-            print(self.currentWeatherArray.count)
-            
-            print("*********************************")
-            print(self.currentWeatherArray.first?.currentSummary)
-            print(self.currentWeatherArray.first?.currentIcon)
-            print(self.currentWeatherArray.first?.currentPrecipProbability)
-            print(self.currentWeatherArray.first?.currentTemperature)
-            print(self.currentWeatherArray.first?.currentDewPoint)
-            print(self.currentWeatherArray.first?.currentHumidity)
-            print(self.currentWeatherArray.first?.currentPressure)
-            print(self.currentWeatherArray.first?.currentWindSpeed)
-            print(self.currentWeatherArray.first?.currentCloudCover)
-            print(self.currentWeatherArray.first?.currentUVIndex)
-            print(self.currentWeatherArray.first?.currentVisibility)
-            print(self.currentWeatherArray.first?.currentOzone)
-            print("*********************************")
 
             guard let hourlyDictionary = darkSkyJson["hourly"] as? [String: Any] else{print("did not unwrap hourlyDictionary"); return}
 
             guard let dataArray = hourlyDictionary["data"] as? Array<Any> else{print("did not unwrap dataArray"); return}
-
+            
             for singleDictionary in dataArray{
-
                 guard let unwrappedSingleDictionary = singleDictionary as? [String: Any] else{print("singleDictionary did not unwrap"); return}
-
                 let hourlyForecastObj = HourlyWeather.init(jsonDictionary: unwrappedSingleDictionary)
-
                 self.hourlyWeatherArray.append(hourlyForecastObj)
-
-                print(self.hourlyWeatherArray.count)
-
+            }
+            
+            guard let dailyDictionary = jsonDictionary["daily"] as? [String: Any] else{print("dailyDictionary did not unwrap"); return}
+            
+            guard let dataDailyArray = dailyDictionary["data"] as? Array<Any> else{print("dataDailyArray did not unwrap"); return}
+            
+            for singleDictionary in dataDailyArray{
+                
+                guard let unwrappedSingleDictionary = singleDictionary as? [String: Any] else{print("dataDailySingleDictonary did not unwrap"); return}
+                
+                let dailyObject = DailyWeather.init(jsonDictionary: unwrappedSingleDictionary)
+                
                 print("************************")
-                print(hourlyForecastObj.hourlyTime)
-                print(hourlyForecastObj.hourlyTemperature)
+                print(dailyObject.dailyIcon)
+                print(dailyObject.dailyTemperatureHigh)
+                print(dailyObject.dailyTemperatureLow)
+                print(dailyObject.dailyTime)
                 print("************************")
-
+                
+                self.dailyWeatherArray.append(dailyObject)
+                
+                print(self.dailyWeatherArray.count)
+                
+                
             }
 
         }
-        completion(self.currentWeatherArray, self.hourlyWeatherArray)
+        completion(self.currentWeatherArray, self.hourlyWeatherArray, self.dailyWeatherArray)
     }
     
 }
