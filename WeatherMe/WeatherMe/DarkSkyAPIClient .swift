@@ -14,7 +14,7 @@ class DarkSkyAPIClient {
         
         var jsonDictionary = [String: Any]()
         
-        let url = "https://api.darksky.net/forecast/\(Secrets.darkSkyApiKey)/\(lat),\(lng)"
+        let url = "https://api.darksky.net/forecast/\(Secrets.darkSkyApiKey)/\(lat),\(-lng)"
         
         let convertedUrl = URL(string: url)
         

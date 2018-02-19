@@ -13,6 +13,7 @@ class ViewController: UIViewController{
     
     var locationManager: CLLocationManager?
     var currentLocation: CLLocation?
+    var store = WeatherForecastDatastore.sharedInstance
         
     var gradientLayer: CAGradientLayer!
     @IBOutlet weak var insertZipcodeLabel: UILabel!
@@ -31,6 +32,10 @@ class ViewController: UIViewController{
         self.findMyLocationButton.tintColor = UIColor.gray
         self.getWeatherForecastButton.tintColor = UIColor.gray
 
+        
+        self.store.getWeatherForecastInformation(lat: 40.7380, lng: -73.8801) { (frist, second, third) in
+            print("something")
+        }
     }
     
     func createGradientLayer() {

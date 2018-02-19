@@ -9,7 +9,6 @@
 import Foundation
 
 class DailyWeather{
-    
     var dailyTime: Double?
     var dailyTemperatureHigh: Double?
     var dailyTemperatureLow: Double?

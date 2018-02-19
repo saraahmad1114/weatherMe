@@ -23,22 +23,7 @@ class CurrentWeather {
     var currentVisibility: Double?
     var currentOzone: Double?
     
-    init(jsonDictionary: [String: Any]) {
-        guard
-        let currentSummary = jsonDictionary["summary"] as? String,
-        let currentIcon = jsonDictionary["icon"] as? String,
-        let currentPrecipProbability = jsonDictionary["precipProbability"] as? Double,
-        let currentTemperature = jsonDictionary["temperature"] as? Double,
-        let currentDewPoint = jsonDictionary["dewPoint"] as? Double,
-        let currentHumidity = jsonDictionary["humidity"] as? Double,
-        let currentPressure = jsonDictionary["pressure"] as? Double,
-        let currentWindSpeed = jsonDictionary["windSpeed"] as? Double,
-        let currentCloudCover = jsonDictionary["cloudCover"] as? Double,
-        let currentUVIndex = jsonDictionary["uvIndex"] as? Double,
-        let currentVisibility = jsonDictionary["visibility"] as? Double,
-        let currentOzone = jsonDictionary["ozone"] as? Double
-        
-            else {print("did not unwrap currentWeather information"); return}
+    init(currentSummary: String,currentIcon: String, currentPrecipProbability: Double, currentTemperature: Double, currentDewPoint: Double, currentHumidity: Double, currentPressure: Double, currentWindSpeed: Double, currentCloudCover: Double, currentUVIndex: Double, currentVisibility: Double, currentOzone: Double ) {
         
         self.currentSummary = currentSummary
         self.currentIcon = currentIcon
