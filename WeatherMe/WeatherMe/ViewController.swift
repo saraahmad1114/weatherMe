@@ -33,9 +33,9 @@ class ViewController: UIViewController{
         self.findMyLocationButton.tintColor = UIColor.gray
         self.getWeatherForecastButton.tintColor = UIColor.gray
         
-        self.store.getWeatherForecastInformation(lat: 40.7380, lng: -73.8801) { (currentWeather) in
-            print("here")
-        }
+//        self.store.getWeatherForecastInformation(lat: 40.7380, lng: -73.8801) { (currentWeather) in
+//            print("here")
+//        }
 
     }
     
