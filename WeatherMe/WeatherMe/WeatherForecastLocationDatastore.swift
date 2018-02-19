@@ -75,17 +75,9 @@ class WeatherForecastLocationDatastore{
                 
                 let dailyObject = DailyWeather.init(jsonDictionary: unwrappedSingleDictionary)
                 
-                print("************************")
-                print(dailyObject.dailyIcon)
-                print(dailyObject.dailyTemperatureHigh)
-                print(dailyObject.dailyTemperatureLow)
-                print(dailyObject.dailyTime)
-                print("************************")
-                
                 self.dailyWeatherArray.append(dailyObject)
                 
                 print(self.dailyWeatherArray.count)
-                
                 
             }
 
