@@ -9,7 +9,9 @@
 import Foundation
 
 class WeatherForecastLocationDatastore{
-    
+
+    static let sharedInstance = WeatherForecastLocationDatastore()
+    private init() {}
     
     
     
