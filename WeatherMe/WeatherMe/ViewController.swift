@@ -28,6 +28,8 @@ class ViewController: UIViewController{
         super.viewDidLoad()
         createGradientLayer()
         createCustomTextField(textfield: self.zipCodeTextField)
+        createCustomLabel(label: self.insertZipcodeLabel)
+        createCustomLabel(label: self.orLabel)
         self.checkZipCodeButton.tintColor = UIColor.gray
         self.findMyLocationButton.tintColor = UIColor.gray
         self.getWeatherForecastButton.tintColor = UIColor.gray
@@ -51,11 +53,13 @@ class ViewController: UIViewController{
     func createCustomLabel (label: UILabel){
         label.textColor = UIColor.gray
     }
+    
+    func createCustomButton (button: UIButton){
+        button.tintColor = UIColor.gray
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        createCustomLabel(label: self.insertZipcodeLabel)
-        createCustomLabel(label: self.orLabel)
     }
     
     func isZipCodeValid(text: String) -> Bool {
@@ -91,13 +95,11 @@ class ViewController: UIViewController{
     if segue.identifier == "getWeatherInfo" {
         if let destinationVC = segue.destination as? CurrentWeatherViewController{
             if self.currentLocation != nil {
-                //tried unwrapping here
                 guard let latestCoordinates = self.currentLocation else {print("latestCoordinates did not unwrap"); return}
                 destinationVC.coordinateHolder = self.currentLocation
                 print(destinationVC.coordinateHolder)
             }
             else if self.zipCodeTextField.text != nil{
-                //tried unwrapping here
                 guard let neededZipcode = self.zipCodeTextField.text else {print("neededZipcode did not unwrap"); return}
                 destinationVC.zipCode = self.zipCodeTextField.text
                 print(destinationVC.zipCode)
@@ -111,10 +113,12 @@ extension ViewController: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if self.currentLocation == nil {
             self.currentLocation = locations.first
+            print("*************************")
             print(self.currentLocation)
+            print("*************************")
         }
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
             self.locationManager?.startUpdatingLocation()

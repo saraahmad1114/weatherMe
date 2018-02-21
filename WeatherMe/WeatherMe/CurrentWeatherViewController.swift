@@ -12,17 +12,29 @@ import CoreLocation
 class CurrentWeatherViewController: UIViewController {
     
     var coordinateHolder: CLLocation?
-    var zipCode: String? 
+    var zipCode: String?
+    var currentVCGradientLayer: CAGradientLayer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("Entered here")
+        createGradientLayer()
+    }
+    
+    
+    func createGradientLayer() {
+    self.currentVCGradientLayer = CAGradientLayer()
+    self.currentVCGradientLayer.frame = self.view.bounds
+    self.currentVCGradientLayer.colors = [UIColor.blue.cgColor, UIColor.white.cgColor]
+    self.view.layer.addSublayer(self.currentVCGradientLayer)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 

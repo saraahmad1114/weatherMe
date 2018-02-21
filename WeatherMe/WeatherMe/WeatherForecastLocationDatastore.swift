@@ -72,13 +72,9 @@ class WeatherForecastLocationDatastore{
             for singleDictionary in dataDailyArray{
                 
                 guard let unwrappedSingleDictionary = singleDictionary as? [String: Any] else{print("dataDailySingleDictonary did not unwrap"); return}
-                
                 let dailyObject = DailyWeather.init(jsonDictionary: unwrappedSingleDictionary)
-                
                 self.dailyWeatherArray.append(dailyObject)
-                
                 print(self.dailyWeatherArray.count)
-                
             }
 
         }
