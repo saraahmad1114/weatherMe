@@ -21,7 +21,11 @@ class CurrentWeatherViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("Entered here")
+        print("*********************************************")
+        print("this printed in the other view controller")
+        print(self.coordinateHolder?.coordinate.latitude)
+        print(self.coordinateHolder?.coordinate.longitude)
+        print("*********************************************")
         createGradientLayer()
     }
     
