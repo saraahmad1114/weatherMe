@@ -91,7 +91,6 @@ class ViewController: UIViewController{
 
     
    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
-    print("entered here")
     if segue.identifier == "getWeatherInfo" {
         if let destinationVC = segue.destination as? CurrentWeatherViewController{
             if self.currentLocation != nil {
@@ -114,7 +113,8 @@ extension ViewController: CLLocationManagerDelegate{
         if self.currentLocation == nil {
             self.currentLocation = locations.first
             print("*************************")
-            print(self.currentLocation)
+            print(self.currentLocation?.coordinate.latitude)
+            print(self.currentLocation?.coordinate.longitude)
             print("*************************")
         }
     }
