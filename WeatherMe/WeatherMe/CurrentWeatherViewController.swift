@@ -14,6 +14,8 @@ class CurrentWeatherViewController: UIViewController {
     var coordinateHolder: CLLocation?
     var zipCode: String?
     var currentVCGradientLayer: CAGradientLayer!
+    let coordinateStore = CoordinatesDatastore.sharedInstance
+    let weatherStore = WeatherForecastLocationDatastore.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,49 @@ class CurrentWeatherViewController: UIViewController {
         print(self.coordinateHolder?.coordinate.latitude)
         print(self.coordinateHolder?.coordinate.longitude)
         createGradientLayer()
+        
+        if zipCode != nil {
+            self.coordinateStore.getUserCoordintes(zipcode: self.zipCode!, completion: { (coordinates) in
+                print("*******************")
+                print(coordinates)
+                print("*******************")
+                guard let unwrappedLat = self.coordinateStore.locationCoordinates[0].latitude else{print("unwrapped lat"); return}
+                guard let unwrappedLng = self.coordinateStore.locationCoordinates[0].longitude else{print("unwrapped lng"); return}
+                self.weatherStore.getWeatherForecastInformation(lat: unwrappedLat, lng: unwrappedLng, completion: { (currentWeather, hourlyWeather, dailyWeather) in
+                    
+                    print("*************************** Current")
+                    print(currentWeather)
+                    print("*************************** Current")
+                    
+                    print("************************** hourly")
+                    print(hourlyWeather)
+                    print("************************** hourly")
+                    
+                    print("*************************** daily")
+                    print(dailyWeather)
+                    print("*************************** daily")
+                })
+            })
+        }
+        else if self.coordinateHolder != nil {
+            guard let unwrappedLat = self.coordinateHolder?.coordinate.latitude else {print("lat did not unwrap"); return}
+            guard let unwrappedLng = self.coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}
+            
+            self.weatherStore.getWeatherForecastInformation(lat: unwrappedLat, lng: unwrappedLng, completion: { (current, hourly, daily) in
+                
+                print("********************")
+                print(current)
+                print("********************")
+                
+                print("********************")
+                print(hourly)
+                print("********************")
+                
+                print("********************")
+                print(daily)
+                print("********************")
+            })
+        }
     }
     
     
