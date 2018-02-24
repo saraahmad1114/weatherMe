@@ -17,15 +17,9 @@ class CurrentWeatherViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("*********************************************")
         print("this printed in the other view controller")
         print(self.coordinateHolder?.coordinate.latitude)
         print(self.coordinateHolder?.coordinate.longitude)
-        print("*********************************************")
         createGradientLayer()
     }
     
@@ -33,7 +27,7 @@ class CurrentWeatherViewController: UIViewController {
     func createGradientLayer() {
     self.currentVCGradientLayer = CAGradientLayer()
     self.currentVCGradientLayer.frame = self.view.bounds
-    self.currentVCGradientLayer.colors = [UIColor.blue.cgColor, UIColor.white.cgColor]
+    self.currentVCGradientLayer.colors = [UIColor.white.cgColor, UIColor.cyan.cgColor]
     self.view.layer.addSublayer(self.currentVCGradientLayer)
     }
 

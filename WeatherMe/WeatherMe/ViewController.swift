@@ -18,7 +18,6 @@ class ViewController: UIViewController{
     @IBOutlet weak var findMyLocationButton: UIButton!
     @IBOutlet weak var getWeatherForecastButton: UIButton!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         createGradientLayer()
