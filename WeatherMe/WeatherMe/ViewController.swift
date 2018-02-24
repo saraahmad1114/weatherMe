@@ -2,8 +2,6 @@
 //  ViewController.swift
 //  WeatherMe
 //
-//  Created by Flatiron School on 10/7/17.
-//  Copyright © 2017 Flatiron School. All rights reserved.
 //
 
 import UIKit
@@ -15,7 +13,7 @@ class ViewController: UIViewController{
     var currentLocation: CLLocation?
     let store = WeatherForecastLocationDatastore.sharedInstance
         
-    var gradientLayer: CAGradientLayer!
+    //var gradientLayer: CAGradientLayer!
     @IBOutlet weak var insertZipcodeLabel: UILabel!
     @IBOutlet weak var zipCodeTextField: UITextField!
     @IBOutlet weak var checkZipCodeButton: UIButton!
@@ -30,36 +28,9 @@ class ViewController: UIViewController{
         createCustomTextField(textfield: self.zipCodeTextField)
         createCustomLabel(label: self.insertZipcodeLabel)
         createCustomLabel(label: self.orLabel)
-        self.checkZipCodeButton.tintColor = UIColor.gray
-        self.findMyLocationButton.tintColor = UIColor.gray
-        self.getWeatherForecastButton.tintColor = UIColor.gray
-    }
-    
-    func createGradientLayer() {
-        self.gradientLayer = CAGradientLayer()
-        self.gradientLayer.frame = self.view.bounds
-        self.gradientLayer.colors = [UIColor.white.cgColor, UIColor.cyan.cgColor]
-        self.view.layer.insertSublayer(gradientLayer, at:0)
-    }
-    
-    func createCustomTextField (textfield: UITextField) {
-          let placeholder = NSAttributedString(string: "Enter ZipCode Here", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
-          textfield.attributedPlaceholder = placeholder
-          textfield.textColor = UIColor.gray
-          textfield.borderStyle = UITextBorderStyle.roundedRect
-          textfield.clearsOnBeginEditing = true
-    }
-    
-    func createCustomLabel (label: UILabel){
-        label.textColor = UIColor.gray
-    }
-    
-    func createCustomButton (button: UIButton){
-        button.tintColor = UIColor.gray
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        createButtonColor(button: self.checkZipCodeButton)
+        createButtonColor(button: self.findMyLocationButton)
+        createButtonColor(button: self.getWeatherForecastButton)
     }
     
     func isZipCodeValid(text: String) -> Bool {
@@ -69,16 +40,10 @@ class ViewController: UIViewController{
     
     @IBAction func checkZipCodeButtonTapped(_ sender: Any) {
         if self.zipCodeTextField.text?.count == 5 && isZipCodeValid(text: self.zipCodeTextField.text!) == true {
-            let alertController = UIAlertController(title: "Correct Zipcode", message: "Correct zipCode Input!", preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alertController.addAction(defaultAction)
-            present(alertController, animated: true, completion: nil)
+            createAlertViewController(title: "Correct Zipcode", message: "Correct Zipcode")
         }
         else {
-            let alertController = UIAlertController(title: "Incorrect Zipcode", message: "Invalid zipcode input!", preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alertController.addAction(defaultAction)
-            present(alertController, animated: true, completion: nil)
+            createAlertViewController(title: "Incorrect Zipcode", message: "Incorrect Zipcode")
         }
     }
     
@@ -89,8 +54,7 @@ class ViewController: UIViewController{
         self.locationManager?.requestWhenInUseAuthorization()
     }
 
-    
-   func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "getWeatherInfo" {
         if let destinationVC = segue.destination as? CurrentWeatherViewController{
             if self.currentLocation != nil {
@@ -108,6 +72,44 @@ class ViewController: UIViewController{
     }
 }
 
+extension ViewController {
+    func createGradientLayer() {
+        var gradientLayer: CAGradientLayer!
+        gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.view.bounds
+        gradientLayer.colors = [UIColor.white.cgColor, UIColor.cyan.cgColor]
+        self.view.layer.insertSublayer(gradientLayer, at:0)
+    }
+    
+    func createCustomButton (button: UIButton){
+        button.tintColor = UIColor.gray
+    }
+    
+    func createCustomTextField (textfield: UITextField) {
+        let placeholder = NSAttributedString(string: "Enter ZipCode Here", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+        textfield.attributedPlaceholder = placeholder
+        textfield.textColor = UIColor.gray
+        textfield.borderStyle = UITextBorderStyle.roundedRect
+        textfield.clearsOnBeginEditing = true
+    }
+    
+    func createButtonColor (button: UIButton){
+        button.tintColor = UIColor.gray
+    }
+    
+    func createCustomLabel (label: UILabel){
+        label.textColor = UIColor.gray
+    }
+    
+    func createAlertViewController(title: String, message: String){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(defaultAction)
+        present(alertController, animated: true, completion: nil)
+    }
+}
+
+
 extension ViewController: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("Entered here # 1")
@@ -121,7 +123,7 @@ extension ViewController: CLLocationManagerDelegate{
     }
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        print("entered here # 2")
+        print("entered here")
         if status == .authorizedWhenInUse {
             self.locationManager?.startUpdatingLocation()
         }

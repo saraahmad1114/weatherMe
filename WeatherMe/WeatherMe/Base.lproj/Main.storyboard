@@ -90,10 +90,10 @@
             </objects>
             <point key="canvasLocation" x="479.19999999999999" y="133.5832083958021"/>
         </scene>
-        <!--View Controller-->
+        <!--Current Weather View Controller-->
         <scene sceneID="3w9-gQ-jJd">
             <objects>
-                <viewController id="4Uq-cT-I2T" sceneMemberID="viewController">
+                <viewController id="4Uq-cT-I2T" customClass="CurrentWeatherViewController" customModule="WeatherMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uV2-jW-axY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
