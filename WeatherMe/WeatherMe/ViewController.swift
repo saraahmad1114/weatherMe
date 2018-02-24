@@ -1,8 +1,6 @@
 //
 //  ViewController.swift
 //  WeatherMe
-//
-//
 
 import UIKit
 import CoreLocation
@@ -13,7 +11,6 @@ class ViewController: UIViewController{
     var currentLocation: CLLocation?
     let store = WeatherForecastLocationDatastore.sharedInstance
         
-    //var gradientLayer: CAGradientLayer!
     @IBOutlet weak var insertZipcodeLabel: UILabel!
     @IBOutlet weak var zipCodeTextField: UITextField!
     @IBOutlet weak var checkZipCodeButton: UIButton!
@@ -21,11 +18,11 @@ class ViewController: UIViewController{
     @IBOutlet weak var findMyLocationButton: UIButton!
     @IBOutlet weak var getWeatherForecastButton: UIButton!
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         createGradientLayer()
-        createCustomTextField(textfield: self.zipCodeTextField)
+        createCustomTextField(given: "Enter Zipcode Here", textfield: self.zipCodeTextField)
         createCustomLabel(label: self.insertZipcodeLabel)
         createCustomLabel(label: self.orLabel)
         createButtonColor(button: self.checkZipCodeButton)
@@ -85,8 +82,8 @@ extension ViewController {
         button.tintColor = UIColor.gray
     }
     
-    func createCustomTextField (textfield: UITextField) {
-        let placeholder = NSAttributedString(string: "Enter ZipCode Here", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+    func createCustomTextField (given: String, textfield: UITextField) {
+        let placeholder = NSAttributedString(string: given, attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
         textfield.attributedPlaceholder = placeholder
         textfield.textColor = UIColor.gray
         textfield.borderStyle = UITextBorderStyle.roundedRect
