@@ -19,9 +19,7 @@ class WeatherForecastLocationDatastore{
     
     func getWeatherForecastInformation(lat: Double, lng: Double, completion:@escaping ([CurrentWeather], [HourlyWeather], [DailyWeather]) -> ()){
         
-        let newLng = -1 * lng
-        
-        DarkSkyAPIClient.getWeatherInformation(lat: lat, lng: newLng) { (darkSkyJson) in
+        DarkSkyAPIClient.getWeatherInformation(lat: lat, lng: lng) { (darkSkyJson) in
             
             guard let jsonDictionary = darkSkyJson as? [String: Any] else {print("first level dictionary did not unwrap"); return}
             
@@ -76,9 +74,9 @@ class WeatherForecastLocationDatastore{
                 self.dailyWeatherArray.append(dailyObject)
                 print(self.dailyWeatherArray.count)
             }
-
+            completion(self.currentWeatherArray, self.hourlyWeatherArray, self.dailyWeatherArray)
         }
-        completion(self.currentWeatherArray, self.hourlyWeatherArray, self.dailyWeatherArray)
+        //completion(self.currentWeatherArray, self.hourlyWeatherArray, self.dailyWeatherArray)
     }
     
 }

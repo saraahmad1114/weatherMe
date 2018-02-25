@@ -36,12 +36,8 @@ class CoordinatesDatastore {
                         
             self.locationCoordinates.append(coordinatesObject)
             
-            print("*********************************")
-            print(coordinatesObject.latitude)
-            print(coordinatesObject.longitude)
-            print("*********************************")
+            completion(self.locationCoordinates)
         }
-        completion(self.locationCoordinates)
     }
     
 }
