@@ -35,32 +35,59 @@ class CurrentWeatherViewController: UIViewController {
             guard let unwrappedLat = self.coordinateHolder?.coordinate.latitude else {print("lat did not unwrap"); return}
             guard let unwrappedLng = self.coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}
             self.weatherStore.getWeatherForecastInformation(lat: unwrappedLat, lng: unwrappedLng, completion: { (current, hourly, daily) in
-                print("CORE LOCATION HERE")
-                print(current)
-                print(hourly)
-                print(daily)
-                print("CORE LOCATION HERE")
-                
-                
-                
-            })
 
+                guard let temperature = self.weatherStore.currentWeatherArray.first?.currentTemperature else{print("did not unwrap"); return}
+                guard let summary = self.weatherStore.currentWeatherArray.first?.currentSummary else{print("did not unwrap"); return}
+                guard let rain = self.weatherStore.currentWeatherArray.first?.currentPrecipProbability else{print("did not unwrap"); return}
+                guard let dew = self.weatherStore.currentWeatherArray.first?.currentDewPoint else{print("did not unwrap"); return}
+                guard let humidity = self.weatherStore.currentWeatherArray.first?.currentHumidity else{print("did not unwrap"); return}
+                guard let pressure = self.weatherStore.currentWeatherArray.first?.currentPressure else{print("did not unwrap"); return}
+                guard let wind = self.weatherStore.currentWeatherArray.first?.currentWindSpeed else{print("did not unwrap"); return}
+                guard let cloud = self.weatherStore.currentWeatherArray.first?.currentCloudCover else{print("did not unwrap"); return}
+                guard let uvIndex = self.weatherStore.currentWeatherArray.first?.currentUVIndex else{print("did not unwrap"); return}
+                guard let ozone = self.weatherStore.currentWeatherArray.first?.currentOzone else{print("did not unwrap"); return}
+                OperationQueue.main.addOperation {
+                    self.temperatureUpdateLabel.text = String(describing: temperature)
+                    self.summaryUpdateLabel.text = summary
+                    self.rainUpdateLabel.text = String(describing: rain)
+                    self.dewUpdateLabel.text = String(describing: dew)
+                    self.humidityUpdateLabel.text = String(describing: humidity)
+                    self.pressureUpdateLabel.text = String(describing: pressure)
+                    self.windUpdateLabel.text = String(describing: wind)
+                    self.cloudUpdateLabel.text = String(describing: cloud)
+                    self.uvUpdateLabel.text = String(describing: uvIndex)
+                    self.ozoneUpdateLabel.text = String(describing: ozone)
+                }
+            })
         }
         else {
             guard let unwrappedZipcode = self.zipCode else {print("did not unwrap zipcode"); return}
             self.coordinateStore.getUserCoordintes(zipcode: unwrappedZipcode, completion: { (coordinatesJson) in
                 guard let lat = self.coordinateStore.locationCoordinates.first?.latitude else{print("did not unwrap lat"); return}
                 guard let lng = self.coordinateStore.locationCoordinates.first?.longitude else{print("did not unwrap lng"); return}
-                print("ZIP CODE HERE")
-                print(lat)
-                print(lng)
-                print("ZIP CODE HERE")
                 self.weatherStore.getWeatherForecastInformation(lat: lat, lng: lng, completion: { (current, hourly, daily) in
-                    print("ZIP CODE HERE 2")
-                    print(current)
-                    print(hourly)
-                    print(daily)
-                    print("ZIP CODE HERE 2")
+                    guard let temperature = self.weatherStore.currentWeatherArray.first?.currentTemperature else{print("did not unwrap"); return}
+                    guard let summary = self.weatherStore.currentWeatherArray.first?.currentSummary else{print("did not unwrap"); return}
+                    guard let rain = self.weatherStore.currentWeatherArray.first?.currentPrecipProbability else{print("did not unwrap"); return}
+                    guard let dew = self.weatherStore.currentWeatherArray.first?.currentDewPoint else{print("did not unwrap"); return}
+                    guard let humidity = self.weatherStore.currentWeatherArray.first?.currentHumidity else{print("did not unwrap"); return}
+                    guard let pressure = self.weatherStore.currentWeatherArray.first?.currentPressure else{print("did not unwrap"); return}
+                    guard let wind = self.weatherStore.currentWeatherArray.first?.currentWindSpeed else{print("did not unwrap"); return}
+                    guard let cloud = self.weatherStore.currentWeatherArray.first?.currentCloudCover else{print("did not unwrap"); return}
+                    guard let uvIndex = self.weatherStore.currentWeatherArray.first?.currentUVIndex else{print("did not unwrap"); return}
+                    guard let ozone = self.weatherStore.currentWeatherArray.first?.currentOzone else{print("did not unwrap"); return}
+                    OperationQueue.main.addOperation {
+                        self.temperatureUpdateLabel.text = String(describing: temperature)
+                        self.summaryUpdateLabel.text = summary
+                        self.rainUpdateLabel.text = String(describing: rain)
+                        self.dewUpdateLabel.text = String(describing: dew)
+                        self.humidityUpdateLabel.text = String(describing: humidity)
+                        self.pressureUpdateLabel.text = String(describing: pressure)
+                        self.windUpdateLabel.text = String(describing: wind)
+                        self.cloudUpdateLabel.text = String(describing: cloud)
+                        self.uvUpdateLabel.text = String(describing: uvIndex)
+                        self.ozoneUpdateLabel.text = String(describing: ozone)
+                    }
                 })
 
             })
@@ -70,10 +97,11 @@ class CurrentWeatherViewController: UIViewController {
     
     
     func createGradientLayer() {
-    self.currentVCGradientLayer = CAGradientLayer()
-    self.currentVCGradientLayer.frame = self.view.bounds
-    self.currentVCGradientLayer.colors = [UIColor.white.cgColor, UIColor.cyan.cgColor]
-    self.view.layer.addSublayer(self.currentVCGradientLayer)
+        var gradientLayer: CAGradientLayer!
+        gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.view.bounds
+        gradientLayer.colors = [UIColor.white.cgColor, UIColor.cyan.cgColor]
+        self.view.layer.insertSublayer(gradientLayer, at:0)
     }
 
     override func didReceiveMemoryWarning() {
