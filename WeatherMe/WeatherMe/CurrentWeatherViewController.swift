@@ -38,9 +38,18 @@ class CurrentWeatherViewController: UIViewController {
             self.coordinateStore.getUserCoordintes(zipcode: unwrappedZipcode, completion: { (coordinatesJson) in
                 guard let lat = self.coordinateStore.locationCoordinates.first?.latitude else{print("did not unwrap lat"); return}
                 guard let lng = self.coordinateStore.locationCoordinates.first?.longitude else{print("did not unwrap lng"); return}
-//                print(lat)
-//                print(lng)
-                //this works just fine
+                print("ZIP CODE HERE")
+                print(lat)
+                print(lng)
+                print("ZIP CODE HERE")
+                self.weatherStore.getWeatherForecastInformation(lat: lat, lng: lng, completion: { (current, hourly, daily) in
+                    print("ZIP CODE HERE 2")
+                    print(current)
+                    print(hourly)
+                    print(daily)
+                    print("ZIP CODE HERE 2")
+                })
+
             })
             
         }

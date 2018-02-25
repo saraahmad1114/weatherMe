@@ -35,7 +35,6 @@ class CoordinatesDatastore {
             let coordinatesObject = Coordinates.init(latitude: locationLat, longitude: locationLng)
                         
             self.locationCoordinates.append(coordinatesObject)
-            
             completion(self.locationCoordinates)
         }
     }
