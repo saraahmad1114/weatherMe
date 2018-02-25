@@ -23,7 +23,11 @@ class WeatherForecastLocationDatastore{
             
             guard let jsonDictionary = darkSkyJson as? [String: Any] else {print("first level dictionary did not unwrap"); return}
             
+            print(jsonDictionary)
+            
             guard let currentDictionary = jsonDictionary["currently"] as? [String: Any] else{print("did not unwrap currentDictionary did not unwrap"); return}
+            
+            print(currentDictionary)
             
             guard let summary = currentDictionary["summary"] as? String else {print("did not unwrap currentSummary"); return}
             
@@ -32,6 +36,8 @@ class WeatherForecastLocationDatastore{
             guard let precipProb = currentDictionary["precipProbability"] as? Double else{print("did not unwrap currentPrecipProbability"); return}
             
             guard let temperature = currentDictionary["temperature"] as? Double else{print("did not unwrap currentTemperature"); return}
+            
+            print(temperature)
             
             guard let dewPoint = currentDictionary["dewPoint"] as? Double else{print("did not unwrap currentDewPoint"); return}
             
