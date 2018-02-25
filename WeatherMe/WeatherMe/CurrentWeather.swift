@@ -20,10 +20,10 @@ class CurrentWeather {
     var currentWindSpeed: Double?
     var currentCloudCover: Double?
     var currentUVIndex: Double?
-    var currentVisibility: Double?
+    
     var currentOzone: Double?
     
-    init(currentSummary: String,currentIcon: String, currentPrecipProbability: Double, currentTemperature: Double, currentDewPoint: Double, currentHumidity: Double, currentPressure: Double, currentWindSpeed: Double, currentCloudCover: Double, currentUVIndex: Double, currentVisibility: Double, currentOzone: Double ) {
+    init(currentSummary: String,currentIcon: String, currentPrecipProbability: Double, currentTemperature: Double, currentDewPoint: Double, currentHumidity: Double, currentPressure: Double, currentWindSpeed: Double, currentCloudCover: Double, currentUVIndex: Double, currentOzone: Double ) {
         
         self.currentSummary = currentSummary
         self.currentIcon = currentIcon
@@ -35,7 +35,6 @@ class CurrentWeather {
         self.currentWindSpeed = currentWindSpeed
         self.currentCloudCover = currentCloudCover
         self.currentUVIndex = currentUVIndex
-        self.currentVisibility = currentVisibility
         self.currentOzone = currentOzone
     }
 

@@ -45,11 +45,9 @@ class WeatherForecastLocationDatastore{
             
             guard let uVIndex = currentDictionary["uvIndex"] as? Double else{print("did not unwrap currentUVIndex"); return}
             
-            guard let visibility = currentDictionary["visibility"] as? Double else{print("did not unwrap currentVisibility"); return}
-            
             guard let ozone = currentDictionary["ozone"] as? Double else{print("did not unwrap currentOzone"); return}
             
-            let currentWeatherForecastObj = CurrentWeather.init(currentSummary: summary, currentIcon: icon, currentPrecipProbability: precipProb, currentTemperature: temperature, currentDewPoint: dewPoint, currentHumidity: humidity, currentPressure: pressure, currentWindSpeed: windSpeed, currentCloudCover: cloudCover, currentUVIndex: uVIndex, currentVisibility: visibility, currentOzone: ozone)
+            let currentWeatherForecastObj = CurrentWeather.init(currentSummary: summary, currentIcon: icon, currentPrecipProbability: precipProb, currentTemperature: temperature, currentDewPoint: dewPoint, currentHumidity: humidity, currentPressure: pressure, currentWindSpeed: windSpeed, currentCloudCover: cloudCover, currentUVIndex: uVIndex, currentOzone: ozone)
             
             self.currentWeatherArray.append(currentWeatherForecastObj)
 
@@ -71,12 +69,11 @@ class WeatherForecastLocationDatastore{
                 
                 guard let unwrappedSingleDictionary = singleDictionary as? [String: Any] else{print("dataDailySingleDictonary did not unwrap"); return}
                 let dailyObject = DailyWeather.init(jsonDictionary: unwrappedSingleDictionary)
+                
                 self.dailyWeatherArray.append(dailyObject)
-                print(self.dailyWeatherArray.count)
             }
             completion(self.currentWeatherArray, self.hourlyWeatherArray, self.dailyWeatherArray)
         }
-        //completion(self.currentWeatherArray, self.hourlyWeatherArray, self.dailyWeatherArray)
     }
     
 }
