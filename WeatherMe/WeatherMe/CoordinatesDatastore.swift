@@ -18,10 +18,10 @@ class CoordinatesDatastore {
     func getUserCoordintes (zipcode: String, completion:@escaping ([Coordinates]) -> ()){
         GoogleCoordinateAPIClient.getCoordinateInformation(zipCode: zipcode) { (googleAPICoordinatesJson) in
             
-            guard let unwrappedJson
-                = googleAPICoordinatesJson as? [String: Any] else {print("did not unwrap at the first level"); return}
+//            guard let unwrappedJson
+//                = googleAPICoordinatesJson as? [String: Any] else {print("did not unwrap at the first level"); return}
             
-            guard let secondLevelArray = unwrappedJson["results"] as? Array<Any> else {print("did not unwrap at the second level"); return}
+            guard let secondLevelArray = googleAPICoordinatesJson["results"] as? Array<Any> else {print("did not unwrap at the second level"); return}
             
             guard let firstElementFromArray = secondLevelArray[0] as? [String : Any] else {print("did not unwrap at the third level"); return}
             
