@@ -28,6 +28,8 @@ class ViewController: UIViewController{
         createButtonColor(button: self.findMyLocationButton)
         createButtonColor(button: self.getWeatherForecastButton)
         
+
+        
     }
     
     func isZipCodeValid(text: String) -> Bool {

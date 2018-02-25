@@ -33,13 +33,13 @@ class CoordinatesDatastore {
             guard let locationLng = locationDictionary["lng"] as? Double else {print("did not unwrap longitude"); return}
             
             let coordinatesObject = Coordinates.init(latitude: locationLat, longitude: locationLng)
+                        
+            self.locationCoordinates.append(coordinatesObject)
             
             print("*********************************")
             print(coordinatesObject.latitude)
             print(coordinatesObject.longitude)
             print("*********************************")
-            
-            self.locationCoordinates.append(coordinatesObject)
         }
         completion(self.locationCoordinates)
     }
