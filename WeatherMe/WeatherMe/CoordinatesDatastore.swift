@@ -20,9 +20,9 @@ class CoordinatesDatastore {
             
             guard let unwrappedJson
                 = googleAPICoordinatesJson as? [String: Any] else {print("did not unwrap at the first level"); return}
-
+            
             guard let secondLevelArray = unwrappedJson["results"] as? Array<Any> else {print("did not unwrap at the second level"); return}
-
+            
             guard let firstElementFromArray = secondLevelArray[0] as? [String : Any] else {print("did not unwrap at the third level"); return}
             
             guard let geometryDictionary = firstElementFromArray["geometry"] as? [String: Any] else {print("did not unwrap at the fourth level"); return}
@@ -33,6 +33,11 @@ class CoordinatesDatastore {
             guard let locationLng = locationDictionary["lng"] as? Double else {print("did not unwrap longitude"); return}
             
             let coordinatesObject = Coordinates.init(latitude: locationLat, longitude: locationLng)
+            
+            print("*********************************")
+            print(coordinatesObject.latitude)
+            print(coordinatesObject.longitude)
+            print("*********************************")
             
             self.locationCoordinates.append(coordinatesObject)
         }

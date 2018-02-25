@@ -9,8 +9,8 @@ class ViewController: UIViewController{
     
     var locationManager: CLLocationManager?
     var currentLocation: CLLocation?
-    let store = WeatherForecastLocationDatastore.sharedInstance
-        
+    let store = CoordinatesDatastore.sharedInstance
+    
     @IBOutlet weak var insertZipcodeLabel: UILabel!
     @IBOutlet weak var zipCodeTextField: UITextField!
     @IBOutlet weak var checkZipCodeButton: UIButton!
@@ -27,6 +27,7 @@ class ViewController: UIViewController{
         createButtonColor(button: self.checkZipCodeButton)
         createButtonColor(button: self.findMyLocationButton)
         createButtonColor(button: self.getWeatherForecastButton)
+        
     }
     
     func isZipCodeValid(text: String) -> Bool {
