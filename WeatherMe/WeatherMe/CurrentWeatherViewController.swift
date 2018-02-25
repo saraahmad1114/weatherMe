@@ -16,7 +16,18 @@ class CurrentWeatherViewController: UIViewController {
     var currentVCGradientLayer: CAGradientLayer!
     let coordinateStore = CoordinatesDatastore.sharedInstance
     let weatherStore = WeatherForecastLocationDatastore.sharedInstance
-
+    
+    @IBOutlet weak var temperatureUpdateLabel: UILabel!
+    @IBOutlet weak var summaryUpdateLabel: UILabel!
+    @IBOutlet weak var rainUpdateLabel: UILabel!
+    @IBOutlet weak var dewUpdateLabel: UILabel!
+    @IBOutlet weak var humidityUpdateLabel: UILabel!
+    @IBOutlet weak var pressureUpdateLabel: UILabel!
+    @IBOutlet weak var windUpdateLabel: UILabel!
+    @IBOutlet weak var cloudUpdateLabel: UILabel!
+    @IBOutlet weak var uvUpdateLabel: UILabel!
+    @IBOutlet weak var ozoneUpdateLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         createGradientLayer()
@@ -29,6 +40,8 @@ class CurrentWeatherViewController: UIViewController {
                 print(hourly)
                 print(daily)
                 print("CORE LOCATION HERE")
+                
+                
                 
             })
 

@@ -20,7 +20,6 @@ class CurrentWeather {
     var currentWindSpeed: Double?
     var currentCloudCover: Double?
     var currentUVIndex: Double?
-    
     var currentOzone: Double?
     
     init(currentSummary: String,currentIcon: String, currentPrecipProbability: Double, currentTemperature: Double, currentDewPoint: Double, currentHumidity: Double, currentPressure: Double, currentWindSpeed: Double, currentCloudCover: Double, currentUVIndex: Double, currentOzone: Double ) {
