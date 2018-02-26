@@ -236,16 +236,16 @@
                         <viewLayoutGuide key="safeArea" id="Fbc-vX-2a9"/>
                     </view>
                     <connections>
-                        <outlet property="cloudUpdateLabel" destination="EhK-we-5wf" id="0dH-Z4-6Ys"/>
-                        <outlet property="dewUpdateLabel" destination="mgH-sw-JPy" id="S8C-V8-zeE"/>
-                        <outlet property="humidityUpdateLabel" destination="z6D-OX-Rwy" id="d9c-V7-UPa"/>
-                        <outlet property="ozoneUpdateLabel" destination="s75-Pk-Hyq" id="E82-Uu-omP"/>
-                        <outlet property="pressureUpdateLabel" destination="Oko-cT-LvJ" id="hy4-gq-VFd"/>
-                        <outlet property="rainUpdateLabel" destination="5NK-10-3U3" id="XVY-LG-LkL"/>
-                        <outlet property="summaryUpdateLabel" destination="q0r-Oc-njm" id="LhS-qB-DGm"/>
-                        <outlet property="temperatureUpdateLabel" destination="ab2-zF-gh1" id="Jev-LZ-jka"/>
-                        <outlet property="uvUpdateLabel" destination="VUG-73-75j" id="QF1-fV-R9N"/>
-                        <outlet property="windUpdateLabel" destination="mJJ-QH-oJS" id="fJR-aI-lVZ"/>
+                        <outlet property="cloudUpdateLabel" destination="EhK-we-5wf" id="KPH-vu-cRX"/>
+                        <outlet property="dewUpdateLabel" destination="mgH-sw-JPy" id="Jhq-2g-4Ke"/>
+                        <outlet property="humidityUpdateLabel" destination="z6D-OX-Rwy" id="rZe-cH-kf7"/>
+                        <outlet property="ozoneUpdateLabel" destination="s75-Pk-Hyq" id="SxY-C9-Z8f"/>
+                        <outlet property="pressureUpdateLabel" destination="Oko-cT-LvJ" id="U1e-tK-HA6"/>
+                        <outlet property="rainUpdateLabel" destination="5NK-10-3U3" id="LVU-sx-0h2"/>
+                        <outlet property="summaryUpdateLabel" destination="q0r-Oc-njm" id="24L-ah-fyO"/>
+                        <outlet property="temperatureUpdateLabel" destination="ab2-zF-gh1" id="3YP-Kk-1L5"/>
+                        <outlet property="uvUpdateLabel" destination="VUG-73-75j" id="cjR-b9-wfu"/>
+                        <outlet property="windUpdatLabel" destination="mJJ-QH-oJS" id="2Pr-58-0Fp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GpB-mA-eed" userLabel="First Responder" sceneMemberID="firstResponder"/>
