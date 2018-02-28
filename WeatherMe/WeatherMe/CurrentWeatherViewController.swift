@@ -12,7 +12,7 @@ import CoreLocation
 class CurrentWeatherViewController: UIViewController {
     
     var coordinateHolder: CLLocation?
-    var zipCode: String?    
+    var zipCode: String?
     let coordinateStore = CoordinatesDatastore.sharedInstance
     let weatherStore = WeatherForecastLocationDatastore.sharedInstance
     
@@ -46,6 +46,7 @@ class CurrentWeatherViewController: UIViewController {
                 guard let cloud = self.weatherStore.currentWeatherArray.first?.currentCloudCover else{print("did not unwrap"); return}
                 guard let uvIndex = self.weatherStore.currentWeatherArray.first?.currentUVIndex else{print("did not unwrap"); return}
                 guard let ozone = self.weatherStore.currentWeatherArray.first?.currentOzone else{print("did not unwrap"); return}
+                
                 OperationQueue.main.addOperation {
                 
                     self.temperatureUpdateLabel.text = String(describing: temperature)
