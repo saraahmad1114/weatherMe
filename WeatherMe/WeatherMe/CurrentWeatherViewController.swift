@@ -15,6 +15,8 @@ class CurrentWeatherViewController: UIViewController {
     var zipCode: String?
     let coordinateStore = CoordinatesDatastore.sharedInstance
     let weatherStore = WeatherForecastLocationDatastore.sharedInstance
+    var dailyWeatherForecast: [DailyWeather]?
+    var hourlyWeatherForecast: [HourlyWeather]?
     
     @IBOutlet weak var temperatureUpdateLabel: UILabel!
     @IBOutlet weak var summaryUpdateLabel: UILabel!
@@ -47,6 +49,9 @@ class CurrentWeatherViewController: UIViewController {
                 guard let uvIndex = self.weatherStore.currentWeatherArray.first?.currentUVIndex else{print("did not unwrap"); return}
                 guard let ozone = self.weatherStore.currentWeatherArray.first?.currentOzone else{print("did not unwrap"); return}
                 
+                self.hourlyWeatherForecast = self.weatherStore.hourlyWeatherArray
+                self.dailyWeatherForecast = self.weatherStore.dailyWeatherArray
+                
                 OperationQueue.main.addOperation {
                 
                     self.temperatureUpdateLabel.text = String(describing: temperature)
@@ -71,6 +76,9 @@ class CurrentWeatherViewController: UIViewController {
                 guard let lng = self.coordinateStore.locationCoordinates.first?.longitude else{print("did not unwrap lng"); return}
                 
                 self.weatherStore.getWeatherForecastInformation(lat: lat, lng: -lng, completion: { (current, hourly, daily) in
+                    
+                    self.dailyWeatherForecast = self.weatherStore.dailyWeatherArray
+                    self.hourlyWeatherForecast = self.weatherStore.hourlyWeatherArray
                     
                     guard let temperature = self.weatherStore.currentWeatherArray.first?.currentTemperature else{print("did not unwrap"); return}
                     guard let summary = self.weatherStore.currentWeatherArray.first?.currentSummary else{print("did not unwrap"); return}
