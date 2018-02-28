@@ -12,8 +12,7 @@ import CoreLocation
 class CurrentWeatherViewController: UIViewController {
     
     var coordinateHolder: CLLocation?
-    var zipCode: String?
-    var currentVCGradientLayer: CAGradientLayer!
+    var zipCode: String?    
     let coordinateStore = CoordinatesDatastore.sharedInstance
     let weatherStore = WeatherForecastLocationDatastore.sharedInstance
     
@@ -66,8 +65,10 @@ class CurrentWeatherViewController: UIViewController {
             //zip code
             guard let unwrappedZipcode = self.zipCode else {print("did not unwrap zipcode"); return}
             self.coordinateStore.getUserCoordintes(zipcode: unwrappedZipcode, completion: { (coordinatesJson) in
+                
                 guard let lat = self.coordinateStore.locationCoordinates.first?.latitude else{print("did not unwrap lat"); return}
                 guard let lng = self.coordinateStore.locationCoordinates.first?.longitude else{print("did not unwrap lng"); return}
+                
                 self.weatherStore.getWeatherForecastInformation(lat: lat, lng: -lng, completion: { (current, hourly, daily) in
                     
                     guard let temperature = self.weatherStore.currentWeatherArray.first?.currentTemperature else{print("did not unwrap"); return}
