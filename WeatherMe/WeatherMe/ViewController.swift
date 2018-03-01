@@ -27,10 +27,15 @@ class ViewController: UIViewController{
         createButtonColor(button: self.checkZipCodeButton)
         createButtonColor(button: self.findMyLocationButton)
         createButtonColor(button: self.getWeatherForecastButton)
-        
-
-        
     }
+
+//        func dateFromMilliseconds() -> String {
+//            let date = Date(timeIntervalSince1970: TimeInterval(self)/1000)
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "EEEE,MMM d,yyyy, h:mm a"
+//            return dateFormatter.string(from: date)
+//        }
+
     
     func isZipCodeValid(text: String) -> Bool {
         let zipCodeTestPredicate = NSPredicate (format:"SELF MATCHES %@","(^[0-9]{5}(-[0-9]{4})?$)")
