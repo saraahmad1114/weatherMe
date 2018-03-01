@@ -35,6 +35,15 @@ class ViewController: UIViewController{
 //            dateFormatter.dateFormat = "EEEE,MMM d,yyyy, h:mm a"
 //            return dateFormatter.string(from: date)
 //        }
+    
+//    if  let  timeResult = (jsonResult["dt"] as? Double) {
+//        let date = Date(timeIntervalSince1970: timeResult)
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.timeStyle = DateFormatter.Style.medium //Set time style
+//        dateFormatter.dateStyle = DateFormatter.Style.medium //Set date style
+//        dateFormatter.timeZone = self.timeZone
+//        let localDate = dateFormatter.string(from: date)
+//    }
 
     
     func isZipCodeValid(text: String) -> Bool {
