@@ -75,11 +75,6 @@ class CurrentWeatherViewController: UIViewController {
                 guard let lat = self.coordinateStore.locationCoordinates.first?.latitude else{print("did not unwrap lat"); return}
                 guard let lng = self.coordinateStore.locationCoordinates.first?.longitude else{print("did not unwrap lng"); return}
                 
-                print("LOOK HERE FOR COORDINATES")
-                print(lat)
-                print(lng)
-                print("LOOK HERE FOR COORDINATES")
-                
                 self.weatherStore.getWeatherForecastInformation(lat: lat, lng: lng, completion: { (current, hourly, daily) in
                     
                     self.dailyWeatherForecast = self.weatherStore.dailyWeatherArray
