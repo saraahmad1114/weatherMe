@@ -15,8 +15,6 @@ class CurrentWeatherViewController: UIViewController {
     var zipCode: String?
     let coordinateStore = CoordinatesDatastore.sharedInstance
     let weatherStore = WeatherForecastLocationDatastore.sharedInstance
-    var dailyWeatherForecast: [DailyWeather]?
-    var hourlyWeatherForecast: [HourlyWeather]?
     
     @IBOutlet weak var temperatureUpdateLabel: UILabel!
     @IBOutlet weak var summaryUpdateLabel: UILabel!
