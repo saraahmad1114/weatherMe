@@ -30,31 +30,6 @@ class ViewController: UIViewController{
         
     }
     
-    
-    //prints the following: "Mar 1, 2018 at 4:00:00 PM"
-    //HELPS TO GET THE HOURS DOWN
-    func convertTimestampHour (givenTime: Double) -> String {
-        let date = Date(timeIntervalSince1970: givenTime)
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = DateFormatter.Style.medium //Set time style
-        dateFormatter.dateStyle = DateFormatter.Style.medium //Set date style
-        let localDate = dateFormatter.string(from: date)
-        return localDate
-    }
-  
-    //prints out Thursday - gets the day of the week
-    func dayOfWeek(givenTime: Double) -> String? {
-        let date = Date(timeIntervalSince1970: givenTime)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE"
-        return dateFormatter.string(from: date).capitalized
-    }
-
-    
-    
-    
-
-    
     func isZipCodeValid(text: String) -> Bool {
         let zipCodeTestPredicate = NSPredicate (format:"SELF MATCHES %@","(^[0-9]{5}(-[0-9]{4})?$)")
         return zipCodeTestPredicate.evaluate(with: zipCodeTextField.text)

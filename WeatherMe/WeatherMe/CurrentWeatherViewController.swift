@@ -119,6 +119,28 @@ class CurrentWeatherViewController: UIViewController {
         gradientLayer.colors = [UIColor.white.cgColor, UIColor.cyan.cgColor]
         self.view.layer.insertSublayer(gradientLayer, at:0)
     }
+    
+    
+    //SAVE THE FOLLOWING FUNCTIONS 
+    
+    //prints the following: "Mar 1, 2018 at 4:00:00 PM"
+    //HELPS TO GET THE HOURS DOWN
+    func convertTimestampHour (givenTime: Double) -> String {
+        let date = Date(timeIntervalSince1970: givenTime)
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = DateFormatter.Style.medium //Set time style
+        dateFormatter.dateStyle = DateFormatter.Style.medium //Set date style
+        let localDate = dateFormatter.string(from: date)
+        return localDate
+    }
+    
+    //prints out Thursday - gets the day of the week
+    func dayOfWeek(givenTime: Double) -> String? {
+        let date = Date(timeIntervalSince1970: givenTime)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        return dateFormatter.string(from: date).capitalized
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
