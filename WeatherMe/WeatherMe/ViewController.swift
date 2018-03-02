@@ -27,23 +27,32 @@ class ViewController: UIViewController{
         createButtonColor(button: self.checkZipCodeButton)
         createButtonColor(button: self.findMyLocationButton)
         createButtonColor(button: self.getWeatherForecastButton)
+        
+    }
+    
+    
+    //prints the following: "Mar 1, 2018 at 4:00:00 PM"
+    //HELPS TO GET THE HOURS DOWN
+    func convertTimestampHour (givenTime: Double) -> String {
+        let date = Date(timeIntervalSince1970: givenTime)
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = DateFormatter.Style.medium //Set time style
+        dateFormatter.dateStyle = DateFormatter.Style.medium //Set date style
+        let localDate = dateFormatter.string(from: date)
+        return localDate
+    }
+  
+    //prints out Thursday - gets the day of the week
+    func dayOfWeek(givenTime: Double) -> String? {
+        let date = Date(timeIntervalSince1970: givenTime)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        return dateFormatter.string(from: date).capitalized
     }
 
-//        func dateFromMilliseconds() -> String {
-//            let date = Date(timeIntervalSince1970: TimeInterval(self)/1000)
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.dateFormat = "EEEE,MMM d,yyyy, h:mm a"
-//            return dateFormatter.string(from: date)
-//        }
     
-//    if  let  timeResult = (jsonResult["dt"] as? Double) {
-//        let date = Date(timeIntervalSince1970: timeResult)
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.timeStyle = DateFormatter.Style.medium //Set time style
-//        dateFormatter.dateStyle = DateFormatter.Style.medium //Set date style
-//        dateFormatter.timeZone = self.timeZone
-//        let localDate = dateFormatter.string(from: date)
-//    }
+    
+    
 
     
     func isZipCodeValid(text: String) -> Bool {
