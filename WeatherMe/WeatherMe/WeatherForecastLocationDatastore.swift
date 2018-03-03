@@ -45,6 +45,15 @@ class WeatherForecastLocationDatastore{
             let currentWeatherForecastObj = CurrentWeather.init(timeZone: timeZone, time: time, summary: summary, icon: icon, temperature: temperature, precipProbability: precipProb, humidity: humidity, windSpeed: windSpeed)
             
             print("*********************************")
+            print(currentWeatherForecastObj.timeZone)
+            print(currentWeatherForecastObj.time)
+            print(currentWeatherForecastObj.summary)
+            print(currentWeatherForecastObj.icon)
+            print(currentWeatherForecastObj.temperature)
+            print(currentWeatherForecastObj.precipProbability)
+            print(currentWeatherForecastObj.humidity)
+            print(currentWeatherForecastObj.windSpeed)
+            print("*********************************")
             
             self.currentWeatherArray.append(currentWeatherForecastObj)
 
@@ -55,6 +64,12 @@ class WeatherForecastLocationDatastore{
             for singleDictionary in dataArray{
                 guard let unwrappedSingleDictionary = singleDictionary as? [String: Any] else{print("singleDictionary did not unwrap"); return}
                 let hourlyForecastObj = HourlyWeather.init(jsonDictionary: unwrappedSingleDictionary)
+                
+                print("*********************************")
+                print(hourlyForecastObj.hourlyTemperature)
+                print(hourlyForecastObj.hourlyTime)
+                print("*********************************")
+                
                 self.hourlyWeatherArray.append(hourlyForecastObj)
             }
             
@@ -66,6 +81,13 @@ class WeatherForecastLocationDatastore{
                 
                 guard let unwrappedSingleDictionary = singleDictionary as? [String: Any] else{print("dataDailySingleDictonary did not unwrap"); return}
                 let dailyObject = DailyWeather.init(jsonDictionary: unwrappedSingleDictionary)
+                
+                print("*********************************")
+                print(dailyObject.dailyIcon)
+                print(dailyObject.dailyTime)
+                print(dailyObject.dailyTemperatureLow)
+                print(dailyObject.dailyTemperatureHigh)
+                print("*********************************")
                 
                 self.dailyWeatherArray.append(dailyObject)
             }
