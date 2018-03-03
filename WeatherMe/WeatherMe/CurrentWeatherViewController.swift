@@ -25,17 +25,7 @@ class CurrentWeatherViewController: UIViewController {
             guard let unwrappedLng = self.coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}
             self.weatherStore.getWeatherForecastInformation(lat: unwrappedLat, lng: unwrappedLng, completion: { (current, hourly, daily) in
                 OperationQueue.main.addOperation {
-                    print("**************CURRENT*******************")
-                    print(current)
-                    print("**************CURRENT*******************")
-                    
-                    print("**************HOURLY*******************")
-                    print(hourly)
-                    print("**************HOURLY*******************")
-                    
-                    print("**************DAILY*******************")
-                    print(daily)
-                    print("**************DAILY*******************")
+
                 }
             })
         }
@@ -50,17 +40,6 @@ class CurrentWeatherViewController: UIViewController {
                 self.weatherStore.getWeatherForecastInformation(lat: lat, lng: lng, completion: { (current, hourly, daily) in
                     OperationQueue.main.addOperation {
                         
-                        print("**************CURRENT*******************")
-                        print(current)
-                        print("**************CURRENT*******************")
-
-                        print("**************HOURLY*******************")
-                        print(hourly)
-                        print("**************HOURLY*******************")
-                        
-                        print("**************DAILY*******************")
-                        print(daily)
-                        print("**************DAILY*******************")
                     }
                    
                 })
