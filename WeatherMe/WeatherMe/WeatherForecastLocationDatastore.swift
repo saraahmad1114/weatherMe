@@ -23,7 +23,11 @@ class WeatherForecastLocationDatastore{
             
             guard let jsonDictionary = darkSkyJson as? [String: Any] else {print("first level dictionary did not unwrap"); return}
             
+            guard let timeZone = jsonDictionary["timezone"] as? String else {print("timeZone did not unwrap"); return}
+            
             guard let currentDictionary = jsonDictionary["currently"] as? [String: Any] else{print("did not unwrap currentDictionary did not unwrap"); return}
+            
+            guard let time = currentDictionary["time"] as? Double else{print("time did not unwrap"); return}
             
             guard let summary = currentDictionary["summary"] as? String else {print("did not unwrap currentSummary"); return}
             
@@ -32,22 +36,15 @@ class WeatherForecastLocationDatastore{
             guard let precipProb = currentDictionary["precipProbability"] as? Double else{print("did not unwrap currentPrecipProbability"); return}
             
             guard let temperature = currentDictionary["temperature"] as? Double else{print("did not unwrap currentTemperature"); return}
-                        
-            guard let dewPoint = currentDictionary["dewPoint"] as? Double else{print("did not unwrap currentDewPoint"); return}
             
             guard let humidity = currentDictionary["humidity"] as? Double else{print("did not unwrap currentHumidity"); return}
             
-            guard let pressure = currentDictionary["pressure"] as? Double else{print("did not unwrap currentPressue"); return}
             
             guard let windSpeed = currentDictionary["windSpeed"] as? Double else{print("did not unwrap currentWindSpeed"); return}
             
-            guard let cloudCover = currentDictionary["cloudCover"] as? Double else{print("did not unwrap currentCloudCover"); return}
+            let currentWeatherForecastObj = CurrentWeather.init(timeZone: timeZone, time: time, summary: summary, icon: icon, temperature: temperature, precipProbability: precipProb, humidity: humidity, windSpeed: windSpeed)
             
-            guard let uVIndex = currentDictionary["uvIndex"] as? Double else{print("did not unwrap currentUVIndex"); return}
-            
-            guard let ozone = currentDictionary["ozone"] as? Double else{print("did not unwrap currentOzone"); return}
-            
-            let currentWeatherForecastObj = CurrentWeather.init(currentSummary: summary, currentIcon: icon, currentPrecipProbability: precipProb, currentTemperature: temperature, currentDewPoint: dewPoint, currentHumidity: humidity, currentPressure: pressure, currentWindSpeed: windSpeed, currentCloudCover: cloudCover, currentUVIndex: uVIndex, currentOzone: ozone)
+            print("*********************************")
             
             self.currentWeatherArray.append(currentWeatherForecastObj)
 
