@@ -10,32 +10,24 @@ import Foundation
 
 class CurrentWeather {
     
-    var currentSummary: String?
-    var currentIcon: String?
-    var currentPrecipProbability: Double?
-    var currentTemperature: Double?
-    var currentDewPoint: Double?
-    var currentHumidity: Double?
-    var currentPressure: Double?
-    var currentWindSpeed: Double?
-    var currentCloudCover: Double?
-    var currentUVIndex: Double?
-    var currentOzone: Double?
+    var timeZone: String?
+    var time: Double?
+    var summary: String?
+    var icon: String?
+    var temperature: Double?
+    var precipProbability: Double?
+    var humidity: Double?
+    var windSpeed: Double?
     
-    init(currentSummary: String,currentIcon: String, currentPrecipProbability: Double, currentTemperature: Double, currentDewPoint: Double, currentHumidity: Double, currentPressure: Double, currentWindSpeed: Double, currentCloudCover: Double, currentUVIndex: Double, currentOzone: Double ) {
-        
-        self.currentSummary = currentSummary
-        self.currentIcon = currentIcon
-        self.currentPrecipProbability = currentPrecipProbability
-        self.currentTemperature = currentTemperature
-        self.currentDewPoint = currentDewPoint
-        self.currentHumidity = currentHumidity
-        self.currentPressure = currentPressure
-        self.currentWindSpeed = currentWindSpeed
-        self.currentCloudCover = currentCloudCover
-        self.currentUVIndex = currentUVIndex
-        self.currentOzone = currentOzone
+    init(timeZone: String, time: Double, summary: String, icon: String, temperature: Double, precipProbability: Double, humidity: Double, windSpeed: Double) {
+        self.timeZone = timeZone
+        self.time = time
+        self.summary = summary
+        self.icon = icon
+        self.temperature = temperature
+        self.precipProbability = precipProbability
+        self.humidity = humidity
+        self.windSpeed = windSpeed
     }
-
     
 }
