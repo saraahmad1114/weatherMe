@@ -43,7 +43,7 @@ class CurrentWeatherViewController: UIViewController {
                 guard let windSpeed = self.weatherStore.currentWeatherArray.first?.windSpeed else{print("windspeed did not unwrap"); return}
                 
                 OperationQueue.main.addOperation {
-                    self.locationLabel.text = location
+                    self.locationLabel.text = self.returnLocationString(location: location)
                     self.summaryLabel.text = summary
                     self.precipLabel.text = "\(String(Int(precip * 100))) %"
                     self.humidityLabel.text = "\(String(Int(humidity * 100))) %"
@@ -73,7 +73,7 @@ class CurrentWeatherViewController: UIViewController {
                     guard let windSpeed = self.weatherStore.currentWeatherArray.first?.windSpeed else{print("windspeed did not unwrap"); return}
 
                     OperationQueue.main.addOperation {
-                        self.locationLabel.text = location
+                        self.locationLabel.text = self.returnLocationString(location: location)
                         self.summaryLabel.text = summary
                         self.precipLabel.text = "\(String(Int(precip * 100))) %"
                         self.humidityLabel.text = "\(String(Int(humidity * 100))) %"
@@ -117,6 +117,11 @@ class CurrentWeatherViewController: UIViewController {
         var justHourString = neededHour.components(separatedBy: "at")
         let takenHour = justHourString[1]
         return takenHour
+    }
+    
+    func returnLocationString (location: String) -> String{
+        var locationString = location.components(separatedBy: "/")
+        return locationString[1]
     }
 
     override func didReceiveMemoryWarning() {
