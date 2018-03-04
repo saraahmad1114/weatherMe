@@ -23,6 +23,7 @@ class CurrentWeatherViewController: UIViewController {
     @IBOutlet weak var precipLabel: UILabel!
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var windSpeedLabel: UILabel!
+    @IBOutlet weak var iconImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,7 @@ class CurrentWeatherViewController: UIViewController {
             guard let unwrappedLng = self.coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}
             self.weatherStore.getWeatherForecastInformation(lat: unwrappedLat, lng: unwrappedLng, completion: { (current, hourly, daily) in
                 OperationQueue.main.addOperation {
-
+                    
                 }
             })
         }
