@@ -49,14 +49,22 @@ class CurrentWeatherViewController: UIViewController {
                 guard let humidity = self.weatherStore.currentWeatherArray.first?.humidity else{print("humidity did not unwrap"); return}
                 
                 guard let windSpeed = self.weatherStore.currentWeatherArray.first?.windSpeed else{print("windspeed did not unwrap"); return}
+                
+                //let fullNameArr = fullName.components(separatedBy: " ")
+                
+                var neededDay = self.dayOfWeek(givenTime: time)
+                var neededHour = self.convertTimestampHour(givenTime: time)
+                var justHourString = neededHour.components(separatedBy: "at")
+                var takenHour = justHourString[1]
+                
                 OperationQueue.main.addOperation {
-                    
                     self.locationLabel.text = location
                     self.summaryLabel.text = summary
                     self.precipLabel.text = "\(String(Int(precip * 100))) %"
                     self.humidityLabel.text = "\(String(Int(humidity * 100))) %"
                     self.windSpeedLabel.text = "\(String(Int(windSpeed))) mph"
-                    
+                    self.dayLabel.text = neededDay
+                    self.hourLabel.text = takenHour
                 }
             })
         }
@@ -79,8 +87,12 @@ class CurrentWeatherViewController: UIViewController {
                     guard let precip = self.weatherStore.currentWeatherArray.first?.precipProbability else{print("precipProbability did not unwrap"); return}
                     guard let humidity = self.weatherStore.currentWeatherArray.first?.humidity else{print("humidity did not unwrap"); return}
                     guard let windSpeed = self.weatherStore.currentWeatherArray.first?.windSpeed else{print("windspeed did not unwrap"); return}
-                    var neededDay = self.dayOfWeek(givenTime: time)
                     
+                    var neededDay = self.dayOfWeek(givenTime: time)
+                    var neededHour = self.convertTimestampHour(givenTime: time)
+                    var justHourString = neededHour.components(separatedBy: "at")
+                    var takenHour = justHourString[1]
+
                     OperationQueue.main.addOperation {
               
                         self.locationLabel.text = location
@@ -88,6 +100,8 @@ class CurrentWeatherViewController: UIViewController {
                         self.precipLabel.text = "\(String(Int(precip * 100))) %"
                         self.humidityLabel.text = "\(String(Int(humidity * 100))) %"
                         self.windSpeedLabel.text = "\(String(Int(windSpeed))) mph"
+                        self.dayLabel.text = neededDay
+                        self.hourLabel.text = takenHour
  
                     }
                    
