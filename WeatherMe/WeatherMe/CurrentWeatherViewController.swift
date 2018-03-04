@@ -47,7 +47,7 @@ class CurrentWeatherViewController: UIViewController {
                     self.summaryLabel.text = summary
                     self.precipLabel.text = "\(String(Int(precip * 100))) %"
                     self.humidityLabel.text = "\(String(Int(humidity * 100))) %"
-                    self.windSpeedLabel.text = "\(String(Int(windSpeed))) mph"
+                    self.windSpeedLabel?.text = "\(String(Int(windSpeed))) mph"
                     self.dayLabel.text = self.dayOfWeek(givenTime: time)
                     self.hourLabel.text = self.returnTimefrom(timeStamp: time)
                     self.tempLabel.text = "\(String(Int(temperature))) F"
@@ -88,7 +88,6 @@ class CurrentWeatherViewController: UIViewController {
             })
         }
     }
-    
     
     func createGradientLayer() {
         var gradientLayer: CAGradientLayer!

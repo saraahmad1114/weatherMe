@@ -27,9 +27,8 @@ class ViewController: UIViewController{
         createButtonColor(button: self.checkZipCodeButton)
         createButtonColor(button: self.findMyLocationButton)
         createButtonColor(button: self.getWeatherForecastButton)
-        
     }
-    
+
     func isZipCodeValid(text: String) -> Bool {
         let zipCodeTestPredicate = NSPredicate (format:"SELF MATCHES %@","(^[0-9]{5}(-[0-9]{4})?$)")
         return zipCodeTestPredicate.evaluate(with: zipCodeTextField.text)
@@ -103,7 +102,6 @@ extension ViewController {
         present(alertController, animated: true, completion: nil)
     }
 }
-
 
 extension ViewController: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
