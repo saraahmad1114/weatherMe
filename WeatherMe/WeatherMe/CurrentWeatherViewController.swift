@@ -82,11 +82,8 @@ class CurrentWeatherViewController: UIViewController {
                         self.hourLabel.text = self.returnTimefrom(timeStamp: time)
                         self.tempLabel.text = "\(String(Int(temperature))) F"
                     }
-                   
                 })
-
             })
-            
         }
     }
     
