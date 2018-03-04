@@ -49,12 +49,13 @@ class CurrentWeatherViewController: UIViewController {
                 guard let humidity = self.weatherStore.currentWeatherArray.first?.humidity else{print("humidity did not unwrap"); return}
                 
                 guard let windSpeed = self.weatherStore.currentWeatherArray.first?.windSpeed else{print("windspeed did not unwrap"); return}
-                
-                
                 OperationQueue.main.addOperation {
                     
                     self.locationLabel.text = location
-                    
+                    self.summaryLabel.text = summary
+                    self.precipLabel.text = "\(String(Int(precip * 100))) %"
+                    self.humidityLabel.text = "\(String(Int(humidity * 100))) %"
+                    self.windSpeedLabel.text = "\(String(Int(windSpeed))) mph"
                     
                 }
             })
@@ -81,10 +82,13 @@ class CurrentWeatherViewController: UIViewController {
                     var neededDay = self.dayOfWeek(givenTime: time)
                     
                     OperationQueue.main.addOperation {
-                        
+              
                         self.locationLabel.text = location
-                        
-                        
+                        self.summaryLabel.text = summary
+                        self.precipLabel.text = "\(String(Int(precip * 100))) %"
+                        self.humidityLabel.text = "\(String(Int(humidity * 100))) %"
+                        self.windSpeedLabel.text = "\(String(Int(windSpeed))) mph"
+ 
                     }
                    
                 })
