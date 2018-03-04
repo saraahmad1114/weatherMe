@@ -24,6 +24,7 @@ class CurrentWeatherViewController: UIViewController {
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var iconImage: UIImageView!
+    @IBOutlet weak var tempLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +53,7 @@ class CurrentWeatherViewController: UIViewController {
                     self.windSpeedLabel.text = "\(String(Int(windSpeed))) mph"
                     self.dayLabel.text = self.dayOfWeek(givenTime: time)
                     self.hourLabel.text = self.returnTimefrom(timeStamp: time)
+                    
                 }
             })
         }

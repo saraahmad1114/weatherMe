@@ -232,6 +232,7 @@
                         <outlet property="locationLabel" destination="LHw-UC-MAb" id="4Wg-Zr-iUB"/>
                         <outlet property="precipLabel" destination="fxd-Ec-8cs" id="FSE-Sz-MyZ"/>
                         <outlet property="summaryLabel" destination="uAI-Pa-V8z" id="CGy-XI-bab"/>
+                        <outlet property="tempLabel" destination="SRe-Yy-ZSS" id="NvT-WR-eLi"/>
                         <outlet property="windSpeedLabel" destination="mvp-8j-XCB" id="kV5-Oi-9Ty"/>
                     </connections>
                 </viewController>
