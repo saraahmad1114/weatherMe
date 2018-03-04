@@ -54,12 +54,10 @@ class CurrentWeatherViewController: UIViewController {
                     self.dayLabel.text = self.dayOfWeek(givenTime: time)
                     self.hourLabel.text = self.returnTimefrom(timeStamp: time)
                     self.tempLabel.text = "\(String(Int(temperature))) F"
-                    
                 }
             })
         }
         else {
-            //zip code
             guard let unwrappedZipcode = self.zipCode else {print("did not unwrap zipcode"); return}
             self.coordinateStore.getUserCoordintes(zipcode: unwrappedZipcode, completion: { (coordinatesJson) in
                 
@@ -78,7 +76,6 @@ class CurrentWeatherViewController: UIViewController {
                     guard let windSpeed = self.weatherStore.currentWeatherArray.first?.windSpeed else{print("windspeed did not unwrap"); return}
 
                     OperationQueue.main.addOperation {
-              
                         self.locationLabel.text = location
                         self.summaryLabel.text = summary
                         self.precipLabel.text = "\(String(Int(precip * 100))) %"
@@ -87,7 +84,6 @@ class CurrentWeatherViewController: UIViewController {
                         self.dayLabel.text = self.dayOfWeek(givenTime: time)
                         self.hourLabel.text = self.returnTimefrom(timeStamp: time)
                         self.tempLabel.text = "\(String(Int(temperature))) F"
- 
                     }
                    
                 })
@@ -109,8 +105,8 @@ class CurrentWeatherViewController: UIViewController {
     func convertTimestampHour (givenTime: Double) -> String {
         let date = Date(timeIntervalSince1970: givenTime)
         let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = DateFormatter.Style.medium //Set time style
-        dateFormatter.dateStyle = DateFormatter.Style.medium //Set date style
+        dateFormatter.timeStyle = DateFormatter.Style.medium
+        dateFormatter.dateStyle = DateFormatter.Style.medium
         let localDate = dateFormatter.string(from: date)
         return localDate
     }
@@ -123,9 +119,9 @@ class CurrentWeatherViewController: UIViewController {
     }
     
     func returnTimefrom (timeStamp: Double) -> String{
-        var neededHour = self.convertTimestampHour(givenTime: timeStamp)
+        let neededHour = self.convertTimestampHour(givenTime: timeStamp)
         var justHourString = neededHour.components(separatedBy: "at")
-        var takenHour = justHourString[1]
+        let takenHour = justHourString[1]
         return takenHour
     }
 
