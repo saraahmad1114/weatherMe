@@ -106,8 +106,6 @@ class CurrentWeatherViewController: UIViewController {
         self.view.layer.insertSublayer(gradientLayer, at:0)
     }
     
-    
-    //prints the following: "Mar 1, 2018 at 4:00:00 PM"
     func convertTimestampHour (givenTime: Double) -> String {
         let date = Date(timeIntervalSince1970: givenTime)
         let dateFormatter = DateFormatter()
@@ -117,7 +115,6 @@ class CurrentWeatherViewController: UIViewController {
         return localDate
     }
     
-    //prints out Thursday - gets the day of the week
     func dayOfWeek(givenTime: Double) -> String {
         let date = Date(timeIntervalSince1970: givenTime)
         let dateFormatter = DateFormatter()
@@ -125,7 +122,6 @@ class CurrentWeatherViewController: UIViewController {
         return dateFormatter.string(from: date).capitalized
     }
     
-    //returns the time from given string
     func returnTimefrom (timeStamp: Double) -> String{
         var neededHour = self.convertTimestampHour(givenTime: timeStamp)
         var justHourString = neededHour.components(separatedBy: "at")
