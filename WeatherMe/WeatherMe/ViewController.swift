@@ -107,18 +107,12 @@ extension ViewController {
 
 extension ViewController: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("Entered here # 1")
         if self.currentLocation == nil {
-            self.currentLocation = locations.first
-            print("*************************")
-            print(self.currentLocation?.coordinate.latitude)
-            print(self.currentLocation?.coordinate.longitude)
-            print("*************************")
+            self.currentLocation = locations.first!
         }
     }
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        print("entered here")
         if status == .authorizedWhenInUse {
             self.locationManager?.startUpdatingLocation()
         }
