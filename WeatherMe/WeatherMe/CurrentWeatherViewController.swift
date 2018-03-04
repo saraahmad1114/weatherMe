@@ -51,6 +51,7 @@ class CurrentWeatherViewController: UIViewController {
                     self.dayLabel.text = self.dayOfWeek(givenTime: time)
                     self.hourLabel.text = self.returnTimefrom(timeStamp: time)
                     self.tempLabel.text = "\(String(Int(temperature))) F"
+                    self.returnImageForIcon(icon: icon, iconImg: &self.iconImage)
                 }
             })
         }
@@ -81,6 +82,7 @@ class CurrentWeatherViewController: UIViewController {
                         self.dayLabel.text = self.dayOfWeek(givenTime: time)
                         self.hourLabel.text = self.returnTimefrom(timeStamp: time)
                         self.tempLabel.text = "\(String(Int(temperature))) F"
+                        self.returnImageForIcon(icon: icon, iconImg: &self.iconImage)
                     }
                 })
             })
@@ -121,7 +123,49 @@ class CurrentWeatherViewController: UIViewController {
     
     func returnLocationString (location: String) -> String{
         var locationString = location.components(separatedBy: "/")
-        return locationString[1]
+        return locationString[1].replacingOccurrences(of: "_", with: " ")
+    }
+    
+    func returnImageForIcon (icon: String, iconImg: inout UIImageView!){
+        if icon == "clear-day"{
+            iconImg = UIImageView(image:#imageLiteral(resourceName: "clear-day"))
+        }
+        else if icon == "clear-night"{
+            iconImg = UIImageView(image: #imageLiteral(resourceName: "clear-day"))
+        }
+        else if icon == "cloudy"{
+            iconImg = UIImageView(image: #imageLiteral(resourceName: "cloudy"))
+        }
+        else if icon == "fog"{
+           iconImg = UIImageView(image: #imageLiteral(resourceName: "fog"))
+        }
+        else if icon == "hail"{
+            iconImg = UIImageView(image:#imageLiteral(resourceName: "hail"))
+        }
+        else if icon == "partly-cloudy-day"{
+            iconImg = UIImageView(image:#imageLiteral(resourceName: "partly-cloudy-day"))
+        }
+        else if icon == "partly-cloudy-night"{
+            iconImg = UIImageView(image:#imageLiteral(resourceName: "partly-cloudy-night"))
+        }
+        else if icon == "rain"{
+            iconImg = UIImageView(image:#imageLiteral(resourceName: "rain"))
+        }
+        else if icon == "sleet"{
+            iconImg = UIImageView(image:#imageLiteral(resourceName: "sleet"))
+        }
+        else if icon == "snow"{
+            iconImg = UIImageView(image:#imageLiteral(resourceName: "snow"))
+        }
+        else if icon == "thunderstorm"{
+            iconImg = UIImageView(image:#imageLiteral(resourceName: "thunderstorm"))
+        }
+        else if icon == "tornado"{
+            iconImg = UIImageView(image:#imageLiteral(resourceName: "tornado"))
+        }
+        else if icon == "wind"{
+            iconImg = UIImageView(image:#imageLiteral(resourceName: "wind"))
+        }
     }
 
     override func didReceiveMemoryWarning() {
