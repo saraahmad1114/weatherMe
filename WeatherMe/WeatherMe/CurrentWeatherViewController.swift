@@ -53,6 +53,7 @@ class CurrentWeatherViewController: UIViewController {
                     self.windSpeedLabel.text = "\(String(Int(windSpeed))) mph"
                     self.dayLabel.text = self.dayOfWeek(givenTime: time)
                     self.hourLabel.text = self.returnTimefrom(timeStamp: time)
+                    self.tempLabel.text = String(Int(temperature))
                     
                 }
             })
@@ -85,6 +86,7 @@ class CurrentWeatherViewController: UIViewController {
                         self.windSpeedLabel.text = "\(String(Int(windSpeed))) mph"
                         self.dayLabel.text = self.dayOfWeek(givenTime: time)
                         self.hourLabel.text = self.returnTimefrom(timeStamp: time)
+                        self.tempLabel.text = String(Int(temperature))
  
                     }
                    

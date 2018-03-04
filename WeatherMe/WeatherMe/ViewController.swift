@@ -57,12 +57,10 @@ class ViewController: UIViewController{
             if self.currentLocation != nil {
                 guard let latestCoordinates = self.currentLocation else {print("latestCoordinates did not unwrap"); return}
                 destinationVC.coordinateHolder = self.currentLocation
-                print(destinationVC.coordinateHolder)
             }
             else if self.zipCodeTextField.text != nil{
                 guard let neededZipcode = self.zipCodeTextField.text else {print("neededZipcode did not unwrap"); return}
                 destinationVC.zipCode = self.zipCodeTextField.text
-                print(destinationVC.zipCode)
                 }
             }
         }
