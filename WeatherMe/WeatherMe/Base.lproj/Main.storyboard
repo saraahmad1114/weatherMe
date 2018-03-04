@@ -99,7 +99,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHw-UC-MAb">
-                                <rect key="frame" x="16" y="77" width="122" height="21"/>
+                                <rect key="frame" x="16" y="77" width="169" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -213,7 +213,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k80-Jx-DYy">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hour" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k80-Jx-DYy">
                                 <rect key="frame" x="107" y="105" width="86" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -224,6 +224,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Fbc-vX-2a9"/>
                     </view>
+                    <connections>
+                        <outlet property="dayLabel" destination="BpK-ca-zeN" id="veF-Bb-321"/>
+                        <outlet property="hourLabel" destination="k80-Jx-DYy" id="saV-se-1c6"/>
+                        <outlet property="humidityLabel" destination="E4h-qE-wnZ" id="zUj-VM-2fY"/>
+                        <outlet property="locationLabel" destination="LHw-UC-MAb" id="4Wg-Zr-iUB"/>
+                        <outlet property="precipLabel" destination="fxd-Ec-8cs" id="FSE-Sz-MyZ"/>
+                        <outlet property="summaryLabel" destination="uAI-Pa-V8z" id="CGy-XI-bab"/>
+                        <outlet property="windSpeedLabel" destination="mvp-8j-XCB" id="kV5-Oi-9Ty"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GpB-mA-eed" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
