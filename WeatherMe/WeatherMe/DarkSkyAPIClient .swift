@@ -2,9 +2,7 @@
 //  DarkSkyAPIClient .swift
 //  WeatherMe
 //
-//  Created by Flatiron School on 10/7/17.
-//  Copyright © 2017 Flatiron School. All rights reserved.
-//
+
 
 import Foundation
 
