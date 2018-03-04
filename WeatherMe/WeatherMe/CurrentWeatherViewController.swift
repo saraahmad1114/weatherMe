@@ -103,10 +103,7 @@ class CurrentWeatherViewController: UIViewController {
     }
     
     
-    //SAVE THE FOLLOWING FUNCTIONS 
-    
     //prints the following: "Mar 1, 2018 at 4:00:00 PM"
-    //HELPS TO GET THE HOURS DOWN
     func convertTimestampHour (givenTime: Double) -> String {
         let date = Date(timeIntervalSince1970: givenTime)
         let dateFormatter = DateFormatter()
