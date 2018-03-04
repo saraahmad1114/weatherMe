@@ -127,43 +127,43 @@ class CurrentWeatherViewController: UIViewController {
     
     func returnImageForIcon (icon: String){
         if icon == "clear-day"{
-            self.iconImage = UIImageView(image:#imageLiteral(resourceName: "clear-day"))
+            self.iconImage.image = UIImage(named:"clear-day")
         }
         else if icon == "clear-night"{
-            self.iconImage = UIImageView(image: #imageLiteral(resourceName: "clear-day"))
+            self.iconImage.image = UIImage(named: "clear-night")
         }
         else if icon == "cloudy"{
-            self.iconImage = UIImageView(image: #imageLiteral(resourceName: "cloudy"))
+            self.iconImage.image = UIImage(named: "cloudy")
         }
         else if icon == "fog"{
-           self.iconImage = UIImageView(image: #imageLiteral(resourceName: "fog"))
+           self.iconImage.image = UIImage(named: "fog")
         }
         else if icon == "hail"{
-            self.iconImage = UIImageView(image:#imageLiteral(resourceName: "hail"))
+            self.iconImage.image = UIImage(named:"hail")
         }
         else if icon == "partly-cloudy-day"{
-            self.iconImage = UIImageView(image:#imageLiteral(resourceName: "partly-cloudy-day"))
+            self.iconImage.image = UIImage(named:"partly-cloudy-day")
         }
         else if icon == "partly-cloudy-night"{
-            self.iconImage = UIImageView(image:#imageLiteral(resourceName: "partly-cloudy-night"))
+            self.iconImage.image = UIImage(named:"partly-cloudy-night")
         }
         else if icon == "rain"{
-            self.iconImage = UIImageView(image:#imageLiteral(resourceName: "rain"))
+            self.iconImage.image = UIImage(named:"rain")
         }
         else if icon == "sleet"{
-            self.iconImage = UIImageView(image:#imageLiteral(resourceName: "sleet"))
+            self.iconImage.image = UIImage(named:"sleet")
         }
         else if icon == "snow"{
-            self.iconImage = UIImageView(image:#imageLiteral(resourceName: "snow"))
+            self.iconImage.image = UIImage(named:"snow")
         }
         else if icon == "thunderstorm"{
-            self.iconImage = UIImageView(image:#imageLiteral(resourceName: "thunderstorm"))
+            self.iconImage.image = UIImage(named:"thunderstorm")
         }
         else if icon == "tornado"{
-            self.iconImage = UIImageView(image:#imageLiteral(resourceName: "tornado"))
+            self.iconImage.image = UIImage(named:"tornado")
         }
         else if icon == "wind"{
-            self.iconImage = UIImageView(image:#imageLiteral(resourceName: "wind"))
+            self.iconImage.image = UIImage(named:"wind")
         }
     }
 
