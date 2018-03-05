@@ -6,7 +6,7 @@
 import UIKit
 import CoreLocation
 
-class CurrentWeatherViewController: UIViewController {
+class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var coordinateHolder: CLLocation?
     var zipCode: String?
@@ -27,12 +27,9 @@ class CurrentWeatherViewController: UIViewController {
         super.viewDidLoad()
         createGradientLayer()
         if self.coordinateHolder != nil {
-            
             guard let unwrappedLat = self.coordinateHolder?.coordinate.latitude else {print("lat did not unwrap"); return}
             guard let unwrappedLng = self.coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}
-            
             self.weatherStore.getWeatherForecastInformation(lat: unwrappedLat, lng: unwrappedLng, completion: { (current, hourly, daily) in
-    
                 guard let location = self.weatherStore.currentWeatherArray.first?.timeZone else{print("location did not unwrap"); return}
                 guard let time = self.weatherStore.currentWeatherArray.first?.time else{print("time did not unwrap"); return}
                 guard let summary = self.weatherStore.currentWeatherArray.first?.summary else{print("summary did not unwrap"); return}
@@ -41,7 +38,6 @@ class CurrentWeatherViewController: UIViewController {
                 guard let precip = self.weatherStore.currentWeatherArray.first?.precipProbability else{print("precipProbability did not unwrap"); return}
                 guard let humidity = self.weatherStore.currentWeatherArray.first?.humidity else{print("humidity did not unwrap"); return}
                 guard let windSpeed = self.weatherStore.currentWeatherArray.first?.windSpeed else{print("windspeed did not unwrap"); return}
-                
                 OperationQueue.main.addOperation {
                     self.locationLabel.text = self.returnLocationString(location: location)
                     self.summaryLabel.text = summary
@@ -58,12 +54,9 @@ class CurrentWeatherViewController: UIViewController {
         else {
             guard let unwrappedZipcode = self.zipCode else {print("did not unwrap zipcode"); return}
             self.coordinateStore.getUserCoordintes(zipcode: unwrappedZipcode, completion: { (coordinatesJson) in
-                
                 guard let lat = self.coordinateStore.locationCoordinates.first?.latitude else{print("did not unwrap lat"); return}
                 guard let lng = self.coordinateStore.locationCoordinates.first?.longitude else{print("did not unwrap lng"); return}
-
                 self.weatherStore.getWeatherForecastInformation(lat: lat, lng: lng, completion: { (current, hourly, daily) in
-                    
                     guard let location = self.weatherStore.currentWeatherArray.first?.timeZone else{print("location did not unwrap"); return}
                     guard let time = self.weatherStore.currentWeatherArray.first?.time else{print("time did not unwrap"); return}
                     guard let summary = self.weatherStore.currentWeatherArray.first?.summary else{print("summary did not unwrap"); return}
@@ -72,7 +65,6 @@ class CurrentWeatherViewController: UIViewController {
                     guard let precip = self.weatherStore.currentWeatherArray.first?.precipProbability else{print("precipProbability did not unwrap"); return}
                     guard let humidity = self.weatherStore.currentWeatherArray.first?.humidity else{print("humidity did not unwrap"); return}
                     guard let windSpeed = self.weatherStore.currentWeatherArray.first?.windSpeed else{print("windspeed did not unwrap"); return}
-
                     OperationQueue.main.addOperation {
                         self.locationLabel.text = self.returnLocationString(location: location)
                         self.summaryLabel.text = summary
@@ -88,6 +80,32 @@ class CurrentWeatherViewController: UIViewController {
             })
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.weatherStore.dailyWeatherArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dailyWeatherCell", for: indexPath) as! DailyWeatherCollectionViewCell
+        
+        let neededRow = indexPath.row
+        
+        if let neededDay = self.weatherStore.dailyWeatherArray[neededRow].dailyTime{
+            var day = dayOfWeek(givenTime: neededDay)
+            cell.dailyDayLabel.text = day[0] + day[1] + day[2]
+        }
+        if let neededTempHigh = self.weatherStore.dailyWeatherArray[neededRow].dailyTemperatureHigh{
+            if let neededTempLow = self.weatherStore.dailyWeatherArray[neededRow].dailyTemperatureLow{
+                cell.
+            }
+        }
+        
+        
+        
+        return cell
+    }
+    
+    
     
     func createGradientLayer() {
         var gradientLayer: CAGradientLayer!
