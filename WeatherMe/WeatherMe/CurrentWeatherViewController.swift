@@ -139,6 +139,12 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
             else if neededIcon == "thunderstorm"{
                 cell.dailyIconImage.image = UIImage(named: "thunderstorm")
             }
+            else if neededIcon == "tornado"{
+                cell.dailyIconImage.image = UIImage(named: "tornado")
+            }
+            else if neededIcon == "wind"{
+                cell.dailyIconImage.image = UIImage(named: "wind")
+            }
         }
         
         
