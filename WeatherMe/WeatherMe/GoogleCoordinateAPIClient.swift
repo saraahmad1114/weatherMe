@@ -9,9 +9,9 @@ import Foundation
 class GoogleCoordinateAPIClient {
     
     class func getCoordinateInformation (zipCode: String, completion:@escaping([String: Any])->()){
-        
+
         var jsonDictionary = [String: Any]()
-        
+
         let url = "https://maps.googleapis.com/maps/api/geocode/json?address=\(zipCode)&key=\(Secrets.googleCoordinateApiKey)"
         
         let convertedUrl = URL(string: url)

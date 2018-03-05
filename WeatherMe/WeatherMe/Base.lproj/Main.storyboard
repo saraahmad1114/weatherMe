@@ -172,10 +172,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2UC-0r-xFn">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2UC-0r-xFn">
                                 <rect key="frame" x="0.0" y="502" width="375" height="165"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="165" id="qs1-Jq-DKf"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="t4v-z5-MPg">
                                     <size key="itemSize" width="95" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -222,6 +224,11 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2UC-0r-xFn" firstAttribute="bottom" secondItem="Fbc-vX-2a9" secondAttribute="bottom" id="5NQ-wp-1R0"/>
+                            <constraint firstItem="2UC-0r-xFn" firstAttribute="trailing" secondItem="Fbc-vX-2a9" secondAttribute="trailing" id="Rrh-Y7-345"/>
+                            <constraint firstItem="2UC-0r-xFn" firstAttribute="leading" secondItem="Fbc-vX-2a9" secondAttribute="leading" id="bot-aK-TKZ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Fbc-vX-2a9"/>
                     </view>
                     <connections>
