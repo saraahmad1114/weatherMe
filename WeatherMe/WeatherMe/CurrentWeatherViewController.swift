@@ -90,14 +90,35 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
         
         let neededRow = indexPath.row
         
+        //updating the dayLabel
         if let neededDay = self.weatherStore.dailyWeatherArray[neededRow].dailyTime{
             var day = dayOfWeek(givenTime: neededDay)
-            cell.dailyDayLabel.text = day[0] + day[1] + day[2]
+            let index = day.index(day.startIndex, offsetBy: 3)
+            let smallerDay = day[..<index]
+            cell.dailyDayLabel.text = String(smallerDay)
         }
+        
+        //updating the temperature Label
         if let neededTempHigh = self.weatherStore.dailyWeatherArray[neededRow].dailyTemperatureHigh{
             if let neededTempLow = self.weatherStore.dailyWeatherArray[neededRow].dailyTemperatureLow{
-                cell.
+                cell.dailyTempLabel.text = "\(String(Int(neededTempHigh))) / \(String(Int(neededTempLow)))"
             }
+        }
+        
+        if let neededIcon = self.weatherStore.dailyWeatherArray[neededRow].dailyIcon{
+            if neededIcon == "clear-day"{
+                cell.dailyIconImage.image = UIImage(named:"clear-day")
+            }
+            else if neededIcon == "clear-night"{
+                 cell.dailyIconImage.image = UIImage(named: "clear-night")
+            }
+            else if neededIcon == "cloudy"{
+                cell.dailyIconImage.image = UIImage(named: "cloudy")
+            }
+            else if neededIcon == "fog"{
+                cell.dailyIconImage.image = UIImage(named:"fog")
+            }
+            else if neededIcon == 
         }
         
         
@@ -184,6 +205,7 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
             self.iconImage.image = UIImage(named:"wind")
         }
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
