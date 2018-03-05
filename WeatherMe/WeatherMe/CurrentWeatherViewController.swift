@@ -82,15 +82,19 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        //THIS WORKS HERE
         return self.weatherStore.dailyWeatherArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dailyWeatherCell", for: indexPath) as! DailyWeatherCollectionViewCell
+        print("ENTERED INTO THE COLLECTION VIEW CELL")
         let neededRow = indexPath.row
+        
+        OperationQueue.main.addOperation {
         //updating the dayLabel
         if let neededDay = self.weatherStore.dailyWeatherArray[neededRow].dailyTime{
-            var day = dayOfWeek(givenTime: neededDay)
+            var day = self.dayOfWeek(givenTime: neededDay)
             let index = day.index(day.startIndex, offsetBy: 3)
             let smallerDay = day[..<index]
             cell.dailyDayLabel.text = String(smallerDay)
@@ -143,6 +147,7 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
                 cell.dailyIconImage.image = UIImage(named: "wind")
             }
         }
+    }
         return cell
     }
     
