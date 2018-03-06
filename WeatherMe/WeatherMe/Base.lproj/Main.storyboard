@@ -243,15 +243,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZUk-GE-o2H">
-                                <rect key="frame" x="0.0" y="289" width="375" height="222"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZUk-GE-o2H" customClass="GraphView" customModule="WeatherMe" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="254.5" width="375" height="222"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="222" id="gY7-90-bsm"/>
+                                    <constraint firstAttribute="width" constant="375" id="wv5-00-AUL"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="2UC-0r-xFn" firstAttribute="bottom" secondItem="Fbc-vX-2a9" secondAttribute="bottom" id="5NQ-wp-1R0"/>
+                            <constraint firstItem="ZUk-GE-o2H" firstAttribute="centerX" secondItem="Fbc-vX-2a9" secondAttribute="centerX" id="G3W-EO-SWG"/>
+                            <constraint firstItem="ZUk-GE-o2H" firstAttribute="centerY" secondItem="Fbc-vX-2a9" secondAttribute="centerY" id="P5f-6w-6z5"/>
                             <constraint firstItem="2UC-0r-xFn" firstAttribute="trailing" secondItem="Fbc-vX-2a9" secondAttribute="trailing" id="Rrh-Y7-345"/>
                             <constraint firstItem="2UC-0r-xFn" firstAttribute="leading" secondItem="Fbc-vX-2a9" secondAttribute="leading" id="bot-aK-TKZ"/>
                         </constraints>
@@ -260,7 +265,6 @@
                     <connections>
                         <outlet property="dailyWeatherCollectionView" destination="2UC-0r-xFn" id="EgB-UQ-fwh"/>
                         <outlet property="dayLabel" destination="BpK-ca-zeN" id="veF-Bb-321"/>
-                        <outlet property="graphView" destination="ZUk-GE-o2H" id="PRb-8n-Sky"/>
                         <outlet property="hourLabel" destination="k80-Jx-DYy" id="saV-se-1c6"/>
                         <outlet property="humidityLabel" destination="E4h-qE-wnZ" id="zUj-VM-2fY"/>
                         <outlet property="iconImage" destination="VCz-qU-px8" id="3wu-wQ-8Sm"/>
