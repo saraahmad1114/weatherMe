@@ -229,8 +229,6 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
             self.iconImage.image = UIImage(named:"wind")
         }
     }
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
