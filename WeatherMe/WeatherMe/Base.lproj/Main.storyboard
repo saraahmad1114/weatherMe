@@ -243,6 +243,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZUk-GE-o2H">
+                                <rect key="frame" x="0.0" y="289" width="375" height="222"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -255,6 +260,7 @@
                     <connections>
                         <outlet property="dailyWeatherCollectionView" destination="2UC-0r-xFn" id="EgB-UQ-fwh"/>
                         <outlet property="dayLabel" destination="BpK-ca-zeN" id="veF-Bb-321"/>
+                        <outlet property="graphView" destination="ZUk-GE-o2H" id="PRb-8n-Sky"/>
                         <outlet property="hourLabel" destination="k80-Jx-DYy" id="saV-se-1c6"/>
                         <outlet property="humidityLabel" destination="E4h-qE-wnZ" id="zUj-VM-2fY"/>
                         <outlet property="iconImage" destination="VCz-qU-px8" id="3wu-wQ-8Sm"/>
