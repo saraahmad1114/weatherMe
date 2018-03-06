@@ -8,14 +8,49 @@
 
 import UIKit
 
-class GraphView: UIView {
+private struct Constants {
+    static let cornerRadiusSize = CGSize(width: 8.0, height: 8.0)
+    static let margin: CGFloat = 20.0
+    static let topBorder: CGFloat = 60
+    static let bottomBorder: CGFloat = 50
+    static let colorAlpha: CGFloat = 0.3
+    static let circleDiameter: CGFloat = 5.0
+}
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
+@IBDesignable class GraphView: UIView {
+    
+    // 1
+    @IBInspectable var startColor: UIColor = .red
+    @IBInspectable var endColor: UIColor = .green
+    
     override func draw(_ rect: CGRect) {
-        // Drawing code
+        
+        let path = UIBezierPath(roundedRect: rect,
+                                byRoundingCorners: .allCorners,
+                                cornerRadii: Constants.cornerRadiusSize)
+        path.addClip()
+        
+        // 2
+        let context = UIGraphicsGetCurrentContext()!
+        let colors = [startColor.cgColor, endColor.cgColor]
+        
+        // 3
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        
+        // 4
+        let colorLocations: [CGFloat] = [0.0, 1.0]
+        
+        // 5
+        let gradient = CGGradient(colorsSpace: colorSpace,
+                                  colors: colors as CFArray,
+                                  locations: colorLocations)!
+        
+        // 6
+        let startPoint = CGPoint.zero
+        let endPoint = CGPoint(x: 0, y: bounds.height)
+        context.drawLinearGradient(gradient,
+                                   start: startPoint,
+                                   end: endPoint,
+                                   options: [])
     }
-    */
-
 }
