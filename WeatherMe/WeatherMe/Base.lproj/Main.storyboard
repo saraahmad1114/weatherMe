@@ -253,6 +253,7 @@
                         <viewLayoutGuide key="safeArea" id="Fbc-vX-2a9"/>
                     </view>
                     <connections>
+                        <outlet property="dailyWeatherCollectionView" destination="2UC-0r-xFn" id="EgB-UQ-fwh"/>
                         <outlet property="dayLabel" destination="BpK-ca-zeN" id="veF-Bb-321"/>
                         <outlet property="hourLabel" destination="k80-Jx-DYy" id="saV-se-1c6"/>
                         <outlet property="humidityLabel" destination="E4h-qE-wnZ" id="zUj-VM-2fY"/>

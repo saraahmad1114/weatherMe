@@ -22,6 +22,7 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var dailyWeatherCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,8 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
                     self.hourLabel.text = self.returnTimefrom(timeStamp: time)
                     self.tempLabel.text = "\(String(Int(temperature))) F"
                     self.returnImageForIcon(icon: icon)
+                    
+                    self.dailyWeatherCollectionView.reloadData()
                 }
             })
         }
@@ -75,6 +78,8 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
                         self.hourLabel.text = self.returnTimefrom(timeStamp: time)
                         self.tempLabel.text = "\(String(Int(temperature))) F"
                         self.returnImageForIcon(icon: icon)
+                        
+                        self.dailyWeatherCollectionView.reloadData()
                     }
                 })
             })
@@ -82,30 +87,26 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //THIS WORKS HERE
         return self.weatherStore.dailyWeatherArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dailyWeatherCell", for: indexPath) as! DailyWeatherCollectionViewCell
-        print("ENTERED INTO THE COLLECTION VIEW CELL")
+        
         let neededRow = indexPath.row
         
         OperationQueue.main.addOperation {
-        //updating the dayLabel
         if let neededDay = self.weatherStore.dailyWeatherArray[neededRow].dailyTime{
             var day = self.dayOfWeek(givenTime: neededDay)
             let index = day.index(day.startIndex, offsetBy: 3)
             let smallerDay = day[..<index]
             cell.dailyDayLabel.text = String(smallerDay)
         }
-        //updating the temperature Label
         if let neededTempHigh = self.weatherStore.dailyWeatherArray[neededRow].dailyTemperatureHigh{
             if let neededTempLow = self.weatherStore.dailyWeatherArray[neededRow].dailyTemperatureLow{
                 cell.dailyTempLabel.text = "\(String(Int(neededTempHigh))) / \(String(Int(neededTempLow)))"
             }
         }
-        //updating the icon image
         if let neededIcon = self.weatherStore.dailyWeatherArray[neededRow].dailyIcon{
             if neededIcon == "clear-day"{
                 cell.dailyIconImage.image = UIImage(named:"clear-day")
@@ -150,8 +151,6 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
     }
         return cell
     }
-    
-    
     
     func createGradientLayer() {
         var gradientLayer: CAGradientLayer!
