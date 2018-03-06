@@ -23,7 +23,7 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var dailyWeatherCollectionView: UICollectionView!
-    @IBOutlet weak var graphView: UIView!
+    @IBOutlet weak var graphView: GraphView!
     
     
     override func viewDidLoad() {
