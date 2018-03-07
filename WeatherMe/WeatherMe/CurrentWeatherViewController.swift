@@ -162,18 +162,15 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "hourlyWeatherCell", for: indexPath) as! HourlyWeatherTableViewCell
         
-        //updating the time in terms of hours
         if let neededHourlyTime = self.weatherStore.hourlyWeatherArray[indexPath.row].hourlyTime{
             let cellTime = self.returnTimefrom(timeStamp: neededHourlyTime)
             cell.hourlyTimeLabel.text = cellTime
         }
         
-        //updating the temperature for the particular corresponding hour
         if let needeHourlytemperature = self.weatherStore.hourlyWeatherArray[indexPath.row].hourlyTemperature{
             cell.hourlyTempLabel.text = String(Int(needeHourlytemperature))
         }
         
-        //updating the icon for the particular correponding hour and temperature
         if let neededHourlyIcon = self.weatherStore.hourlyWeatherArray[indexPath.row].hourlyIcon{
             if neededHourlyIcon == "clear-day"{
                 cell.hourlyIconImage.image = UIImage(named:"clear-day")
