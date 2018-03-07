@@ -15,12 +15,12 @@ class HourlyWeather {
     init(jsonDictionary: [String: Any]) {
         guard
             let time = jsonDictionary["time"] as? Double,
-            let temperature = jsonDictionary["temperature"] as? Double,
-            let icon = jsonDictionary["icon"] as? String
+            let icon = jsonDictionary["icon"] as? String,
+            let temperature = jsonDictionary["temperature"] as? Double
             else {print("did not unwrap hourlyWeather"); return}
         self.hourlyTime = time
-        self.hourlyTemperature = temperature
         self.hourlyIcon = icon
+        self.hourlyTemperature = temperature
     }
     
 }

@@ -23,7 +23,7 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var dailyWeatherCollectionView: UICollectionView!
-    
+    @IBOutlet weak var hourlyWeatherTableview: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +52,7 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
                     self.returnImageForIcon(icon: icon)
                     
                     self.dailyWeatherCollectionView.reloadData()
+                    self.hourlyWeatherTableview.reloadData()
                 }
             })
         }
@@ -81,6 +82,7 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
                         self.returnImageForIcon(icon: icon)
                         
                         self.dailyWeatherCollectionView.reloadData()
+                        self.hourlyWeatherTableview.reloadData()
                     }
                 })
             })

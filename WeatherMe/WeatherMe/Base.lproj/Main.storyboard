@@ -312,6 +312,7 @@
                         <outlet property="dailyWeatherCollectionView" destination="2UC-0r-xFn" id="EgB-UQ-fwh"/>
                         <outlet property="dayLabel" destination="BpK-ca-zeN" id="veF-Bb-321"/>
                         <outlet property="hourLabel" destination="k80-Jx-DYy" id="saV-se-1c6"/>
+                        <outlet property="hourlyWeatherTableview" destination="y0h-CW-aKO" id="OOS-IB-2cF"/>
                         <outlet property="humidityLabel" destination="E4h-qE-wnZ" id="zUj-VM-2fY"/>
                         <outlet property="iconImage" destination="VCz-qU-px8" id="3wu-wQ-8Sm"/>
                         <outlet property="locationLabel" destination="LHw-UC-MAb" id="4Wg-Zr-iUB"/>
