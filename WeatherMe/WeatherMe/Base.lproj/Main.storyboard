@@ -252,7 +252,7 @@
                                     <constraint firstAttribute="width" constant="375" id="xWS-yh-X9u"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hourlyWeatherCell" rowHeight="76" id="CcG-yF-Y5j">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hourlyWeatherCell" rowHeight="76" id="CcG-yF-Y5j" customClass="HourlyWeatherTableViewCell" customModule="WeatherMe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CcG-yF-Y5j" id="EU7-3E-fcv">
