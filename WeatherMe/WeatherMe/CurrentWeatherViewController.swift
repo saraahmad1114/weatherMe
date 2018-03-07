@@ -159,7 +159,22 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: "dailyWeatherCell", for: indexPath) as! HourlyWeatherTableViewCell
+        
+        //updating the time in terms of hours
+        if let neededHourlyTime = self.weatherStore.hourlyWeatherArray[indexPath.row].hourlyTime{
+            var cellTime = self.returnTimefrom(timeStamp: neededHourlyTime)
+            cell.hourlyTimeLabel.text = cellTime
+        }
+        
+        //updating the temperature for the particular corresponding hour 
+        if let temperature = self.weatherStore.hourlyWeatherArray[indexPath.row].hourlyTemperature{
+            cell.hourlyTempLabel.text = String(Int(temperature))
+        }
+        
+    
+        
+        return cell
     }
     
     func createGradientLayer() {
