@@ -155,7 +155,7 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return self.weatherStore.hourlyWeatherArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
