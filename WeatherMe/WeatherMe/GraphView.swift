@@ -17,8 +17,12 @@ private struct Constants {
     static let circleDiameter: CGFloat = 5.0
 }
 
+
 @IBDesignable class GraphView: UIView {
     
+    var yAxisValues = [HourlyWeather]()
+    let weatherStore = WeatherForecastLocationDatastore.sharedInstance
+
     // 1
     @IBInspectable var startColor: UIColor = .red
     @IBInspectable var endColor: UIColor = .green
@@ -53,4 +57,20 @@ private struct Constants {
                                    end: endPoint,
                                    options: [])
     }
+    
+    //Cast temperature as Ints -- Temperature go here:
+    func createYAxis() -> [Int]{
+        var displayTemperatures = [Int]()
+        for singleHour in self.weatherStore.hourlyWeatherArray{
+            if let unwrappedHour = singleHour.hourlyTemperature{
+            displayTemperatures.append(Int(unwrappedHour))
+            }
+        }
+        return displayTemperatures
+    }
+    
+//    //cast hours as Strings --
+//    func createXAxis() -> [Int]{
+//
+//    }
 }
