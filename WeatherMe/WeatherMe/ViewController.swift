@@ -27,6 +27,11 @@ class ViewController: UIViewController{
         createButtonColor(button: self.checkZipCodeButton)
         createButtonColor(button: self.findMyLocationButton)
         createButtonColor(button: self.getWeatherForecastButton)
+        
+        print("LOOK HERE***************************")
+        //PRINTS THE FOLLOWING OUT: Mar 6, 2018 at 8:00:00 PM
+//        print(localDate)
+        print("LOOK HERE***************************")
     }
 
     func isZipCodeValid(text: String) -> Bool {
