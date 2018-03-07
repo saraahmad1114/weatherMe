@@ -172,7 +172,7 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
             cell.hourlyTempLabel.text = String(Int(needeHourlytemperature))
         }
         
-        //updating the icon for the particular correponding hour and temperature 
+        //updating the icon for the particular correponding hour and temperature
         if let neededHourlyIcon = self.weatherStore.hourlyWeatherArray[indexPath.row].hourlyIcon{
             if neededHourlyIcon == "clear-day"{
                 cell.hourlyIconImage.image = UIImage(named:"clear-day")
@@ -214,7 +214,6 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
                 cell.hourlyIconImage.image = UIImage(named: "wind")
             }
         }
-
         return cell
     }
     

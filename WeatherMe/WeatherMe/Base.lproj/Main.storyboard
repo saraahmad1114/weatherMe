@@ -120,7 +120,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Temp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRe-Yy-ZSS">
-                                <rect key="frame" x="125" y="164" width="95" height="97"/>
+                                <rect key="frame" x="125" y="164" width="88" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
@@ -239,9 +239,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VCz-qU-px8">
-                                <rect key="frame" x="0.0" y="163" width="127" height="90"/>
+                                <rect key="frame" x="0.0" y="163" width="102" height="83"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="hKk-gP-3dC"/>
+                                    <constraint firstAttribute="height" constant="83" id="hKk-gP-3dC"/>
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y0h-CW-aKO">
@@ -298,11 +298,11 @@
                             <constraint firstItem="2UC-0r-xFn" firstAttribute="bottom" secondItem="Fbc-vX-2a9" secondAttribute="bottom" id="5NQ-wp-1R0"/>
                             <constraint firstItem="Fbc-vX-2a9" firstAttribute="bottom" secondItem="y0h-CW-aKO" secondAttribute="bottom" constant="150" id="7Nw-AK-mMW"/>
                             <constraint firstItem="VCz-qU-px8" firstAttribute="top" secondItem="uAI-Pa-V8z" secondAttribute="bottom" constant="7" id="84y-tj-PB2"/>
-                            <constraint firstItem="y0h-CW-aKO" firstAttribute="top" secondItem="VCz-qU-px8" secondAttribute="bottom" constant="1" id="93s-KA-50s"/>
+                            <constraint firstItem="y0h-CW-aKO" firstAttribute="top" secondItem="VCz-qU-px8" secondAttribute="bottom" constant="8" id="93s-KA-50s"/>
                             <constraint firstItem="y0h-CW-aKO" firstAttribute="leading" secondItem="VCz-qU-px8" secondAttribute="leading" id="Aas-od-wSX"/>
                             <constraint firstItem="uAI-Pa-V8z" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uV2-jW-axY" secondAttribute="leading" id="EbK-Al-bDV"/>
                             <constraint firstItem="2UC-0r-xFn" firstAttribute="trailing" secondItem="Fbc-vX-2a9" secondAttribute="trailing" id="Rrh-Y7-345"/>
-                            <constraint firstItem="Fbc-vX-2a9" firstAttribute="trailing" secondItem="VCz-qU-px8" secondAttribute="trailing" constant="248" id="aYh-jC-FCa"/>
+                            <constraint firstItem="Fbc-vX-2a9" firstAttribute="trailing" secondItem="VCz-qU-px8" secondAttribute="trailing" constant="273" id="aYh-jC-FCa"/>
                             <constraint firstItem="2UC-0r-xFn" firstAttribute="leading" secondItem="Fbc-vX-2a9" secondAttribute="leading" id="bot-aK-TKZ"/>
                             <constraint firstItem="y0h-CW-aKO" firstAttribute="centerX" secondItem="Fbc-vX-2a9" secondAttribute="centerX" id="kRO-Kr-tWH"/>
                         </constraints>
