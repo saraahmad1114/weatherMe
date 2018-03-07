@@ -163,17 +163,58 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
         
         //updating the time in terms of hours
         if let neededHourlyTime = self.weatherStore.hourlyWeatherArray[indexPath.row].hourlyTime{
-            var cellTime = self.returnTimefrom(timeStamp: neededHourlyTime)
+            let cellTime = self.returnTimefrom(timeStamp: neededHourlyTime)
             cell.hourlyTimeLabel.text = cellTime
         }
         
-        //updating the temperature for the particular corresponding hour 
-        if let temperature = self.weatherStore.hourlyWeatherArray[indexPath.row].hourlyTemperature{
-            cell.hourlyTempLabel.text = String(Int(temperature))
+        //updating the temperature for the particular corresponding hour
+        if let needeHourlytemperature = self.weatherStore.hourlyWeatherArray[indexPath.row].hourlyTemperature{
+            cell.hourlyTempLabel.text = String(Int(needeHourlytemperature))
         }
         
-    
-        
+        //updating the icon for the particular correponding hour and temperature 
+        if let neededHourlyIcon = self.weatherStore.hourlyWeatherArray[indexPath.row].hourlyIcon{
+            if neededHourlyIcon == "clear-day"{
+                cell.hourlyIconImage.image = UIImage(named:"clear-day")
+            }
+            else if neededHourlyIcon == "clear-night"{
+                cell.hourlyIconImage.image = UIImage(named: "clear-night")
+            }
+            else if neededHourlyIcon == "cloudy"{
+                cell.hourlyIconImage.image = UIImage(named: "cloudy")
+            }
+            else if neededHourlyIcon == "fog"{
+                cell.hourlyIconImage.image = UIImage(named:"fog")
+            }
+            else if neededHourlyIcon == "hail"{
+                cell.hourlyIconImage.image = UIImage(named: "hail")
+            }
+            else if neededHourlyIcon == "partly-cloudy-day"{
+                cell.hourlyIconImage.image = UIImage(named: "partly-cloudy-day")
+            }
+            else if neededHourlyIcon == "partly-cloudy-night"{
+                cell.hourlyIconImage.image = UIImage(named: "partly-cloudy-night")
+            }
+            else if neededHourlyIcon == "rain"{
+                cell.hourlyIconImage.image = UIImage(named: "rain")
+            }
+            else if neededHourlyIcon == "sleet"{
+                cell.hourlyIconImage.image = UIImage(named: "sleet")
+            }
+            else if neededHourlyIcon == "snow"{
+                cell.hourlyIconImage.image = UIImage(named: "snow")
+            }
+            else if neededHourlyIcon == "thunderstorm"{
+                cell.hourlyIconImage.image = UIImage(named: "thunderstorm")
+            }
+            else if neededHourlyIcon == "tornado"{
+                cell.hourlyIconImage.image = UIImage(named: "tornado")
+            }
+            else if neededHourlyIcon == "wind"{
+                cell.hourlyIconImage.image = UIImage(named: "wind")
+            }
+        }
+
         return cell
     }
     
