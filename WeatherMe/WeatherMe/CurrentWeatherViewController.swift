@@ -8,6 +8,15 @@ import CoreLocation
 
 class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
+    
+    
     var coordinateHolder: CLLocation?
     var zipCode: String?
     let coordinateStore = CoordinatesDatastore.sharedInstance
