@@ -10,6 +10,10 @@ import UIKit
 
 class HourlyWeatherTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var hourlyTimeLabel: UILabel!
+    @IBOutlet weak var hourlyIconImage: UIImageView!
+    @IBOutlet weak var hourlyTempLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

@@ -279,6 +279,11 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="hourlyIconImage" destination="Llj-Le-r2g" id="2VD-8K-zlZ"/>
+                                            <outlet property="hourlyTempLabel" destination="ja3-M2-eH5" id="x86-YJ-72X"/>
+                                            <outlet property="hourlyTimeLabel" destination="cRC-Oi-tIS" id="18E-ed-NGL"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
