@@ -6,7 +6,7 @@
 import UIKit
 import CoreLocation
 
-class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate {
     
     var coordinateHolder: CLLocation?
     var zipCode: String?
