@@ -160,7 +160,7 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "dailyWeatherCell", for: indexPath) as! HourlyWeatherTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "hourlyWeatherCell", for: indexPath) as! HourlyWeatherTableViewCell
         
         //updating the time in terms of hours
         if let neededHourlyTime = self.weatherStore.hourlyWeatherArray[indexPath.row].hourlyTime{
