@@ -23,7 +23,6 @@
 		1BBDAAA41F900CCB00C63F48 /* GoogleCoordinateAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBDAAA31F900CCB00C63F48 /* GoogleCoordinateAPIClient.swift */; };
 		1BBDAAE71F96FF8800C63F48 /* CurrentWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBDAAE61F96FF8800C63F48 /* CurrentWeatherViewController.swift */; };
 		5808149E204CD33B00CE8B6D /* DailyWeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5808149D204CD33B00CE8B6D /* DailyWeatherCollectionViewCell.swift */; };
-		581B5AE1204F548B00E8E329 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581B5AE0204F548B00E8E329 /* GraphView.swift */; };
 		586E164B2038E8EE002C66D8 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586E164A2038E8EE002C66D8 /* Coordinates.swift */; };
 		586E164D203B491A002C66D8 /* WeatherForecastLocationDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586E164C203B491A002C66D8 /* WeatherForecastLocationDatastore.swift */; };
 		58D194EA20362C540028DA5C /* CoordinatesDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D194E920362C540028DA5C /* CoordinatesDatastore.swift */; };
@@ -69,7 +68,6 @@
 		1BBDAAA31F900CCB00C63F48 /* GoogleCoordinateAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCoordinateAPIClient.swift; sourceTree = "<group>"; };
 		1BBDAAE61F96FF8800C63F48 /* CurrentWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherViewController.swift; sourceTree = "<group>"; };
 		5808149D204CD33B00CE8B6D /* DailyWeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeatherCollectionViewCell.swift; sourceTree = "<group>"; };
-		581B5AE0204F548B00E8E329 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		586E164A2038E8EE002C66D8 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		586E164C203B491A002C66D8 /* WeatherForecastLocationDatastore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastLocationDatastore.swift; sourceTree = "<group>"; };
 		58D194E920362C540028DA5C /* CoordinatesDatastore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatesDatastore.swift; sourceTree = "<group>"; };
@@ -135,7 +133,6 @@
 				586E164C203B491A002C66D8 /* WeatherForecastLocationDatastore.swift */,
 				586E164A2038E8EE002C66D8 /* Coordinates.swift */,
 				1B1710E11F897C3F0045F064 /* Main.storyboard */,
-				581B5AE0204F548B00E8E329 /* GraphView.swift */,
 				5808149D204CD33B00CE8B6D /* DailyWeatherCollectionViewCell.swift */,
 				1B1711101F897EDE0045F064 /* Secrets.swift */,
 				1B1710E71F897C3F0045F064 /* Assets.xcassets */,
@@ -303,7 +300,6 @@
 				1B1711111F897EDE0045F064 /* Secrets.swift in Sources */,
 				586E164D203B491A002C66D8 /* WeatherForecastLocationDatastore.swift in Sources */,
 				1B1710E61F897C3F0045F064 /* WeatherMe.xcdatamodeld in Sources */,
-				581B5AE1204F548B00E8E329 /* GraphView.swift in Sources */,
 				1BBDAAE71F96FF8800C63F48 /* CurrentWeatherViewController.swift in Sources */,
 				1B1711131F897FC70045F064 /* DarkSkyAPIClient .swift in Sources */,
 				5808149E204CD33B00CE8B6D /* DailyWeatherCollectionViewCell.swift in Sources */,
