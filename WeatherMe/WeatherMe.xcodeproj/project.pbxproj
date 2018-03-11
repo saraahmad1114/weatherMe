@@ -124,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				1B1710DD1F897C3F0045F064 /* AppDelegate.swift */,
+				1B1710E11F897C3F0045F064 /* Main.storyboard */,
 				1B1711121F897FC70045F064 /* DarkSkyAPIClient .swift */,
 				1BBDAAA31F900CCB00C63F48 /* GoogleCoordinateAPIClient.swift */,
 				1B1710DF1F897C3F0045F064 /* ViewController.swift */,
@@ -135,7 +136,6 @@
 				586E164C203B491A002C66D8 /* WeatherForecastLocationDatastore.swift */,
 				581B5AE42050846100E8E329 /* HourlyWeatherTableViewCell.swift */,
 				586E164A2038E8EE002C66D8 /* Coordinates.swift */,
-				1B1710E11F897C3F0045F064 /* Main.storyboard */,
 				5808149D204CD33B00CE8B6D /* DailyWeatherCollectionViewCell.swift */,
 				1B1711101F897EDE0045F064 /* Secrets.swift */,
 				1B1710E71F897C3F0045F064 /* Assets.xcassets */,
