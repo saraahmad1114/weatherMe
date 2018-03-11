@@ -142,7 +142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eal-p6-cuF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="479.19999999999999" y="798.35082458770626"/>
+            <point key="canvasLocation" x="479" y="867"/>
         </scene>
         <!--Current Weather View Controller-->
         <scene sceneID="3w9-gQ-jJd">
