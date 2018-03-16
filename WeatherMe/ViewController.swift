@@ -11,12 +11,9 @@ class ViewController: UIViewController{
     var currentLocation: CLLocation?
     let store = CoordinatesDatastore.sharedInstance
     
-    @IBOutlet weak var insertZipcodeLabel: UILabel!
     @IBOutlet weak var zipCodeTextField: UITextField!
     @IBOutlet weak var checkZipCodeButton: UIButton!
-    @IBOutlet weak var orLabel: UILabel!
     @IBOutlet weak var findMyLocationButton: UIButton!
-    @IBOutlet weak var getWeatherForecastButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
