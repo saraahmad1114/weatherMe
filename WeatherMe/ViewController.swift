@@ -20,13 +20,6 @@ class ViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createGradientLayer()
-        createCustomTextField(given: "Enter Zipcode Here", textfield: self.zipCodeTextField)
-        createCustomLabel(label: self.insertZipcodeLabel)
-        createCustomLabel(label: self.orLabel)
-        createButtonColor(button: self.checkZipCodeButton)
-        createButtonColor(button: self.findMyLocationButton)
-        createButtonColor(button: self.getWeatherForecastButton)
     }
 
     func isZipCodeValid(text: String) -> Bool {
@@ -34,14 +27,6 @@ class ViewController: UIViewController{
         return zipCodeTestPredicate.evaluate(with: zipCodeTextField.text)
     }
     
-    @IBAction func checkZipCodeButtonTapped(_ sender: Any) {
-        if self.zipCodeTextField.text?.count == 5 && isZipCodeValid(text: self.zipCodeTextField.text!) == true {
-            createAlertViewController(title: "Correct Zipcode", message: "Correct Zipcode")
-        }
-        else {
-            createAlertViewController(title: "Incorrect Zipcode", message: "Incorrect Zipcode")
-        }
-    }
     
     @IBAction func findMyLocationButtonTapped(_ sender: Any) {
         self.locationManager = CLLocationManager()
@@ -65,13 +50,7 @@ class ViewController: UIViewController{
         }
     }
 }
-    
-func createAlertViewController(title: String, message: String){
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(defaultAction)
-        present(alertController, animated: true, completion: nil)
-    }
+
 
 extension ViewController: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
