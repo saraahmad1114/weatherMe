@@ -8,9 +8,7 @@ import CoreLocation
 class ViewController: UIViewController{
     
     var locationManager: CLLocationManager?
-    var currentLocation: CLLocation?
-    let store = CoordinatesDatastore.sharedInstance
-    
+    var currentLocation: CLLocation?    
     @IBOutlet weak var zipCodeTextField: UITextField!
     
     override func viewDidLoad() {
@@ -33,20 +31,26 @@ class ViewController: UIViewController{
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "getWeatherInfo" {
+    print("1")
+    if segue.identifier == "weatherSegue" {
+        print("2")
         if let destinationVC = segue.destination as? CurrentWeatherViewController{
+            print("3")
             if self.currentLocation != nil {
+                print("4")
                 guard let latestCoordinates = self.currentLocation else {print("latestCoordinates did not unwrap"); return}
                 destinationVC.coordinateHolder = self.currentLocation
             }
             else if self.zipCodeTextField.text != nil{
+                print("5")
                 guard let neededZipcode = self.zipCodeTextField.text else {print("neededZipcode did not unwrap"); return}
-                destinationVC.zipCode = self.zipCodeTextField.text
+                destinationVC.zipCode = neededZipcode
                 }
             }
         }
     }
 }
+    
 extension ViewController: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if self.currentLocation == nil {

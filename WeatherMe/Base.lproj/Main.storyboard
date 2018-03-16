@@ -116,7 +116,6 @@
                                 </state>
                                 <connections>
                                     <action selector="findMyLocationButtonTapped:" destination="lEo-hY-QSG" eventType="touchUpInside" id="h1U-6q-Qlz"/>
-                                    <segue destination="c6x-J8-Uzh" kind="show" identifier="coreLocationSegue" id="csO-sM-Hw6"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myWeatherLogo" translatesAutoresizingMaskIntoConstraints="NO" id="H4h-Sb-dni">
@@ -146,7 +145,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
-                                    <segue destination="c6x-J8-Uzh" kind="show" identifier="userInputSegue" id="91a-WA-hxR"/>
+                                    <segue destination="c6x-J8-Uzh" kind="presentation" identifier="weatherSegue" id="ekt-TA-oum"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -639,7 +638,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1YJ-d2-Hyr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1505" y="932"/>
+            <point key="canvasLocation" x="1158" y="884"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="E7S-tF-c08">
@@ -667,7 +666,4 @@
         <image name="cloudy" width="69" height="40"/>
         <image name="myWeatherLogo" width="199" height="43"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="91a-WA-hxR"/>
-    </inferredMetricsTieBreakers>
 </document>
