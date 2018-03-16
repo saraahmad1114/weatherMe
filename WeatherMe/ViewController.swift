@@ -13,7 +13,7 @@ var currentLocation: CLLocation?
     
 override func viewDidLoad() {
         super.viewDidLoad()
-    }
+}
 
     
 //MAY USE THIS LATER -- KEEP THIS FOR NOW!!!!
@@ -31,22 +31,14 @@ override func viewDidLoad() {
     }
 
 override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    print("1")
     if segue.identifier == "weatherSegue" {
-        print("2")
         if let destinationVC = segue.destination as? CurrentWeatherViewController2{
-            print("3")
             if self.currentLocation != nil {
-                print("4")
                 guard let latestCoordinates = self.currentLocation else {print("latestCoordinates did not unwrap"); return}
                 destinationVC.coordinateHolder = self.currentLocation
             }
             else if self.zipCodeTextField.text != nil{
-                print("5")
                 guard let neededZipcode = self.zipCodeTextField.text else {print("neededZipcode did not unwrap"); return}
-                print("*************************************************")
-                print(neededZipcode)
-                print("*************************************************")
                 destinationVC.zipCode = neededZipcode
                 }
             }
