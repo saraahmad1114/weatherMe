@@ -14,7 +14,7 @@
         <!--Settings-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WeatherMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -87,14 +87,6 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="O1T-6e-Ahq"/>
-                    <connections>
-                        <outlet property="checkZipCodeButton" destination="yAb-Qj-yle" id="v93-Jc-qh3"/>
-                        <outlet property="findMyLocationButton" destination="9Ji-wd-sBA" id="g0B-gu-rS2"/>
-                        <outlet property="getWeatherForecastButton" destination="dPB-86-Klq" id="1it-4e-7cl"/>
-                        <outlet property="insertZipcodeLabel" destination="c7O-Pk-aUA" id="Xdb-lu-w8p"/>
-                        <outlet property="orLabel" destination="9ef-TZ-Pl9" id="82B-mj-PNa"/>
-                        <outlet property="zipCodeTextField" destination="8nK-Lg-Yhq" id="zct-dL-Cvh"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -103,7 +95,7 @@
         <!--View Controller-->
         <scene sceneID="drA-6L-j0X">
             <objects>
-                <viewController id="lEo-hY-QSG" sceneMemberID="viewController">
+                <viewController id="lEo-hY-QSG" customClass="ViewController" customModule="WeatherMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Atr-zG-iV2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
