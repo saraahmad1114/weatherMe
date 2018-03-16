@@ -215,6 +215,7 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
         return cell
     }
     
+    //GET RID OF THIS, BACKGROUND IS NOT GOING TO BE GRADIENT BLUE 
     func createGradientLayer() {
         var gradientLayer: CAGradientLayer!
         gradientLayer = CAGradientLayer()
@@ -223,6 +224,8 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
         self.view.layer.insertSublayer(gradientLayer, at:0)
     }
     
+    
+    //RETURNS THE TIME
     func convertTimestampHour (givenTime: Double) -> String {
         let date = Date(timeIntervalSince1970: givenTime)
         let dateFormatter = DateFormatter()
@@ -232,6 +235,18 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
         return localDate
     }
     
+    
+    //RETURNS THE HOUR
+    func convertTimeStampToHoursOnly (timeStamp: Double) -> String{
+        let date = NSDate(timeIntervalSince1970: timeStamp)
+        let dayTimePeriodFormatter = DateFormatter()
+        dayTimePeriodFormatter.dateFormat = "hh a"
+        let dateString = dayTimePeriodFormatter.string(from: date as Date)
+        return dateString
+    }
+    
+    
+    //returns day
     func dayOfWeek(givenTime: Double) -> String {
         let date = Date(timeIntervalSince1970: givenTime)
         let dateFormatter = DateFormatter()
@@ -239,6 +254,8 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
         return dateFormatter.string(from: date).capitalized
     }
     
+    
+    //DON'T NEED TO DO THIS ANYMORE
     func returnTimefrom (timeStamp: Double) -> String{
         let neededHour = self.convertTimestampHour(givenTime: timeStamp)
         var justHourString = neededHour.components(separatedBy: "at")
@@ -246,6 +263,8 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
         return takenHour
     }
     
+    
+    //DON'T NEED TO DO THIS ANYMORE
     func returnLocationString (location: String) -> String{
         var locationString = location.components(separatedBy: "/")
         return locationString[1].replacingOccurrences(of: "_", with: " ")

@@ -67,6 +67,8 @@ class ViewController: UIViewController{
 }
 
 extension ViewController {
+    
+    //DON'T NEED THIS
     func createGradientLayer() {
         var gradientLayer: CAGradientLayer!
         gradientLayer = CAGradientLayer()
@@ -75,10 +77,14 @@ extension ViewController {
         self.view.layer.insertSublayer(gradientLayer, at:0)
     }
     
+    
+    //DON'T NEED THIS
     func createCustomButton (button: UIButton){
         button.tintColor = UIColor.gray
     }
     
+    
+    //DON'T NEED THIS
     func createCustomTextField (given: String, textfield: UITextField) {
         let placeholder = NSAttributedString(string: given, attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
         textfield.attributedPlaceholder = placeholder
@@ -87,14 +93,18 @@ extension ViewController {
         textfield.clearsOnBeginEditing = true
     }
     
+    
+    //DON'T NEED TIS
     func createButtonColor (button: UIButton){
         button.tintColor = UIColor.gray
     }
     
+    //DON'T NEED THIS
     func createCustomLabel (label: UILabel){
         label.textColor = UIColor.gray
     }
     
+    //DON'T NEED THIS
     func createAlertViewController(title: String, message: String){
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -103,6 +113,8 @@ extension ViewController {
     }
 }
 
+
+//WILL NEED THIS, LOCATION ASPECT!!!!!
 extension ViewController: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if self.currentLocation == nil {
