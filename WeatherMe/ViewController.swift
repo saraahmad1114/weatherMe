@@ -7,11 +7,11 @@ import CoreLocation
 
 class ViewController: UIViewController{
     
-    var locationManager: CLLocationManager?
-    var currentLocation: CLLocation?    
-    @IBOutlet weak var zipCodeTextField: UITextField!
+var locationManager: CLLocationManager?
+var currentLocation: CLLocation?
+@IBOutlet weak var zipCodeTextField: UITextField!
     
-    override func viewDidLoad() {
+override func viewDidLoad() {
         super.viewDidLoad()
     }
 
@@ -23,18 +23,18 @@ class ViewController: UIViewController{
 //    }
     
     
-    @IBAction func findMyLocationButtonTapped(_ sender: Any) {
+@IBAction func findMyLocationButtonTapped(_ sender: Any) {
         self.locationManager = CLLocationManager()
         self.locationManager?.delegate = self as? CLLocationManagerDelegate
         self.locationManager?.desiredAccuracy = kCLLocationAccuracyHundredMeters
         self.locationManager?.requestWhenInUseAuthorization()
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     print("1")
     if segue.identifier == "weatherSegue" {
         print("2")
-        if let destinationVC = segue.destination as? CurrentWeatherViewController{
+        if let destinationVC = segue.destination as? CurrentWeatherViewController2{
             print("3")
             if self.currentLocation != nil {
                 print("4")

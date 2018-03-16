@@ -8,8 +8,8 @@ import CoreLocation
 
 class CurrentWeatherViewController2: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate {
     
-//    var coordinateHolder: CLLocation?
-//    var zipCode: String?
+    var coordinateHolder: CLLocation?
+    var zipCode: String?
 //    let coordinateStore = CoordinatesDatastore.sharedInstance
 //    let weatherStore = WeatherForecastLocationDatastore.sharedInstance
     
