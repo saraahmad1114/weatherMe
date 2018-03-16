@@ -44,6 +44,9 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             else if self.zipCodeTextField.text != nil{
                 print("5")
                 guard let neededZipcode = self.zipCodeTextField.text else {print("neededZipcode did not unwrap"); return}
+                print("*************************************************")
+                print(neededZipcode)
+                print("*************************************************")
                 destinationVC.zipCode = neededZipcode
                 }
             }
