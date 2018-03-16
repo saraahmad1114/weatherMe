@@ -27,7 +27,6 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createGradientLayer()
         if self.coordinateHolder != nil {
             guard let unwrappedLat = self.coordinateHolder?.coordinate.latitude else {print("lat did not unwrap"); return}
             guard let unwrappedLng = self.coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}
@@ -213,14 +212,6 @@ class CurrentWeatherViewController: UIViewController, UICollectionViewDelegate, 
             }
         }
         return cell
-    }
-    
-    func createGradientLayer() {
-        var gradientLayer: CAGradientLayer!
-        gradientLayer = CAGradientLayer()
-        gradientLayer.frame = self.view.bounds
-        gradientLayer.colors = [UIColor.white.cgColor, UIColor.cyan.cgColor]
-        self.view.layer.insertSublayer(gradientLayer, at:0)
     }
     
     func convertTimestampHour (givenTime: Double) -> String {
