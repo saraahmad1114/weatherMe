@@ -65,34 +65,13 @@ class ViewController: UIViewController{
         }
     }
 }
-
-
     
-  
-    
-    func createCustomTextField (given: String, textfield: UITextField) {
-        let placeholder = NSAttributedString(string: given, attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
-        textfield.attributedPlaceholder = placeholder
-        textfield.textColor = UIColor.gray
-        textfield.borderStyle = UITextBorderStyle.roundedRect
-        textfield.clearsOnBeginEditing = true
-    }
-    
-    func createButtonColor (button: UIButton){
-        button.tintColor = UIColor.gray
-    }
-    
-    func createCustomLabel (label: UILabel){
-        label.textColor = UIColor.gray
-    }
-    
-    func createAlertViewController(title: String, message: String){
+func createAlertViewController(title: String, message: String){
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(defaultAction)
         present(alertController, animated: true, completion: nil)
     }
-}
 
 extension ViewController: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
