@@ -66,18 +66,9 @@ class ViewController: UIViewController{
     }
 }
 
-extension ViewController {
-    func createGradientLayer() {
-        var gradientLayer: CAGradientLayer!
-        gradientLayer = CAGradientLayer()
-        gradientLayer.frame = self.view.bounds
-        gradientLayer.colors = [UIColor.white.cgColor, UIColor.cyan.cgColor]
-        self.view.layer.insertSublayer(gradientLayer, at:0)
-    }
+
     
-    func createCustomButton (button: UIButton){
-        button.tintColor = UIColor.gray
-    }
+  
     
     func createCustomTextField (given: String, textfield: UITextField) {
         let placeholder = NSAttributedString(string: given, attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
