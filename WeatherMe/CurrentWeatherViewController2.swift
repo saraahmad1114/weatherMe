@@ -10,8 +10,15 @@ class CurrentWeatherViewController2: UIViewController, UICollectionViewDelegate,
     
     var coordinateHolder: CLLocation?
     var zipCode: String?
-//    let coordinateStore = CoordinatesDatastore.sharedInstance
-//    let weatherStore = WeatherForecastLocationDatastore.sharedInstance
+    let coordinateStore = CoordinatesDatastore.sharedInstance
+    let weatherStore = WeatherForecastLocationDatastore.sharedInstance
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var entireDateLabel: UILabel!
+    @IBOutlet weak var topWeatherIcon: UIImageView!
+    @IBOutlet weak var currentTempLabel: UILabel!
+    
+    
+   
     
 //    @IBOutlet weak var locationLabel: UILabel!
 //    @IBOutlet weak var dayLabel: UILabel!

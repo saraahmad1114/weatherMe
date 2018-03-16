@@ -635,6 +635,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xNb-k1-jW7"/>
                     </view>
+                    <connections>
+                        <outlet property="currentTempLabel" destination="gkU-XE-Hdo" id="WGj-FG-wyr"/>
+                        <outlet property="entireDateLabel" destination="jiK-gc-92m" id="Z1a-oj-3PC"/>
+                        <outlet property="locationLabel" destination="e05-vB-ujE" id="Hp1-ru-hcV"/>
+                        <outlet property="topWeatherIcon" destination="HcT-Ag-ZNn" id="HdC-3x-qRD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1YJ-d2-Hyr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
