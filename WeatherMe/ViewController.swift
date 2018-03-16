@@ -12,17 +12,17 @@ class ViewController: UIViewController{
     let store = CoordinatesDatastore.sharedInstance
     
     @IBOutlet weak var zipCodeTextField: UITextField!
-    @IBOutlet weak var checkZipCodeButton: UIButton!
-    @IBOutlet weak var findMyLocationButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    func isZipCodeValid(text: String) -> Bool {
-        let zipCodeTestPredicate = NSPredicate (format:"SELF MATCHES %@","(^[0-9]{5}(-[0-9]{4})?$)")
-        return zipCodeTestPredicate.evaluate(with: zipCodeTextField.text)
-    }
+    
+//MAY USE THIS LATER -- KEEP THIS FOR NOW!!!!
+//    func isZipCodeValid(text: String) -> Bool {
+//        let zipCodeTestPredicate = NSPredicate (format:"SELF MATCHES %@","(^[0-9]{5}(-[0-9]{4})?$)")
+//        return zipCodeTestPredicate.evaluate(with: zipCodeTextField.text)
+//    }
     
     
     @IBAction func findMyLocationButtonTapped(_ sender: Any) {
