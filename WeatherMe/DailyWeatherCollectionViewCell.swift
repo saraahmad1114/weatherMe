@@ -10,7 +10,7 @@ import UIKit
 
 class DailyWeatherCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var dailyIconImage: UIImageView!
-    @IBOutlet weak var dailyDayLabel: UILabel!
     @IBOutlet weak var dailyTempLabel: UILabel!
+    @IBOutlet weak var dailyDayLabel: UILabel!
+    @IBOutlet weak var dailyIconImage: UIImageView!
 }

@@ -284,8 +284,17 @@
                                                 </label>
                                             </subviews>
                                         </view>
+                                        <connections>
+                                            <outlet property="dailyDayLabel" destination="Ydv-uH-PS6" id="o7x-S3-aM8"/>
+                                            <outlet property="dailyIconImage" destination="Zhs-6a-HdT" id="jQV-B0-9Ob"/>
+                                            <outlet property="dailyTempLabel" destination="fXe-V2-Soo" id="bnc-t4-ZTO"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="c6x-J8-Uzh" id="bHS-Mq-51b"/>
+                                    <outlet property="delegate" destination="c6x-J8-Uzh" id="jvQ-5w-SJP"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -335,6 +344,7 @@
                         <outlet property="completeDateLabel" destination="jiK-gc-92m" id="Odo-RZ-OSj"/>
                         <outlet property="currentTempLabel" destination="gkU-XE-Hdo" id="fn1-PK-V9k"/>
                         <outlet property="currentWeatherIcon" destination="HcT-Ag-ZNn" id="4GE-5o-L7V"/>
+                        <outlet property="dailyWeatherColl" destination="45E-QM-dSt" id="IMj-ad-Zga"/>
                         <outlet property="hourlyWeatherTable" destination="W3M-qU-vdW" id="Orw-X4-Tep"/>
                         <outlet property="humdityLabel" destination="ClV-0D-wXJ" id="xCu-nm-Bg6"/>
                         <outlet property="locationLabel" destination="e05-vB-ujE" id="l7d-s8-72g"/>
