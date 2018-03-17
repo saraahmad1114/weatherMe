@@ -7,13 +7,20 @@ import CoreLocation
 
 class ViewController: UIViewController{
     
-var locationManager: CLLocationManager?
-var currentLocation: CLLocation?
-@IBOutlet weak var zipCodeTextField: UITextField!
+    var locationManager: CLLocationManager?
+    var currentLocation: CLLocation?
+    @IBOutlet weak var zipCodeTextField: UITextField!
     
-override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
-}
+    
+    let date = Date(timeIntervalSince1970: 1521243692)
+    let dateFormatter = DateFormatter()
+    dateFormatter.timeStyle = DateFormatter.Style.medium
+    dateFormatter.dateFormat = "MMMM dd, yyyy"
+    let localDate = dateFormatter.string(from: date)
+    print(localDate)
+    }
 
     
 //MAY USE THIS LATER -- KEEP THIS FOR NOW!!!!
@@ -23,14 +30,14 @@ override func viewDidLoad() {
 //    }
     
     
-@IBAction func findMyLocationButtonTapped(_ sender: Any) {
+    @IBAction func findMyLocationButtonTapped(_ sender: Any) {
         self.locationManager = CLLocationManager()
         self.locationManager?.delegate = self as? CLLocationManagerDelegate
         self.locationManager?.desiredAccuracy = kCLLocationAccuracyHundredMeters
         self.locationManager?.requestWhenInUseAuthorization()
     }
 
-override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "weatherSegue" {
         if let destinationVC = segue.destination as? CurrentWeatherViewController2{
             if self.currentLocation != nil {
@@ -40,17 +47,17 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             else if self.zipCodeTextField.text != nil{
                 guard let neededZipcode = self.zipCodeTextField.text else {print("neededZipcode did not unwrap"); return}
                 destinationVC.zipCode = neededZipcode
+                    }
                 }
             }
         }
     }
-}
     
-extension ViewController: CLLocationManagerDelegate{
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if self.currentLocation == nil {
+    extension ViewController: CLLocationManagerDelegate{
+        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+            if self.currentLocation == nil {
             self.currentLocation = locations.first!
-        }
+            }
     }
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -59,8 +66,8 @@ extension ViewController: CLLocationManagerDelegate{
         }
         else if status == .notDetermined || status == .denied || status == .restricted {
             self.locationManager?.requestWhenInUseAuthorization()
+            }
         }
     }
-}
 
 

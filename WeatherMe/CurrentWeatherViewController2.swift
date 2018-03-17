@@ -32,7 +32,6 @@ class CurrentWeatherViewController2: UIViewController, UICollectionViewDelegate,
             guard let unwrappedLat = self.coordinateHolder?.coordinate.latitude else {print("lat did not unwrap"); return}
             guard let unwrappedLng = self.coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}
             self.weatherStore.getWeatherForecastInformation(lat: unwrappedLat, lng: unwrappedLng, completion: { (current, hourly, daily) in
-
 //                guard let location = self.weatherStore.currentWeatherArray.first?.timeZone else{print("location did not unwrap"); return}
 //                guard let time = self.weatherStore.currentWeatherArray.first?.time else{print("time did not unwrap"); return}
 //                guard let summary = self.weatherStore.currentWeatherArray.first?.summary else{print("summary did not unwrap"); return}
@@ -236,7 +235,7 @@ class CurrentWeatherViewController2: UIViewController, UICollectionViewDelegate,
         let date = Date(timeIntervalSince1970: givenTime)
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = DateFormatter.Style.medium
-        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.dateFormat = "MM-dd-yyyy"
         let localDate = dateFormatter.string(from: date)
         return localDate
     }
