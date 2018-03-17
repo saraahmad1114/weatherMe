@@ -28,10 +28,16 @@ class CurrentWeatherViewController2: UIViewController, UICollectionViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        createGradientLayer()
-//        if self.coordinateHolder != nil {
-//            guard let unwrappedLat = self.coordinateHolder?.coordinate.latitude else {print("lat did not unwrap"); return}
-//            guard let unwrappedLng = self.coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}
+        if self.coordinateHolder != nil {
+    
+            guard let unwrappedLat = self.coordinateHolder?.coordinate.latitude else {print("lat did not unwrap"); return}
+            guard let unwrappedLng = self.coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}
+            
+            print("CORE LOCATION STARTS HERE!!!!!!!!!!!!!!!")
+            print("*****************************")
+            print(unwrappedLat)
+            print(unwrappedLng)
+            print("*****************************")
 //            self.weatherStore.getWeatherForecastInformation(lat: unwrappedLat, lng: unwrappedLng, completion: { (current, hourly, daily) in
 //                guard let location = self.weatherStore.currentWeatherArray.first?.timeZone else{print("location did not unwrap"); return}
 //                guard let time = self.weatherStore.currentWeatherArray.first?.time else{print("time did not unwrap"); return}
@@ -54,14 +60,20 @@ class CurrentWeatherViewController2: UIViewController, UICollectionViewDelegate,
 //
 //                    self.dailyWeatherCollectionView.reloadData()
 //                    self.hourlyWeatherTableview.reloadData()
-//                }
+                }
 //            })
 //        }
-//        else {
-//            guard let unwrappedZipcode = self.zipCode else {print("did not unwrap zipcode"); return}
-//            self.coordinateStore.getUserCoordintes(zipcode: unwrappedZipcode, completion: { (coordinatesJson) in
-//                guard let lat = self.coordinateStore.locationCoordinates.first?.latitude else{print("did not unwrap lat"); return}
-//                guard let lng = self.coordinateStore.locationCoordinates.first?.longitude else{print("did not unwrap lng"); return}
+        else {
+            guard let unwrappedZipcode = self.zipCode else {print("did not unwrap zipcode"); return}
+            self.coordinateStore.getUserCoordintes(zipcode: unwrappedZipcode, completion: { (coordinatesJson) in
+                guard let lat = self.coordinateStore.locationCoordinates.first?.latitude else{print("did not unwrap lat"); return}
+                guard let lng = self.coordinateStore.locationCoordinates.first?.longitude else{print("did not unwrap lng"); return}
+                
+                print("ZIP CODE VERSION OF THE APP, YOU ENTERED HERE!!!!!!!!!!!!!!!!")
+                print("****************************")
+                print(lat)
+                print(lng)
+                print("****************************")
 //                self.weatherStore.getWeatherForecastInformation(lat: lat, lng: lng, completion: { (current, hourly, daily) in
 //                    guard let location = self.weatherStore.currentWeatherArray.first?.timeZone else{print("location did not unwrap"); return}
 //                    guard let time = self.weatherStore.currentWeatherArray.first?.time else{print("time did not unwrap"); return}
@@ -84,10 +96,10 @@ class CurrentWeatherViewController2: UIViewController, UICollectionViewDelegate,
 //
 //                        self.dailyWeatherCollectionView.reloadData()
 //                        self.hourlyWeatherTableview.reloadData()
-//                    }
-//                })
+
+                })
 //            })
-//        }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
