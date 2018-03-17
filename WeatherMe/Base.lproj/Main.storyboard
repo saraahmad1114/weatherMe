@@ -23,13 +23,13 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bhf-e8-gRL">
-                                <rect key="frame" x="118.5" y="245" width="138" height="51"/>
+                                <rect key="frame" x="119.5" y="245" width="136" height="51"/>
                                 <color key="backgroundColor" red="0.96080166101455688" green="0.46569136638332265" blue="0.22532737519018164" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="sJI-jq-TJB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Get my weather">
+                                <state key="normal" title="Get my location">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
