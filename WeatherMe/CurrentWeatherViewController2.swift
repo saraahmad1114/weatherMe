@@ -32,6 +32,11 @@ class CurrentWeatherViewController2: UIViewController, UICollectionViewDelegate,
             guard let unwrappedLat = self.coordinateHolder?.coordinate.latitude else {print("lat did not unwrap"); return}
             guard let unwrappedLng = self.coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}
             self.weatherStore.getWeatherForecastInformation(lat: unwrappedLat, lng: unwrappedLng, completion: { (current, hourly, daily) in
+                print("***************************")
+                print(current)
+                print(hourly)
+                print(daily)
+                print("***************************")
 //                guard let location = self.weatherStore.currentWeatherArray.first?.timeZone else{print("location did not unwrap"); return}
 //                guard let time = self.weatherStore.currentWeatherArray.first?.time else{print("time did not unwrap"); return}
 //                guard let summary = self.weatherStore.currentWeatherArray.first?.summary else{print("summary did not unwrap"); return}
@@ -59,12 +64,14 @@ class CurrentWeatherViewController2: UIViewController, UICollectionViewDelegate,
         else {
             guard let unwrappedZipcode = self.zipCode else {print("did not unwrap zipcode"); return}
             self.coordinateStore.getUserCoordintes(zipcode: unwrappedZipcode, completion: { (coordinatesJson) in
-                
                 guard let lat = self.coordinateStore.locationCoordinates.first?.latitude else{print("did not unwrap lat"); return}
                 guard let lng = self.coordinateStore.locationCoordinates.first?.longitude else{print("did not unwrap lng"); return}
-
                 self.weatherStore.getWeatherForecastInformation(lat: lat, lng: lng, completion: { (current, hourly, daily) in
-                    
+                print("***************************")
+                    print(current)
+                    print(hourly)
+                    print(daily)
+                print("***************************")
 //                    guard let location = self.weatherStore.currentWeatherArray.first?.timeZone else{print("location did not unwrap"); return}
 //                    guard let time = self.weatherStore.currentWeatherArray.first?.time else{print("time did not unwrap"); return}
 //                    guard let summary = self.weatherStore.currentWeatherArray.first?.summary else{print("summary did not unwrap"); return}
