@@ -638,8 +638,14 @@
                     <connections>
                         <outlet property="currentTempLabel" destination="gkU-XE-Hdo" id="WGj-FG-wyr"/>
                         <outlet property="entireDateLabel" destination="jiK-gc-92m" id="Z1a-oj-3PC"/>
+                        <outlet property="hourlyWeatherTable" destination="W3M-qU-vdW" id="o01-cN-0zs"/>
+                        <outlet property="humidityLabel" destination="ClV-0D-wXJ" id="FDg-OJ-DjG"/>
                         <outlet property="locationLabel" destination="e05-vB-ujE" id="Hp1-ru-hcV"/>
+                        <outlet property="precipitationLabel" destination="sLQ-sK-0bz" id="oX6-X5-Xum"/>
+                        <outlet property="summaryLabel" destination="hgA-G6-0RM" id="Uvx-VO-GdG"/>
                         <outlet property="topWeatherIcon" destination="HcT-Ag-ZNn" id="HdC-3x-qRD"/>
+                        <outlet property="weeklyWeatherColl" destination="45E-QM-dSt" id="Y2t-2H-IdB"/>
+                        <outlet property="windSpeedLabel" destination="U8u-l3-zQe" id="TRw-9v-5jF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1YJ-d2-Hyr" userLabel="First Responder" sceneMemberID="firstResponder"/>

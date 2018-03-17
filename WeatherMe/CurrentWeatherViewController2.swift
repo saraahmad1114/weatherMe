@@ -12,25 +12,19 @@ class CurrentWeatherViewController2: UIViewController, UICollectionViewDelegate,
     var zipCode: String?
     let coordinateStore = CoordinatesDatastore.sharedInstance
     let weatherStore = WeatherForecastLocationDatastore.sharedInstance
+    
+    
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var entireDateLabel: UILabel!
     @IBOutlet weak var topWeatherIcon: UIImageView!
     @IBOutlet weak var currentTempLabel: UILabel!
+    @IBOutlet weak var precipitationLabel: UILabel!
+    @IBOutlet weak var humidityLabel: UILabel!
+    @IBOutlet weak var windSpeedLabel: UILabel!
+    @IBOutlet weak var summaryLabel: UILabel!
     
-    
-   
-    
-//    @IBOutlet weak var locationLabel: UILabel!
-//    @IBOutlet weak var dayLabel: UILabel!
-//    @IBOutlet weak var hourLabel: UILabel!
-//    @IBOutlet weak var summaryLabel: UILabel!
-//    @IBOutlet weak var precipLabel: UILabel!
-//    @IBOutlet weak var humidityLabel: UILabel!
-//    @IBOutlet weak var windSpeedLabel: UILabel!
-//    @IBOutlet weak var iconImage: UIImageView!
-//    @IBOutlet weak var tempLabel: UILabel!
-//    @IBOutlet weak var dailyWeatherCollectionView: UICollectionView!
-//    @IBOutlet weak var hourlyWeatherTableview: UITableView!
+    @IBOutlet weak var hourlyWeatherTable: UITableView!
+    @IBOutlet weak var weeklyWeatherColl: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
