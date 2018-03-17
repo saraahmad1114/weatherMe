@@ -13,7 +13,6 @@ class CurrentWeatherViewController2: UIViewController, UICollectionViewDelegate,
     let coordinateStore = CoordinatesDatastore.sharedInstance
     let weatherStore = WeatherForecastLocationDatastore.sharedInstance
     
-    
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var entireDateLabel: UILabel!
     @IBOutlet weak var topWeatherIcon: UIImageView!
@@ -32,14 +31,16 @@ class CurrentWeatherViewController2: UIViewController, UICollectionViewDelegate,
             guard let unwrappedLat = self.coordinateHolder?.coordinate.latitude else {print("lat did not unwrap"); return}
             guard let unwrappedLng = self.coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}
             self.weatherStore.getWeatherForecastInformation(lat: unwrappedLat, lng: unwrappedLng, completion: { (current, hourly, daily) in
-//                guard let location = self.weatherStore.currentWeatherArray.first?.timeZone else{print("location did not unwrap"); return}
-//                guard let time = self.weatherStore.currentWeatherArray.first?.time else{print("time did not unwrap"); return}
-//                guard let summary = self.weatherStore.currentWeatherArray.first?.summary else{print("summary did not unwrap"); return}
-//                guard let icon = self.weatherStore.currentWeatherArray.first?.icon else{print("icon did not unwrap"); return}
-//                guard let temperature = self.weatherStore.currentWeatherArray.first?.temperature else{print("temperature did not unwrap"); return}
-//                guard let precip = self.weatherStore.currentWeatherArray.first?.precipProbability else{print("precipProbability did not unwrap"); return}
-//                guard let humidity = self.weatherStore.currentWeatherArray.first?.humidity else{print("humidity did not unwrap"); return}
-//                guard let windSpeed = self.weatherStore.currentWeatherArray.first?.windSpeed else{print("windspeed did not unwrap"); return}
+                
+                guard let location = self.weatherStore.currentWeatherArray.first?.timeZone else{print("location did not unwrap"); return}
+                guard let time = self.weatherStore.currentWeatherArray.first?.time else{print("time did not unwrap"); return}
+                guard let summary = self.weatherStore.currentWeatherArray.first?.summary else{print("summary did not unwrap"); return}
+                guard let icon = self.weatherStore.currentWeatherArray.first?.icon else{print("icon did not unwrap"); return}
+                guard let temperature = self.weatherStore.currentWeatherArray.first?.temperature else{print("temperature did not unwrap"); return}
+                guard let precip = self.weatherStore.currentWeatherArray.first?.precipProbability else{print("precipProbability did not unwrap"); return}
+                guard let humidity = self.weatherStore.currentWeatherArray.first?.humidity else{print("humidity did not unwrap"); return}
+                guard let windSpeed = self.weatherStore.currentWeatherArray.first?.windSpeed else{print("windspeed did not unwrap"); return}
+                
 //                OperationQueue.main.addOperation {
 //                    self.locationLabel.text = self.returnLocationString(location: location)
 //                    self.summaryLabel.text = summary
@@ -63,14 +64,15 @@ class CurrentWeatherViewController2: UIViewController, UICollectionViewDelegate,
                 guard let lng = self.coordinateStore.locationCoordinates.first?.longitude else{print("did not unwrap lng"); return}
                 self.weatherStore.getWeatherForecastInformation(lat: lat, lng: lng, completion: { (current, hourly, daily) in
 
-//                    guard let location = self.weatherStore.currentWeatherArray.first?.timeZone else{print("location did not unwrap"); return}
-//                    guard let time = self.weatherStore.currentWeatherArray.first?.time else{print("time did not unwrap"); return}
-//                    guard let summary = self.weatherStore.currentWeatherArray.first?.summary else{print("summary did not unwrap"); return}
-//                    guard let icon = self.weatherStore.currentWeatherArray.first?.icon else{print("icon did not unwrap"); return}
-//                    guard let temperature = self.weatherStore.currentWeatherArray.first?.temperature else{print("temperature did not unwrap"); return}
-//                    guard let precip = self.weatherStore.currentWeatherArray.first?.precipProbability else{print("precipProbability did not unwrap"); return}
-//                    guard let humidity = self.weatherStore.currentWeatherArray.first?.humidity else{print("humidity did not unwrap"); return}
-//                    guard let windSpeed = self.weatherStore.currentWeatherArray.first?.windSpeed else{print("windspeed did not unwrap"); return}
+                   guard let location = self.weatherStore.currentWeatherArray.first?.timeZone else{print("location did not unwrap"); return}
+                   guard let time = self.weatherStore.currentWeatherArray.first?.time else{print("time did not unwrap"); return}
+                   guard let summary = self.weatherStore.currentWeatherArray.first?.summary else{print("summary did not unwrap"); return}
+                    guard let icon = self.weatherStore.currentWeatherArray.first?.icon else{print("icon did not unwrap"); return}
+                    guard let temperature = self.weatherStore.currentWeatherArray.first?.temperature else{print("temperature did not unwrap"); return}
+                    guard let precip = self.weatherStore.currentWeatherArray.first?.precipProbability else{print("precipProbability did not unwrap"); return}
+                    guard let humidity = self.weatherStore.currentWeatherArray.first?.humidity else{print("humidity did not unwrap"); return}
+                    guard let windSpeed = self.weatherStore.currentWeatherArray.first?.windSpeed else{print("windspeed did not unwrap"); return}
+                    
 //                    OperationQueue.main.addOperation {
 //                        self.locationLabel.text = self.returnLocationString(location: location)
 //                        self.summaryLabel.text = summary
@@ -225,7 +227,7 @@ class CurrentWeatherViewController2: UIViewController, UICollectionViewDelegate,
     
     //returns the date in format: Month date, year
     func convertTimestampHour (givenTime: Double) -> String {
-        let date = Date(timeIntervalSince1970: 1521243692)
+        let date = Date(timeIntervalSince1970: givenTime)
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = DateFormatter.Style.medium
         dateFormatter.dateFormat = "MMMM dd, yyyy"
@@ -243,7 +245,7 @@ class CurrentWeatherViewController2: UIViewController, UICollectionViewDelegate,
     
     //returns 07:00 PM
     func returnHourFromTime (timeStamp: Double) -> String{
-        let date = Date(timeIntervalSince1970: 1521241200)
+        let date = Date(timeIntervalSince1970: timeStamp)
         let formater = DateFormatter()
         formater.timeZone = TimeZone.current
         formater.dateFormat = "hh:mm a"
@@ -253,7 +255,7 @@ class CurrentWeatherViewController2: UIViewController, UICollectionViewDelegate,
         return localDate
     }
     
-    //fixs location String for better display 
+    //fixs location String for better display
     func returnLocationString (location: String) -> String{
         var locationString = location.components(separatedBy: "/")
         return locationString[1].replacingOccurrences(of: "_", with: " ")
