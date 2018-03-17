@@ -33,7 +33,7 @@ class CurrentWeatherViewController2: UIViewController, UICollectionViewDelegate,
             guard let unwrappedLat = self.coordinateHolder?.coordinate.latitude else {print("lat did not unwrap"); return}
             guard let unwrappedLng = self.coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}
 
-//            self.weatherStore.getWeatherForecastInformation(lat: unwrappedLat, lng: unwrappedLng, completion: { (current, hourly, daily) in
+            self.weatherStore.getWeatherForecastInformation(lat: unwrappedLat, lng: unwrappedLng, completion: { (current, hourly, daily) in
 //                guard let location = self.weatherStore.currentWeatherArray.first?.timeZone else{print("location did not unwrap"); return}
 //                guard let time = self.weatherStore.currentWeatherArray.first?.time else{print("time did not unwrap"); return}
 //                guard let summary = self.weatherStore.currentWeatherArray.first?.summary else{print("summary did not unwrap"); return}
@@ -55,9 +55,9 @@ class CurrentWeatherViewController2: UIViewController, UICollectionViewDelegate,
 //
 //                    self.dailyWeatherCollectionView.reloadData()
 //                    self.hourlyWeatherTableview.reloadData()
-                }
-//            })
-//        }
+                })
+        }
+    
         else {
             guard let unwrappedZipcode = self.zipCode else {print("did not unwrap zipcode"); return}
             self.coordinateStore.getUserCoordintes(zipcode: unwrappedZipcode, completion: { (coordinatesJson) in
