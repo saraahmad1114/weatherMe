@@ -3,15 +3,11 @@
 //  WeatherMe
 //
 //  Created by Sara Ahmad on 3/17/18.
-//  Copyright © 2018 Flatiron School. All rights reserved.
+
 //
 
 import UIKit
 
-//
-//  CurrentWeatherViewController.swift
-//  WeatherMe
-//
 
 import UIKit
 import CoreLocation
@@ -47,19 +43,16 @@ class WeatherForecastViewController: UIViewController{
                 guard let precip = self.weatherStore.currentWeatherArray.first?.precipProbability else{print("precipProbability did not unwrap"); return}
                 guard let humidity = self.weatherStore.currentWeatherArray.first?.humidity else{print("humidity did not unwrap"); return}
                 guard let windSpeed = self.weatherStore.currentWeatherArray.first?.windSpeed else{print("windspeed did not unwrap"); return}
+               
                 OperationQueue.main.addOperation {
-                    //                    self.locationLabel.text = self.returnLocationString(location: location)
-                    //                    self.summaryLabel.text = summary
-                    //                    self.precipLabel.text = "\(String(Int(precip * 100))) %"
-                    //                    self.humidityLabel.text = "\(String(Int(humidity * 100))) %"
-                    //                    self.windSpeedLabel?.text = "\(String(Int(windSpeed))) mph"
-                    //                    self.dayLabel.text = self.dayOfWeek(givenTime: time)
-                    //                    self.hourLabel.text = self.returnTimefrom(timeStamp: time)
-                    //                    self.tempLabel.text = "\(String(Int(temperature))) F"
-                    //                    self.returnImageForIcon(icon: icon)
-                    //
-                    //                    self.dailyWeatherCollectionView.reloadData()
-                    //                    self.hourlyWeatherTableview.reloadData()
+                    self.locationLabel.text = self.returnLocationString(location: location)
+                    self.summaryLabel.text = summary
+                    self.precipitationLabel.text = "Precipitation: \(String(Int(precip * 100))) %"
+                    self.humdityLabel.text = "Humidity: \(String(Int(humidity * 100))) %"
+                    self.windSpeedLabel?.text = "Wind Speed: \(String(Int(windSpeed))) mph"
+                    self.currentTempLabel.text = "\(String(Int(temperature))) F"
+                    self.returnImageForIcon(icon: icon)
+                    self.completeDateLabel.text = "\(self.dayOfWeek(givenTime: time)), \(self.convertToDate(givenTime: time))"
                 }
             })
         }
@@ -69,6 +62,7 @@ class WeatherForecastViewController: UIViewController{
                 guard let lat = self.coordinateStore.locationCoordinates.first?.latitude else{print("did not unwrap lat"); return}
                 guard let lng = self.coordinateStore.locationCoordinates.first?.longitude else{print("did not unwrap lng"); return}
                 self.weatherStore.getWeatherForecastInformation(lat: lat, lng: lng, completion: { (current, hourly, daily) in
+                    
                     guard let location = self.weatherStore.currentWeatherArray.first?.timeZone else{print("location did not unwrap"); return}
                     guard let time = self.weatherStore.currentWeatherArray.first?.time else{print("time did not unwrap"); return}
                     guard let summary = self.weatherStore.currentWeatherArray.first?.summary else{print("summary did not unwrap"); return}
@@ -77,19 +71,16 @@ class WeatherForecastViewController: UIViewController{
                     guard let precip = self.weatherStore.currentWeatherArray.first?.precipProbability else{print("precipProbability did not unwrap"); return}
                     guard let humidity = self.weatherStore.currentWeatherArray.first?.humidity else{print("humidity did not unwrap"); return}
                     guard let windSpeed = self.weatherStore.currentWeatherArray.first?.windSpeed else{print("windspeed did not unwrap"); return}
+
                     OperationQueue.main.addOperation {
-                        //                        self.locationLabel.text = self.returnLocationString(location: location)
-                        //                        self.summaryLabel.text = summary
-                        //                        self.precipLabel.text = "\(String(Int(precip * 100))) %"
-                        //                        self.humidityLabel.text = "\(String(Int(humidity * 100))) %"
-                        //                        self.windSpeedLabel.text = "\(String(Int(windSpeed))) mph"
-                        //                        self.dayLabel.text = self.dayOfWeek(givenTime: time)
-                        //                        self.hourLabel.text = self.returnTimefrom(timeStamp: time)
-                        //                        self.tempLabel.text = "\(String(Int(temperature))) F"
-                        //                        self.returnImageForIcon(icon: icon)
-                        //
-                        //                        self.dailyWeatherCollectionView.reloadData()
-                        //                        self.hourlyWeatherTableview.reloadData()
+                        self.locationLabel.text = self.returnLocationString(location: location)
+                        self.summaryLabel.text = summary
+                        self.precipitationLabel.text = "Precipitation: \(String(Int(precip * 100))) %"
+                        self.humdityLabel.text = "Humidity: \(String(Int(humidity * 100))) %"
+                        self.windSpeedLabel?.text = "Wind Speed: \(String(Int(windSpeed))) mph"
+                        self.currentTempLabel.text = "\(String(Int(temperature))) F"
+                        self.returnImageForIcon(icon: icon)
+                        self.completeDateLabel.text = "\(self.dayOfWeek(givenTime: time)) \(self.convertToDate(givenTime: time))"
                     }
                 })
             })
@@ -222,16 +213,17 @@ class WeatherForecastViewController: UIViewController{
 //        return cell
 //    }
     
-    func convertTimestampHour (givenTime: Double) -> String {
+    //returns the date in format: Month date, year
+    func convertToDate (givenTime: Double) -> String {
         let date = Date(timeIntervalSince1970: givenTime)
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = DateFormatter.Style.medium
-        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.dateFormat = "MMMM dd, yyyy"
         let localDate = dateFormatter.string(from: date)
         return localDate
     }
     
-    //returns day of the week only
+    //returns only the day of the week 
     func dayOfWeek(givenTime: Double) -> String {
         let date = Date(timeIntervalSince1970: givenTime)
         let dateFormatter = DateFormatter()
@@ -239,61 +231,65 @@ class WeatherForecastViewController: UIViewController{
         return dateFormatter.string(from: date).capitalized
     }
     
-    func returnTimefrom (timeStamp: Double) -> String{
-        let neededHour = self.convertTimestampHour(givenTime: timeStamp)
-        var justHourString = neededHour.components(separatedBy: "at")
-        let takenHour = justHourString[1]
-        return takenHour
+    //returns 07:00 PM
+    func returnHourFromTime (timeStamp: Double) -> String{
+        let date = Date(timeIntervalSince1970: timeStamp)
+        let formater = DateFormatter()
+        formater.timeZone = TimeZone.current
+        formater.dateFormat = "hh:mm a"
+        formater.amSymbol = "AM"
+        formater.pmSymbol = "PM"
+        let localDate = formater.string(from: date)
+        return localDate
     }
     
-    
-    
+    //fixs location String for better display
     func returnLocationString (location: String) -> String{
         var locationString = location.components(separatedBy: "/")
         return locationString[1].replacingOccurrences(of: "_", with: " ")
     }
     
-    //    func returnImageForIcon (icon: String){
-    //        if icon == "clear-day"{
-    //            self.iconImage.image = UIImage(named:"clear-day")
-    //        }
-    //        else if icon == "clear-night"{
-    //            self.iconImage.image = UIImage(named: "clear-night")
-    //        }
-    //        else if icon == "cloudy"{
-    //            self.iconImage.image = UIImage(named: "cloudy")
-    //        }
-    //        else if icon == "fog"{
-    //           self.iconImage.image = UIImage(named: "fog")
-    //        }
-    //        else if icon == "hail"{
-    //            self.iconImage.image = UIImage(named:"hail")
-    //        }
-    //        else if icon == "partly-cloudy-day"{
-    //            self.iconImage.image = UIImage(named:"partly-cloudy-day")
-    //        }
-    //        else if icon == "partly-cloudy-night"{
-    //            self.iconImage.image = UIImage(named:"partly-cloudy-night")
-    //        }
-    //        else if icon == "rain"{
-    //            self.iconImage.image = UIImage(named:"rain")
-    //        }
-    //        else if icon == "sleet"{
-    //            self.iconImage.image = UIImage(named:"sleet")
-    //        }
-    //        else if icon == "snow"{
-    //            self.iconImage.image = UIImage(named:"snow")
-    //        }
-    //        else if icon == "thunderstorm"{
-    //            self.iconImage.image = UIImage(named:"thunderstorm")
-    //        }
-    //        else if icon == "tornado"{
-    //            self.iconImage.image = UIImage(named:"tornado")
-    //        }
-    //        else if icon == "wind"{
-    //            self.iconImage.image = UIImage(named:"wind")
-    //        }
-    //    }
+        func returnImageForIcon (icon: String){
+            if icon == "clear-day"{
+                self.currentWeatherIcon.image = UIImage(named:"clear-day")
+            }
+            else if icon == "clear-night"{
+                self.currentWeatherIcon.image = UIImage(named: "clear-night")
+            }
+            else if icon == "cloudy"{
+                self.currentWeatherIcon.image = UIImage(named: "cloudy")
+            }
+            else if icon == "fog"{
+               self.currentWeatherIcon.image = UIImage(named: "fog")
+            }
+            else if icon == "hail"{
+                self.currentWeatherIcon.image = UIImage(named:"hail")
+            }
+            else if icon == "partly-cloudy-day"{
+                self.currentWeatherIcon.image = UIImage(named:"partly-cloudy-day")
+            }
+            else if icon == "partly-cloudy-night"{
+                self.currentWeatherIcon.image = UIImage(named:"partly-cloudy-night")
+            }
+            else if icon == "rain"{
+                self.currentWeatherIcon.image = UIImage(named:"rain")
+            }
+            else if icon == "sleet"{
+                self.currentWeatherIcon.image = UIImage(named:"sleet")
+            }
+            else if icon == "snow"{
+                self.currentWeatherIcon.image = UIImage(named:"snow")
+            }
+            else if icon == "thunderstorm"{
+                self.currentWeatherIcon.image = UIImage(named:"thunderstorm")
+            }
+            else if icon == "tornado"{
+                self.currentWeatherIcon.image = UIImage(named:"tornado")
+            }
+            else if icon == "wind"{
+                self.currentWeatherIcon.image = UIImage(named:"wind")
+            }
+        }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

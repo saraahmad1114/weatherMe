@@ -13,10 +13,8 @@ class ViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 
-    
 //MAY USE THIS LATER -- KEEP THIS FOR NOW!!!!
 //    func isZipCodeValid(text: String) -> Bool {
 //        let zipCodeTestPredicate = NSPredicate (format:"SELF MATCHES %@","(^[0-9]{5}(-[0-9]{4})?$)")
