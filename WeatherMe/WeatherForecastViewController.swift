@@ -13,7 +13,7 @@ import UIKit
 import CoreLocation
 
 class WeatherForecastViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate {
-//UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate
+//UICollectionViewDelegate, UICollectionViewDataSource
     
     var coordinateHolder: CLLocation?
     var zipCode: String?
@@ -82,7 +82,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
                         self.windSpeedLabel?.text = "Wind Speed: \(String(Int(windSpeed))) mph"
                         self.currentTempLabel.text = "\(String(Int(temperature))) F"
                         self.returnImageForIcon(icon: icon)
-                        self.completeDateLabel.text = "\(self.dayOfWeek(givenTime: time)) \(self.convertToDate(givenTime: time))"
+                        self.completeDateLabel.text = "\(self.dayOfWeek(givenTime: time)), \(self.convertToDate(givenTime: time))"
                         self.hourlyWeatherTable.reloadData()
                     }
                 })
