@@ -182,7 +182,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         return localDate
     }
     
-    //returns only the day of the week 
+    //returns only the day of the week
     func dayOfWeek(givenTime: Double) -> String {
         let date = Date(timeIntervalSince1970: givenTime)
         let dateFormatter = DateFormatter()
