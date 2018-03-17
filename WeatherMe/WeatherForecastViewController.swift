@@ -4,10 +4,8 @@
 //
 //  Created by Sara Ahmad on 3/17/18.
 
-//
 
 import UIKit
-
 
 import UIKit
 import CoreLocation
@@ -57,9 +55,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dailyWeatherCell", for: indexPath) as! DailyWeatherCollectionViewCell
-
         let neededRow = indexPath.row
-
             if let neededDay = self.weatherStore.dailyWeatherArray[neededRow].dailyTime{
                 var day = self.dayOfWeek(givenTime: neededDay)
                 let index = day.index(day.startIndex, offsetBy: 3)
@@ -112,7 +108,6 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
                     cell.dailyIconImage.image = UIImage(named: "wind")
                 }
             }
-        
         return cell
     }
     
@@ -126,16 +121,13 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "hourlyWeatherCell", for: indexPath) as! HourlyWeatherTableViewCell
-
         if let neededHourlyTime = self.weatherStore.hourlyWeatherArray[indexPath.row].hourlyTime{
             let cellTime = self.returnHourFromTime(timeStamp: neededHourlyTime)
             cell.hourlyTimeLabel.text = cellTime
         }
-
         if let needeHourlytemperature = self.weatherStore.hourlyWeatherArray[indexPath.row].hourlyTemperature{
             cell.hourlyTempLabel.text = String(Int(needeHourlytemperature))
         }
-
         if let neededHourlyIcon = self.weatherStore.hourlyWeatherArray[indexPath.row].hourlyIcon{
             if neededHourlyIcon == "clear-day"{
                 cell.hourlyIconImage.image = UIImage(named:"clear-day")
@@ -210,7 +202,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         return localDate
     }
     
-    func parseNeededDataAndDisplay(){
+    func parseNeededDataAndDisplay() {
         guard let location = self.weatherStore.currentWeatherArray.first?.timeZone else{print("location did not unwrap"); return}
         guard let time = self.weatherStore.currentWeatherArray.first?.time else{print("time did not unwrap"); return}
         guard let summary = self.weatherStore.currentWeatherArray.first?.summary else{print("summary did not unwrap"); return}
