@@ -234,8 +234,17 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="hourlyIconImage" destination="0sk-Zw-97b" id="bck-6b-aS8"/>
+                                            <outlet property="hourlyTempLabel" destination="yoZ-VC-iZc" id="AbN-H9-O5f"/>
+                                            <outlet property="hourlyTimeLabel" destination="mQN-RD-wLM" id="IFG-fd-GAi"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="c6x-J8-Uzh" id="S44-Nl-TcD"/>
+                                    <outlet property="delegate" destination="c6x-J8-Uzh" id="0xG-dn-6qO"/>
+                                </connections>
                             </tableView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="45E-QM-dSt">
                                 <rect key="frame" x="0.0" y="539" width="375" height="128"/>
@@ -326,6 +335,7 @@
                         <outlet property="completeDateLabel" destination="jiK-gc-92m" id="Odo-RZ-OSj"/>
                         <outlet property="currentTempLabel" destination="gkU-XE-Hdo" id="fn1-PK-V9k"/>
                         <outlet property="currentWeatherIcon" destination="HcT-Ag-ZNn" id="4GE-5o-L7V"/>
+                        <outlet property="hourlyWeatherTable" destination="W3M-qU-vdW" id="Orw-X4-Tep"/>
                         <outlet property="humdityLabel" destination="ClV-0D-wXJ" id="xCu-nm-Bg6"/>
                         <outlet property="locationLabel" destination="e05-vB-ujE" id="l7d-s8-72g"/>
                         <outlet property="precipitationLabel" destination="sLQ-sK-0bz" id="Aog-0D-oGc"/>
@@ -335,7 +345,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1YJ-d2-Hyr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1353" y="367"/>
+            <point key="canvasLocation" x="1352.8" y="366.56671664167919"/>
         </scene>
     </scenes>
     <resources>

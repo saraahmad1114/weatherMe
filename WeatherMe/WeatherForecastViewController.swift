@@ -12,7 +12,7 @@ import UIKit
 import UIKit
 import CoreLocation
 
-class WeatherForecastViewController: UIViewController{
+class WeatherForecastViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate {
 //UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate
     
     var coordinateHolder: CLLocation?
@@ -28,6 +28,7 @@ class WeatherForecastViewController: UIViewController{
     @IBOutlet weak var precipitationLabel: UILabel!
     @IBOutlet weak var humdityLabel: UILabel!
     @IBOutlet weak var windSpeedLabel: UILabel!
+    @IBOutlet weak var hourlyWeatherTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,7 @@ class WeatherForecastViewController: UIViewController{
                     self.currentTempLabel.text = "\(String(Int(temperature))) F"
                     self.returnImageForIcon(icon: icon)
                     self.completeDateLabel.text = "\(self.dayOfWeek(givenTime: time)), \(self.convertToDate(givenTime: time))"
+                    self.hourlyWeatherTable.reloadData()
                 }
             })
         }
@@ -81,6 +83,7 @@ class WeatherForecastViewController: UIViewController{
                         self.currentTempLabel.text = "\(String(Int(temperature))) F"
                         self.returnImageForIcon(icon: icon)
                         self.completeDateLabel.text = "\(self.dayOfWeek(givenTime: time)) \(self.convertToDate(givenTime: time))"
+                        self.hourlyWeatherTable.reloadData()
                     }
                 })
             })
@@ -153,65 +156,69 @@ class WeatherForecastViewController: UIViewController{
 //        return cell
 //    }
     
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return self.weatherStore.hourlyWeatherArray.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "hourlyWeatherCell", for: indexPath) as! HourlyWeatherTableViewCell
-//
-//        if let neededHourlyTime = self.weatherStore.hourlyWeatherArray[indexPath.row].hourlyTime{
-//            let cellTime = self.returnTimefrom(timeStamp: neededHourlyTime)
-//            cell.hourlyTimeLabel.text = cellTime
-//        }
-//
-//        if let needeHourlytemperature = self.weatherStore.hourlyWeatherArray[indexPath.row].hourlyTemperature{
-//            cell.hourlyTempLabel.text = String(Int(needeHourlytemperature))
-//        }
-//
-//        if let neededHourlyIcon = self.weatherStore.hourlyWeatherArray[indexPath.row].hourlyIcon{
-//            if neededHourlyIcon == "clear-day"{
-//                cell.hourlyIconImage.image = UIImage(named:"clear-day")
-//            }
-//            else if neededHourlyIcon == "clear-night"{
-//                cell.hourlyIconImage.image = UIImage(named: "clear-night")
-//            }
-//            else if neededHourlyIcon == "cloudy"{
-//                cell.hourlyIconImage.image = UIImage(named: "cloudy")
-//            }
-//            else if neededHourlyIcon == "fog"{
-//                cell.hourlyIconImage.image = UIImage(named:"fog")
-//            }
-//            else if neededHourlyIcon == "hail"{
-//                cell.hourlyIconImage.image = UIImage(named: "hail")
-//            }
-//            else if neededHourlyIcon == "partly-cloudy-day"{
-//                cell.hourlyIconImage.image = UIImage(named: "partly-cloudy-day")
-//            }
-//            else if neededHourlyIcon == "partly-cloudy-night"{
-//                cell.hourlyIconImage.image = UIImage(named: "partly-cloudy-night")
-//            }
-//            else if neededHourlyIcon == "rain"{
-//                cell.hourlyIconImage.image = UIImage(named: "rain")
-//            }
-//            else if neededHourlyIcon == "sleet"{
-//                cell.hourlyIconImage.image = UIImage(named: "sleet")
-//            }
-//            else if neededHourlyIcon == "snow"{
-//                cell.hourlyIconImage.image = UIImage(named: "snow")
-//            }
-//            else if neededHourlyIcon == "thunderstorm"{
-//                cell.hourlyIconImage.image = UIImage(named: "thunderstorm")
-//            }
-//            else if neededHourlyIcon == "tornado"{
-//                cell.hourlyIconImage.image = UIImage(named: "tornado")
-//            }
-//            else if neededHourlyIcon == "wind"{
-//                cell.hourlyIconImage.image = UIImage(named: "wind")
-//            }
-//        }
-//        return cell
-//    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.weatherStore.hourlyWeatherArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "hourlyWeatherCell", for: indexPath) as! HourlyWeatherTableViewCell
+
+        if let neededHourlyTime = self.weatherStore.hourlyWeatherArray[indexPath.row].hourlyTime{
+            let cellTime = self.returnHourFromTime(timeStamp: neededHourlyTime)
+            cell.hourlyTimeLabel.text = cellTime
+        }
+
+        if let needeHourlytemperature = self.weatherStore.hourlyWeatherArray[indexPath.row].hourlyTemperature{
+            cell.hourlyTempLabel.text = String(Int(needeHourlytemperature))
+        }
+
+        if let neededHourlyIcon = self.weatherStore.hourlyWeatherArray[indexPath.row].hourlyIcon{
+            if neededHourlyIcon == "clear-day"{
+                cell.hourlyIconImage.image = UIImage(named:"clear-day")
+            }
+            else if neededHourlyIcon == "clear-night"{
+                cell.hourlyIconImage.image = UIImage(named: "clear-night")
+            }
+            else if neededHourlyIcon == "cloudy"{
+                cell.hourlyIconImage.image = UIImage(named: "cloudy")
+            }
+            else if neededHourlyIcon == "fog"{
+                cell.hourlyIconImage.image = UIImage(named:"fog")
+            }
+            else if neededHourlyIcon == "hail"{
+                cell.hourlyIconImage.image = UIImage(named: "hail")
+            }
+            else if neededHourlyIcon == "partly-cloudy-day"{
+                cell.hourlyIconImage.image = UIImage(named: "partly-cloudy-day")
+            }
+            else if neededHourlyIcon == "partly-cloudy-night"{
+                cell.hourlyIconImage.image = UIImage(named: "partly-cloudy-night")
+            }
+            else if neededHourlyIcon == "rain"{
+                cell.hourlyIconImage.image = UIImage(named: "rain")
+            }
+            else if neededHourlyIcon == "sleet"{
+                cell.hourlyIconImage.image = UIImage(named: "sleet")
+            }
+            else if neededHourlyIcon == "snow"{
+                cell.hourlyIconImage.image = UIImage(named: "snow")
+            }
+            else if neededHourlyIcon == "thunderstorm"{
+                cell.hourlyIconImage.image = UIImage(named: "thunderstorm")
+            }
+            else if neededHourlyIcon == "tornado"{
+                cell.hourlyIconImage.image = UIImage(named: "tornado")
+            }
+            else if neededHourlyIcon == "wind"{
+                cell.hourlyIconImage.image = UIImage(named: "wind")
+            }
+        }
+        return cell
+    }
     
     //returns the date in format: Month date, year
     func convertToDate (givenTime: Double) -> String {
