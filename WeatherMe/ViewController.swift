@@ -14,12 +14,6 @@ class ViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
     
-    let date = Date(timeIntervalSince1970: 1521243692)
-    let dateFormatter = DateFormatter()
-    dateFormatter.timeStyle = DateFormatter.Style.medium
-    dateFormatter.dateFormat = "MMMM dd, yyyy"
-    let localDate = dateFormatter.string(from: date)
-    print(localDate)
     }
 
     

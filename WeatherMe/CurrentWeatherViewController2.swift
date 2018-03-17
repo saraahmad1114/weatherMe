@@ -223,23 +223,17 @@ class CurrentWeatherViewController2: UIViewController, UICollectionViewDelegate,
         return cell
     }
     
-    func createGradientLayer() {
-        var gradientLayer: CAGradientLayer!
-        gradientLayer = CAGradientLayer()
-        gradientLayer.frame = self.view.bounds
-        gradientLayer.colors = [UIColor.white.cgColor, UIColor.cyan.cgColor]
-        self.view.layer.insertSublayer(gradientLayer, at:0)
-    }
-    
+    //returns the date in format: Month date, year
     func convertTimestampHour (givenTime: Double) -> String {
-        let date = Date(timeIntervalSince1970: givenTime)
+        let date = Date(timeIntervalSince1970: 1521243692)
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = DateFormatter.Style.medium
-        dateFormatter.dateFormat = "MM-dd-yyyy"
+        dateFormatter.dateFormat = "MMMM dd, yyyy"
         let localDate = dateFormatter.string(from: date)
         return localDate
     }
     
+    //returns only the day of the week 
     func dayOfWeek(givenTime: Double) -> String {
         let date = Date(timeIntervalSince1970: givenTime)
         let dateFormatter = DateFormatter()
