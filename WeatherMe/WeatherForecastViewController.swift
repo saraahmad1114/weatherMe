@@ -195,7 +195,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         let date = Date(timeIntervalSince1970: timeStamp)
         let formater = DateFormatter()
         formater.timeZone = TimeZone.current
-        formater.dateFormat = "hh:mm a"
+        formater.dateFormat = "hh a"
         formater.amSymbol = "AM"
         formater.pmSymbol = "PM"
         let localDate = formater.string(from: date)
@@ -225,7 +225,6 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         }
     }
     
-    //fixs location String for better display
     func returnLocationString (location: String) -> String{
         var locationString = location.components(separatedBy: "/")
         return locationString[1].replacingOccurrences(of: "_", with: " ")
