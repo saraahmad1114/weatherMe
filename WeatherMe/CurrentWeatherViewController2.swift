@@ -241,13 +241,19 @@ class CurrentWeatherViewController2: UIViewController, UICollectionViewDelegate,
         return dateFormatter.string(from: date).capitalized
     }
     
-    func returnTimefrom (timeStamp: Double) -> String{
-        let neededHour = self.convertTimestampHour(givenTime: timeStamp)
-        var justHourString = neededHour.components(separatedBy: "at")
-        let takenHour = justHourString[1]
-        return takenHour
+    //returns 07:00 PM
+    func returnHourFromTime (timeStamp: Double) -> String{
+        let date = Date(timeIntervalSince1970: 1521241200)
+        let formater = DateFormatter()
+        formater.timeZone = TimeZone.current
+        formater.dateFormat = "hh:mm a"
+        formater.amSymbol = "AM"
+        formater.pmSymbol = "PM"
+        let localDate = formater.string(from: date)
+        return localDate
     }
     
+    //fixs location String for better display 
     func returnLocationString (location: String) -> String{
         var locationString = location.components(separatedBy: "/")
         return locationString[1].replacingOccurrences(of: "_", with: " ")

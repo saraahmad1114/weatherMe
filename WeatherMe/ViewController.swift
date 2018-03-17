@@ -13,7 +13,28 @@ class ViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+//        let date = Date(timeIntervalSince1970: 1521241200)
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.timeStyle = DateFormatter.Style.medium
+//        dateFormatter.dateStyle = DateFormatter.Style.medium
+//        let localDate = dateFormatter.string(from: date)
+//        var justHourString = localDate.components(separatedBy: "at")
+//        let takenHour = justHourString[1]
+//        print("*********************")
+//        print(takenHour)
+//        print("*********************")
+        
+        
+        let date = Date(timeIntervalSince1970: 1521241200)
+        let formater = DateFormatter()
+        formater.timeZone = TimeZone.current
+        formater.dateFormat = "hh:mm a"
+        formater.amSymbol = "AM"
+        formater.pmSymbol = "PM"
+        let localDate = formater.string(from: date)
+        print(localDate)
+        
     }
 
     
