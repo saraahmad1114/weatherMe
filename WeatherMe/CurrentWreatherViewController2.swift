@@ -6,7 +6,7 @@
 import UIKit
 import CoreLocation
 
-class CurrentWeatherViewController2: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate {
+class CurrentWreatherViewController2: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate {
     
     var coordinateHolder: CLLocation?
     var zipCode: String?
@@ -40,6 +40,7 @@ class CurrentWeatherViewController2: UIViewController, UICollectionViewDelegate,
                 guard let precip = self.weatherStore.currentWeatherArray.first?.precipProbability else{print("precipProbability did not unwrap"); return}
                 guard let humidity = self.weatherStore.currentWeatherArray.first?.humidity else{print("humidity did not unwrap"); return}
                 guard let windSpeed = self.weatherStore.currentWeatherArray.first?.windSpeed else{print("windspeed did not unwrap"); return}
+                
                 
 //                OperationQueue.main.addOperation {
 //                    self.locationLabel.text = self.returnLocationString(location: location)
