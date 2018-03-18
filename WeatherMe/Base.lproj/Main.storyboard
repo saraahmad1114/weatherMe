@@ -29,7 +29,7 @@
                                     <constraint firstAttribute="width" constant="145" id="bxv-ts-34S"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter City, State, or Zipcode" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aly-vB-xmx">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter City, State, or Zipcode" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aly-vB-xmx">
                                 <rect key="frame" x="37" y="348" width="259" height="30"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -41,8 +41,8 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHS-fp-G4a">
-                                <rect key="frame" x="308" y="348" width="36" height="36"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHS-fp-G4a">
+                                <rect key="frame" x="308" y="348" width="30" height="36"/>
                                 <color key="backgroundColor" red="0.93118476867675781" green="0.46315068006515503" blue="0.2194901704788208" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Go">
@@ -62,7 +62,7 @@
                                 <rect key="frame" x="46" y="244" width="282" height="51"/>
                                 <color key="backgroundColor" red="0.96080166101455688" green="0.46569136638332265" blue="0.22532737519018164" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="282" id="s4W-YO-D7p"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="282" id="s4W-YO-D7p"/>
                                     <constraint firstAttribute="height" constant="51" id="sJI-jq-TJB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -70,7 +70,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
-                                    <action selector="findMyLocationButtonTapped:" destination="lEo-hY-QSG" eventType="touchUpInside" id="h1U-6q-Qlz"/>
+                                    <action selector="findMyLocationButtonTapped:" destination="lEo-hY-QSG" eventType="touchUpInside" id="owF-5Q-qV2"/>
                                 </connections>
                             </button>
                         </subviews>

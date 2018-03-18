@@ -198,7 +198,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         formater.dateFormat = "hh a"
         formater.amSymbol = "AM"
         formater.pmSymbol = "PM"
-        let localDate = formater.string(from: date)
+        var localDate = formater.string(from: date)
         return localDate
     }
     

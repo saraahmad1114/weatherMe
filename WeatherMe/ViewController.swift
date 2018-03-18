@@ -13,6 +13,10 @@ class ViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.locationManager = CLLocationManager()
+        self.locationManager?.delegate = self as? CLLocationManagerDelegate
+        self.locationManager?.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        self.locationManager?.requestWhenInUseAuthorization()
     }
     
     @IBAction func findMyLocationButtonTapped(_ sender: Any) {
@@ -27,7 +31,7 @@ class ViewController: UIViewController{
         if let destinationVC = segue.destination as? WeatherForecastViewController {
             if self.currentLocation != nil {
                 guard let latestCoordinates = self.currentLocation else {print("latestCoordinates did not unwrap"); return}
-                destinationVC.coordinateHolder = self.currentLocation
+                destinationVC.coordinateHolder = latestCoordinates
             }
             else if self.zipCodeTextField.text != nil{
                 guard let neededZipcode = self.zipCodeTextField.text else {print("neededZipcode did not unwrap"); return}
@@ -41,7 +45,9 @@ class ViewController: UIViewController{
     extension ViewController: CLLocationManagerDelegate{
         func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
             if self.currentLocation == nil {
-            self.currentLocation = locations.first!
+                if let personCoordinates = locations.first{
+                    self.currentLocation = personCoordinates
+                }
             }
     }
 
