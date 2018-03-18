@@ -13,10 +13,7 @@ class ViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.locationManager = CLLocationManager()
-//        self.locationManager?.delegate = self as? CLLocationManagerDelegate
-//        self.locationManager?.desiredAccuracy = kCLLocationAccuracyHundredMeters
-//        self.locationManager?.requestWhenInUseAuthorization()
+
     }
     
     @IBAction func findMyLocationButtonTapped(_ sender: Any) {
