@@ -11,17 +11,25 @@ class ViewController: UIViewController{
     var currentLocation: CLLocation?
     @IBOutlet weak var zipCodeTextField: UITextField!
     let store = WeatherForecastLocationDatastore.sharedInstance
+    var isCoreLocationEnabled: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.isCoreLocationEnabled = true
     }
     
     @IBAction func findMyLocationButtonTapped(_ sender: Any) {
-//        self.locationManager = CLLocationManager()
-//        self.locationManager?.delegate = self as? CLLocationManagerDelegate
-//        self.locationManager?.desiredAccuracy = kCLLocationAccuracyHundredMeters
-//        self.locationManager?.requestWhenInUseAuthorization()
+        if self.isCoreLocationEnabled == true{
+            self.startUpCoreLocation()
+        }
+    }
+    
+    
+    func startUpCoreLocation() {
+        self.locationManager = CLLocationManager()
+        self.locationManager?.delegate = self as? CLLocationManagerDelegate
+        self.locationManager?.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        self.locationManager?.requestWhenInUseAuthorization()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -40,11 +48,15 @@ class ViewController: UIViewController{
         }
     }
     
-    extension ViewController: CLLocationManagerDelegate{
-        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+extension ViewController : CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
             if self.currentLocation == nil {
                 if let personCoordinates = locations.first{
                     self.currentLocation = personCoordinates
+                    print("LOOK HERE FOR COORDINATES")
+                    print(personCoordinates.coordinate.latitude)
+                    print(personCoordinates.coordinate.longitude)
+                    print("LOOK HERE FOR COORDINATES")
                 }
             }
     }
