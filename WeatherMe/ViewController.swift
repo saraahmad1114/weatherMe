@@ -14,14 +14,14 @@ class ViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     @IBAction func findMyLocationButtonTapped(_ sender: Any) {
-        self.locationManager = CLLocationManager()
-        self.locationManager?.delegate = self as? CLLocationManagerDelegate
-        self.locationManager?.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        self.locationManager?.requestWhenInUseAuthorization()
+//        self.locationManager = CLLocationManager()
+//        self.locationManager?.delegate = self as? CLLocationManagerDelegate
+//        self.locationManager?.desiredAccuracy = kCLLocationAccuracyHundredMeters
+//        self.locationManager?.requestWhenInUseAuthorization()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
