@@ -15,23 +15,17 @@ class ViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.isCoreLocationEnabled = true
-    }
-    
-    @IBAction func findMyLocationButtonTapped(_ sender: Any) {
-        if self.isCoreLocationEnabled == true{
-            self.startUpCoreLocation()
-        }
-    }
-    
-    
-    func startUpCoreLocation() {
+        print("*************************")
         self.locationManager = CLLocationManager()
         self.locationManager?.delegate = self as? CLLocationManagerDelegate
         self.locationManager?.desiredAccuracy = kCLLocationAccuracyHundredMeters
         self.locationManager?.requestWhenInUseAuthorization()
+        print("*************************")
     }
-
+    @IBAction func findMyLocationButtonTapped(_ sender: Any) {
+        print("this button was pressed")
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "weatherSegue" {
         if let destinationVC = segue.destination as? WeatherForecastViewController {
@@ -59,7 +53,7 @@ extension ViewController : CLLocationManagerDelegate {
                     print("LOOK HERE FOR COORDINATES")
                 }
             }
-    }
+        }
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
