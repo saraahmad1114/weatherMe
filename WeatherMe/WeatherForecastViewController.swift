@@ -30,6 +30,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      //ERROR HERE, NOT GETTING COORDINATES 
         if self.coordinateHolder != nil {
             guard let unwrappedLat = self.coordinateHolder?.coordinate.latitude else {print("lat did not unwrap"); return}
             guard let unwrappedLng = self.coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}
