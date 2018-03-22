@@ -30,7 +30,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      //ERROR HERE, NOT GETTING COORDINATES 
+      //ERROR HERE, NOT GETTING COORDINATES
         if self.coordinateHolder != nil {
             guard let unwrappedLat = self.coordinateHolder?.coordinate.latitude else {print("lat did not unwrap"); return}
             guard let unwrappedLng = self.coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}
@@ -58,7 +58,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dailyWeatherCell", for: indexPath) as! DailyWeatherCollectionViewCell
         let neededRow = indexPath.row
             if let neededDay = self.weatherStore.dailyWeatherArray[neededRow].dailyTime{
-                var day = self.dayOfWeek(givenTime: neededDay)
+                let day = self.dayOfWeek(givenTime: neededDay)
                 let index = day.index(day.startIndex, offsetBy: 3)
                 let smallerDay = day[..<index]
                 cell.dailyDayLabel.text = String(smallerDay)
@@ -199,7 +199,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         formater.dateFormat = "hh a"
         formater.amSymbol = "AM"
         formater.pmSymbol = "PM"
-        var localDate = formater.string(from: date)
+        let localDate = formater.string(from: date)
         return localDate
     }
     
