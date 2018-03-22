@@ -8,6 +8,8 @@ import Foundation
 
 class GoogleCoordinateAPIClient {
     
+    //fix the api client to handle error, so the app doesn't crash 
+    
     class func getCoordinateInformation (zipCode: String, completion:@escaping([String: Any])->()){
 
         var jsonDictionary = [String: Any]()

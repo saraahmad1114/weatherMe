@@ -8,6 +8,8 @@ import Foundation
 
 class DarkSkyAPIClient {
     
+    //fix the api client to handle error, so the app doesn't crash 
+    
     class func getWeatherInformation(lat: Double, lng: Double, completion:@escaping([String: Any])->()) {
         
         var jsonDictionary = [String: Any]()
