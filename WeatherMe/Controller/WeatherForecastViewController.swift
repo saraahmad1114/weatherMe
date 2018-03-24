@@ -27,6 +27,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var hourlyWeatherTable: UITableView!
     @IBOutlet weak var dailyWeatherColl: UICollectionView!
+    // MARK:- 
     
     override func viewDidLoad() {
         super.viewDidLoad()
