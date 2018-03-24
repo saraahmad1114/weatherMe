@@ -17,13 +17,27 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
     }
 
-    @IBAction func findMyLocationButtonTapped(_ sender: Any) {
+    @IBAction func getMyLocationWeatherTapped(_ sender: UIButton) {
         print("this button was pressed")
         self.locationManager = CLLocationManager()
         self.locationManager?.delegate = self
         self.locationManager?.desiredAccuracy = kCLLocationAccuracyHundredMeters
         self.locationManager?.requestWhenInUseAuthorization()
         self.locationManager?.requestLocation()
+    }
+    
+    @IBAction func getMyWeatherOtherTapped(_ sender: UIButton) {
+        
+    }
+    
+    
+    @IBAction func findMyLocationButtonTapped(_ sender: Any) {
+//        print("this button was pressed")
+//        self.locationManager = CLLocationManager()
+//        self.locationManager?.delegate = self
+//        self.locationManager?.desiredAccuracy = kCLLocationAccuracyHundredMeters
+//        self.locationManager?.requestWhenInUseAuthorization()
+//        self.locationManager?.requestLocation()
     }
     
 
