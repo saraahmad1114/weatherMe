@@ -8,7 +8,9 @@ import Foundation
 
 class DarkSkyAPIClient {
     
-    //fix the api client to handle error, so the app doesn't crash 
+    //fix the api client to handle error, so the app doesn't crash
+    
+    //Don't forget the do and catch so that you take care of error handling, so that the app doesn't crash 
     
     class func getWeatherInformation(lat: Double, lng: Double, completion:@escaping([String: Any])->()) {
         

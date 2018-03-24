@@ -8,7 +8,9 @@ import Foundation
 
 class GoogleCoordinateAPIClient {
     
-    //fix the api client to handle error, so the app doesn't crash 
+    //fix the api client to handle error, so the app doesn't crash
+    
+    //don't forget to include a do and catch == Error handling so that the app doesn't crash 
     
     class func getCoordinateInformation (zipCode: String, completion:@escaping([String: Any])->()){
 
