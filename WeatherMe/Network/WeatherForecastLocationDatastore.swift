@@ -14,9 +14,11 @@ class WeatherForecastLocationDatastore{
     var hourlyWeatherArray = [HourlyWeather]()
     var dailyWeatherArray = [DailyWeather]()
     
-    func getWeatherForecastInformation(lat: Double, lng: Double, completion:@escaping ([CurrentWeather], [HourlyWeather], [DailyWeather]) -> ()){
+    func getWeatherForecastInformation(lat: Double, lng: Double, completion:@escaping ([CurrentWeather], [HourlyWeather], [DailyWeather]) -> ()) throws{
         
-        DarkSkyAPIClient.getWeatherInformation(lat: lat, lng: -lng) { (darkSkyJson) in
+        do{
+        
+            try DarkSkyAPIClient.getWeatherInformation(lat: lat, lng: -lng) { (darkSkyJson) in
             
             guard let jsonDictionary = darkSkyJson as? [String: Any] else {print("first level dictionary did not unwrap"); return}
             
@@ -65,6 +67,10 @@ class WeatherForecastLocationDatastore{
                 self.dailyWeatherArray.append(dailyObject)
             }
             completion(self.currentWeatherArray, self.hourlyWeatherArray, self.dailyWeatherArray)
+            }
+        }
+        catch let error {
+            print("error loal description is: \(error.localizedDescription)")
         }
     }
     

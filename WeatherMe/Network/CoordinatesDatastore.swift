@@ -13,7 +13,11 @@ class CoordinatesDatastore {
     
     var locationCoordinates = [Coordinates]()
     
-    func getUserCoordintes (zipcode: String, completion:@escaping ([Coordinates]) -> ()){
+    func getUserCoordintes (zipcode: String, completion:@escaping ([Coordinates]) -> ()) throws {
+        do {
+            
+            try
+            
         GoogleCoordinateAPIClient.getCoordinateInformation(zipCode: zipcode) { (googleAPICoordinatesJson) in
             
             guard let secondLevelArray = googleAPICoordinatesJson["results"] as? Array<Any> else {print("did not unwrap at the second level"); return}
@@ -31,6 +35,10 @@ class CoordinatesDatastore {
                         
             self.locationCoordinates.append(coordinatesObject)
             completion(self.locationCoordinates)
+            }
+        }
+        catch let error {
+            print("error now is: \(error.localizedDescription)")
         }
     }
     

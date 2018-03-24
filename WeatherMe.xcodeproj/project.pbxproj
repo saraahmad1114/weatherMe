@@ -113,9 +113,9 @@
 			isa = PBXGroup;
 			children = (
 				1B1711121F897FC70045F064 /* DarkSkyAPIClient .swift */,
+				1BBDAAA31F900CCB00C63F48 /* GoogleCoordinateAPIClient.swift */,
 				58D194E920362C540028DA5C /* CoordinatesDatastore.swift */,
 				586E164C203B491A002C66D8 /* WeatherForecastLocationDatastore.swift */,
-				1BBDAAA31F900CCB00C63F48 /* GoogleCoordinateAPIClient.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";

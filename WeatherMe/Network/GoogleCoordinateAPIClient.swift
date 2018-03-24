@@ -8,7 +8,7 @@ import Foundation
 
 class GoogleCoordinateAPIClient {
     
-    class func getCoordinateInformation (zipCode: String, completion:@escaping([String: Any])->()){
+    class func getCoordinateInformation (zipCode: String, completion:@escaping([String: Any])->()) throws {
         
         let zipCode = zipCode.replacingOccurrences(of: " ", with: "+")
 
@@ -26,13 +26,19 @@ class GoogleCoordinateAPIClient {
             
             guard let unwrappedData = data else {print("unwrappedData did not unwrap"); return}
             
-            let json = try? JSONSerialization.jsonObject(with: unwrappedData, options: []) as! [String: Any]
+            do{
             
-            guard let unwrappedJson = json else {print("unwrappedJson did not unwrap"); return }
+            let json = try JSONSerialization.jsonObject(with: unwrappedData, options: []) as! [String: Any]
             
-            jsonDictionary = unwrappedJson
+            //guard let unwrappedJson = json else {print("unwrappedJson did not unwrap"); return }
+            
+            jsonDictionary = json
             
             completion(jsonDictionary)
+            }
+            catch let error{
+                print("Error message is: \(error.localizedDescription)")
+            }
         }
         task.resume()
     }

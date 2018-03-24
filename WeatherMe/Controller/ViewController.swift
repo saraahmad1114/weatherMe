@@ -33,11 +33,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if self.zipCodeTextField.text == nil {
             presentAlert("Error", message: "Please enter valid information in text box.", cancelTitle: "OK")
         } else {
-            //user enter a value, check value, trap error from api call
-            self.store.getUserCoordintes(zipcode: self.zipCodeTextField.text!, completion: { (userCoodinates) in
+            do {
+            try self.store.getUserCoordintes(zipcode: self.zipCodeTextField.text!, completion: { (userCoodinates) in
                 print(userCoodinates)
                self.presentAlert("Error", message: "Provide valid address, zipcode, or city", cancelTitle: "OK")
-            })
+                })
+            }
+            catch let error{
+                print("This is the error \(error.localizedDescription)")
+            }
         }
     }
     
