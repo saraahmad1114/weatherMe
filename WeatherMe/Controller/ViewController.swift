@@ -10,8 +10,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var locationManager: CLLocationManager?
     var currentLocation: CLLocation?
     @IBOutlet weak var zipCodeTextField: UITextField!
-    let store = WeatherForecastLocationDatastore.sharedInstance
+    //let store = WeatherForecastLocationDatastore.sharedInstance
     var isCoreLocationEnabled: Bool?
+    let store = CoordinatesDatastore.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +25,28 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.locationManager?.desiredAccuracy = kCLLocationAccuracyHundredMeters
         self.locationManager?.requestWhenInUseAuthorization()
         self.locationManager?.requestLocation()
+        if self.currentLocation?.coordinate.latitude != nil && self.currentLocation?.coordinate.longitude != nil{
+            let alert = UIAlertController(title: "Weather Settings", message: "Provide zipcode", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     @IBAction func getMyWeatherOtherTapped(_ sender: UIButton) {
-        
+        if self.zipCodeTextField.text == nil {
+            // enter valid zip/ alert popup
+            let alert = UIAlertController(title: "Weather Settings", message: "Please provide address, zipcode, city or state", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            //user enter a value, check value, trap error from api call
+            self.store.getUserCoordintes(zipcode: self.zipCodeTextField.text!, completion: { (userCoodinates) in
+                print(userCoodinates)
+                let alert = UIAlertController(title: "Weather Settings", message: "Provide valid address, zipcode, city or state", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            })
+        }
     }
     
     
