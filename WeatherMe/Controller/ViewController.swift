@@ -25,10 +25,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.locationManager?.desiredAccuracy = kCLLocationAccuracyHundredMeters
         self.locationManager?.requestWhenInUseAuthorization()
         self.locationManager?.requestLocation()
-        if self.currentLocation?.coordinate.latitude != nil && self.currentLocation?.coordinate.longitude != nil{
-            let alert = UIAlertController(title: "Weather Settings", message: "Provide zipcode", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+        if self.currentLocation?.coordinate.latitude == nil && self.currentLocation?.coordinate.longitude == nil{
+            presentAlert("Unsuccessful getting location coordinates", message: "Please enter valid information below.", cancelTitle: "OK")
         }
     }
     
@@ -100,8 +98,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         print("core location did not work: \(error)")
     }
     
+}
+
+extension UIViewController {
+    
+    /** Helper function to conveniently display an alert */
+    
+    func presentAlert(_ title: String, message: String, cancelTitle: String) {
+        let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel, handler: nil)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
     }
     
+    /** Helper function to display an alert to a user*/
+    
+    func presentGenericErrorAlert(error: Error) {
+        presentAlert("Error", message: "\(error.localizedDescription)", cancelTitle: "OK")
+    }
+    
+}
 //extension ViewController : CLLocationManagerDelegate {
 
 //    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
