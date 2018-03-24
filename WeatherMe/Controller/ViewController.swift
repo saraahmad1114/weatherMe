@@ -10,7 +10,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var locationManager: CLLocationManager?
     var currentLocation: CLLocation?
     @IBOutlet weak var zipCodeTextField: UITextField!
-    //let store = WeatherForecastLocationDatastore.sharedInstance
     var isCoreLocationEnabled: Bool?
     let store = CoordinatesDatastore.sharedInstance
     
@@ -32,17 +31,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func getMyWeatherOtherTapped(_ sender: UIButton) {
         if self.zipCodeTextField.text == nil {
-            // enter valid zip/ alert popup
-            let alert = UIAlertController(title: "Weather Settings", message: "Please provide address, zipcode, city or state", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            presentAlert("Error", message: "Please enter valid information in text box.", cancelTitle: "OK")
         } else {
             //user enter a value, check value, trap error from api call
             self.store.getUserCoordintes(zipcode: self.zipCodeTextField.text!, completion: { (userCoodinates) in
                 print(userCoodinates)
-                let alert = UIAlertController(title: "Weather Settings", message: "Provide valid address, zipcode, city or state", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+               self.presentAlert("Error", message: "Provide valid address, zipcode, or city", cancelTitle: "OK")
             })
         }
     }
