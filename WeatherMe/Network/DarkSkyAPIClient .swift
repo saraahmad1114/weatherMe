@@ -8,11 +8,7 @@ import Foundation
 
 class DarkSkyAPIClient {
     
-    //fix the api client to handle error, so the app doesn't crash
-    
-    //Don't forget the do and catch so that you take care of error handling, so that the app doesn't crash 
-    
-    class func getWeatherInformation(lat: Double, lng: Double, completion:@escaping([String: Any])->()) {
+    class func getWeatherInformation(lat: Double, lng: Double, completion:@escaping([String: Any])->()) throws {
         
         var jsonDictionary = [String: Any]()
         
@@ -28,13 +24,20 @@ class DarkSkyAPIClient {
             
             guard let unwrappedData = data else {print("data did not unwrap"); return}
             
-            let jsonResponseDictionary = try? JSONSerialization.jsonObject(with: unwrappedData, options: []) as! [String: Any]
+            do
+            {
             
-            guard let unwrappedJsonResponseDictionary = jsonResponseDictionary else {print("unwrappedJsonResponseDictionary did not unwrap"); return}
+            let jsonResponseDictionary = try JSONSerialization.jsonObject(with: unwrappedData, options: []) as! [String: Any]
             
-            jsonDictionary = unwrappedJsonResponseDictionary
+            //guard let unwrappedJsonResponseDictionary = jsonResponseDictionary else {print("unwrappedJsonResponseDictionary did not unwrap"); return}
+            
+            jsonDictionary = jsonResponseDictionary
             
             completion(jsonDictionary)
+            }
+            catch let error{
+                print("error getting back json: \(error.localizedDescription)")
+            }
         }
         
         task.resume()
