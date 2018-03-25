@@ -89,19 +89,3 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
 }
 
-extension UIViewController {
-    
-    // MARK:- Helper function to show alert box
-    /** Helper function to conveniently display an alert */
-    func presentAlert(_ title: String, message: String, cancelTitle: String) {
-        let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel, handler: nil)
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(cancelAction)
-        present(alert, animated: true, completion: nil)
-    }
-    
-    /** Helper function to display an alert to a user*/
-    func presentGenericErrorAlert(error: Error) {
-        presentAlert("Error", message: "\(error.localizedDescription)", cancelTitle: "OK")
-    }
-}
