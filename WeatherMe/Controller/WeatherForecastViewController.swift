@@ -232,7 +232,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
             self.precipitationLabel.text = "Precipitation: \(String(Int(precip * 100))) %"
             self.humdityLabel.text = "Humidity: \(String(Int(humidity * 100))) %"
             self.windSpeedLabel?.text = "Wind Speed: \(String(Int(windSpeed))) mph"
-            self.currentTempLabel.text = "\(String(Int(temperature))) F"
+            self.currentTempLabel.text = "\(String(Int(temperature))) °F"
             self.returnImageForIcon(icon: icon)
             self.completeDateLabel.text = "\(self.dayOfWeek(givenTime: time)), \(self.convertToDate(givenTime: time))"
             self.hourlyWeatherTable.reloadData()

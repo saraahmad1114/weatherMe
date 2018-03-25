@@ -29,16 +29,10 @@
                                     <constraint firstAttribute="width" constant="145" id="bxv-ts-34S"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter City, State, or Zipcode" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aly-vB-xmx">
-                                <rect key="frame" x="37" y="348" width="259" height="30"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPH-tQ-AWK">
-                                <rect key="frame" x="179.5" y="312" width="16" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="179" y="312" width="17.5" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <color key="textColor" red="0.24723735050000001" green="0.40429836969999999" blue="0.90726562489999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bhf-e8-gRL">
@@ -54,7 +48,7 @@
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="8"/>
+                                        <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBound" value="YES"/>
                                 </userDefinedRuntimeAttributes>
@@ -67,7 +61,7 @@
                                 <color key="backgroundColor" red="0.93118476867675781" green="0.46315068006515503" blue="0.2194901704788208" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="VXD-tE-zzk"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="36" id="vvh-jI-ZTm"/>
+                                    <constraint firstAttribute="width" constant="36" id="vvh-jI-ZTm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Go">
@@ -84,6 +78,12 @@
                                     <segue destination="c6x-J8-Uzh" kind="presentation" identifier="weatherSegue" id="mJu-l0-jQh"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter City, State, or Zipcode" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aly-vB-xmx">
+                                <rect key="frame" x="37" y="358" width="259" height="30"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -97,7 +97,7 @@
                             <constraint firstItem="kPH-tQ-AWK" firstAttribute="centerX" secondItem="Atr-zG-iV2" secondAttribute="centerX" id="cVh-GF-UYo"/>
                             <constraint firstItem="Bhf-e8-gRL" firstAttribute="top" secondItem="H4h-Sb-dni" secondAttribute="bottom" constant="131" id="dMu-1z-NrK"/>
                             <constraint firstItem="kPH-tQ-AWK" firstAttribute="top" secondItem="Bhf-e8-gRL" secondAttribute="bottom" constant="17" id="lim-hR-cVM"/>
-                            <constraint firstItem="aly-vB-xmx" firstAttribute="top" secondItem="kPH-tQ-AWK" secondAttribute="bottom" constant="15.5" id="xma-yP-uLO"/>
+                            <constraint firstItem="aly-vB-xmx" firstAttribute="top" secondItem="kPH-tQ-AWK" secondAttribute="bottom" constant="24.5" id="xma-yP-uLO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ayM-7N-PV5"/>
                     </view>
