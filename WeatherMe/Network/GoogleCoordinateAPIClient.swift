@@ -8,11 +8,9 @@ import Foundation
 
 class GoogleCoordinateAPIClient {
     
-    //fix the api client to handle error, so the app doesn't crash
-    
-    //don't forget to include a do and catch == Error handling so that the app doesn't crash 
-    
-    class func getCoordinateInformation (zipCode: String, completion:@escaping([String: Any])->()){
+    class func getCoordinateInformation (zipCode: String, completion:@escaping([String: Any])->()) throws {
+        
+        let zipCode = zipCode.replacingOccurrences(of: " ", with: "+")
 
         var jsonDictionary = [String: Any]()
 
@@ -28,13 +26,19 @@ class GoogleCoordinateAPIClient {
             
             guard let unwrappedData = data else {print("unwrappedData did not unwrap"); return}
             
-            let json = try? JSONSerialization.jsonObject(with: unwrappedData, options: []) as! [String: Any]
+            do{
             
-            guard let unwrappedJson = json else {print("unwrappedJson did not unwrap"); return }
+            let json = try JSONSerialization.jsonObject(with: unwrappedData, options: []) as! [String: Any]
             
-            jsonDictionary = unwrappedJson
+            //guard let unwrappedJson = json else {print("unwrappedJson did not unwrap"); return }
+            
+            jsonDictionary = json
             
             completion(jsonDictionary)
+            }
+            catch let error{
+                print("Error message is: \(error.localizedDescription)")
+            }
         }
         task.resume()
     }

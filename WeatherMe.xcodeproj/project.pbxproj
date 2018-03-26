@@ -100,6 +100,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0004C6F72066EC6B00FD5A79 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5808149D204CD33B00CE8B6D /* DailyWeatherCollectionViewCell.swift */,
+				581B5AE42050846100E8E329 /* HourlyWeatherTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0004C6F82066EC8100FD5A79 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1B1711121F897FC70045F064 /* DarkSkyAPIClient .swift */,
+				1BBDAAA31F900CCB00C63F48 /* GoogleCoordinateAPIClient.swift */,
+				58D194E920362C540028DA5C /* CoordinatesDatastore.swift */,
+				586E164C203B491A002C66D8 /* WeatherForecastLocationDatastore.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0004C6F92066EC9000FD5A79 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				586E164A2038E8EE002C66D8 /* Coordinates.swift */,
+				1B1711141F8C1AB80045F064 /* CurrentWeather.swift */,
+				1B1711161F8C1C020045F064 /* HourlyWeather.swift */,
+				1B1711181F8C46A90045F064 /* DailyWeather.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0004C6FA2066ECB100FD5A79 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1B1710DF1F897C3F0045F064 /* ViewController.swift */,
+				581B5FE1205D72DD00A82E6E /* WeatherForecastViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		1B1710D11F897C3F0045F064 = {
 			isa = PBXGroup;
 			children = (
@@ -124,20 +164,12 @@
 			isa = PBXGroup;
 			children = (
 				1B1710DD1F897C3F0045F064 /* AppDelegate.swift */,
-				1B1710E11F897C3F0045F064 /* Main.storyboard */,
-				1B1711121F897FC70045F064 /* DarkSkyAPIClient .swift */,
-				1BBDAAA31F900CCB00C63F48 /* GoogleCoordinateAPIClient.swift */,
-				1B1710DF1F897C3F0045F064 /* ViewController.swift */,
-				581B5FE1205D72DD00A82E6E /* WeatherForecastViewController.swift */,
-				1B1711141F8C1AB80045F064 /* CurrentWeather.swift */,
-				1B1711161F8C1C020045F064 /* HourlyWeather.swift */,
-				1B1711181F8C46A90045F064 /* DailyWeather.swift */,
-				58D194E920362C540028DA5C /* CoordinatesDatastore.swift */,
-				586E164C203B491A002C66D8 /* WeatherForecastLocationDatastore.swift */,
-				581B5AE42050846100E8E329 /* HourlyWeatherTableViewCell.swift */,
-				586E164A2038E8EE002C66D8 /* Coordinates.swift */,
-				5808149D204CD33B00CE8B6D /* DailyWeatherCollectionViewCell.swift */,
 				00715DE12055C847002F19C6 /* Secrets.swift */,
+				1B1710E11F897C3F0045F064 /* Main.storyboard */,
+				0004C6F82066EC8100FD5A79 /* Network */,
+				0004C6F92066EC9000FD5A79 /* Model */,
+				0004C6F72066EC6B00FD5A79 /* Views */,
+				0004C6FA2066ECB100FD5A79 /* Controller */,
 				1B1710E71F897C3F0045F064 /* Assets.xcassets */,
 				1B1710E91F897C3F0045F064 /* LaunchScreen.storyboard */,
 				1B1710EC1F897C3F0045F064 /* Info.plist */,
@@ -479,7 +511,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HLKHFWAG55;
+				DEVELOPMENT_TEAM = X9KW2SQ39Q;
 				INFOPLIST_FILE = WeatherMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.first.WeatherMe;
@@ -494,7 +526,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HLKHFWAG55;
+				DEVELOPMENT_TEAM = X9KW2SQ39Q;
 				INFOPLIST_FILE = WeatherMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.first.WeatherMe;
