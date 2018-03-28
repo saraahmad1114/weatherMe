@@ -27,13 +27,10 @@ class DarkSkyAPIClient {
             
             guard let unwrappedData = data else {print("data did not unwrap"); return}
             
-            do
-            {
+            do{
             
             let jsonResponseDictionary = try JSONSerialization.jsonObject(with: unwrappedData, options: []) as! [String: Any]
-            
-            //guard let unwrappedJsonResponseDictionary = jsonResponseDictionary else {print("unwrappedJsonResponseDictionary did not unwrap"); return}
-            
+                
             jsonDictionary = jsonResponseDictionary
             
             completion(jsonDictionary)

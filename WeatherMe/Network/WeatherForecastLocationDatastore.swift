@@ -19,9 +19,7 @@ class WeatherForecastLocationDatastore{
     
     func getWeatherForecastInformation(lat: Double, lng: Double, completion:@escaping ([CurrentWeather], [HourlyWeather], [DailyWeather]) -> ()) throws{
         
-        do{
-        
-            try DarkSkyAPIClient.getWeatherInformation(lat: lat, lng: -lng) { (darkSkyJson) in
+        do{ try DarkSkyAPIClient.getWeatherInformation(lat: lat, lng: -lng) { (darkSkyJson) in
             
             guard let jsonDictionary = darkSkyJson as? [String: Any] else {print("first level dictionary did not unwrap"); return}
             

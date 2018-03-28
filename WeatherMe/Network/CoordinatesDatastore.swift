@@ -18,11 +18,9 @@ class CoordinatesDatastore {
     var locationCoordinates = [Coordinates]()
     
     func getUserCoordintes (zipcode: String, completion:@escaping ([Coordinates]) -> ()) throws {
+        
         do {
-            
-            try
-            
-        GoogleCoordinateAPIClient.getCoordinateInformation(zipCode: zipcode) { (googleAPICoordinatesJson) in
+            try GoogleCoordinateAPIClient.getCoordinateInformation(zipCode: zipcode) { (googleAPICoordinatesJson) in
             
             guard let secondLevelArray = googleAPICoordinatesJson["results"] as? Array<Any> else {print("did not unwrap at the second level"); return}
             
@@ -38,6 +36,7 @@ class CoordinatesDatastore {
             let coordinatesObject = Coordinates.init(latitude: locationLat, longitude: locationLng)
                         
             self.locationCoordinates.append(coordinatesObject)
+                
             completion(self.locationCoordinates)
             }
         }

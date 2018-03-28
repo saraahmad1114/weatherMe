@@ -174,7 +174,6 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         return UIImage(named:"clear-day")!
     }
     
-    //returns the date in format: Month date, year
     func convertToDate (givenTime: Double) -> String {
         let date = Date(timeIntervalSince1970: givenTime)
         let dateFormatter = DateFormatter()
@@ -184,7 +183,6 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         return localDate
     }
     
-    //returns day of the week - MON
     func dayOfWeek(givenTime: Double) -> String {
         let date = Date(timeIntervalSince1970: givenTime)
         let dateFormatter = DateFormatter()
@@ -192,7 +190,6 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         return dateFormatter.string(from: date).capitalized
     }
     
-    //returns hourly label -  07:00 PM
     func returnHourFromTime (timeStamp: Double) -> String{
         let date = Date(timeIntervalSince1970: timeStamp)
         let formater = DateFormatter()
@@ -277,7 +274,6 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
 
 extension UIViewController {
     
-    /** Helper function to conveniently display an alert */
     func presentAlert(_ title: String, message: String, cancelTitle: String) {
         let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel, handler: nil)
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -285,7 +281,6 @@ extension UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    /** Helper function to display an alert to a user*/
     func presentGenericErrorAlert(error: Error) {
         presentAlert("Error", message: "\(error.localizedDescription)", cancelTitle: "OK")
     }
