@@ -13,7 +13,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var locationManager: CLLocationManager?
     var currentLocation: CLLocation?
     @IBOutlet weak var zipCodeTextField: UITextField!
-    var isCoreLocationEnabled: Bool?
     let store = CoordinatesDatastore.sharedInstance
     
     override func viewDidLoad() {
