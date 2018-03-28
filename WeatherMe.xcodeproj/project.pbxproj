@@ -104,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				5808149D204CD33B00CE8B6D /* DailyWeatherCollectionViewCell.swift */,
+				1B1710DF1F897C3F0045F064 /* ViewController.swift */,
+				581B5FE1205D72DD00A82E6E /* WeatherForecastViewController.swift */,
 				581B5AE42050846100E8E329 /* HourlyWeatherTableViewCell.swift */,
 			);
 			path = Views;
@@ -129,15 +131,6 @@
 				1B1711181F8C46A90045F064 /* DailyWeather.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		0004C6FA2066ECB100FD5A79 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				1B1710DF1F897C3F0045F064 /* ViewController.swift */,
-				581B5FE1205D72DD00A82E6E /* WeatherForecastViewController.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		1B1710D11F897C3F0045F064 = {
@@ -169,7 +162,6 @@
 				0004C6F82066EC8100FD5A79 /* Network */,
 				0004C6F92066EC9000FD5A79 /* Model */,
 				0004C6F72066EC6B00FD5A79 /* Views */,
-				0004C6FA2066ECB100FD5A79 /* Controller */,
 				1B1710E71F897C3F0045F064 /* Assets.xcassets */,
 				1B1710E91F897C3F0045F064 /* LaunchScreen.storyboard */,
 				1B1710EC1F897C3F0045F064 /* Info.plist */,

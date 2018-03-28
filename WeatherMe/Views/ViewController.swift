@@ -66,8 +66,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if self.currentLocation == nil {
             if let personCoordinates = locations.first{
                 self.currentLocation = personCoordinates
-                print(personCoordinates.coordinate.latitude)
-                print(personCoordinates.coordinate.longitude)
+//                print(personCoordinates.coordinate.latitude)
+//                print(personCoordinates.coordinate.longitude)
             }
         }
     }
