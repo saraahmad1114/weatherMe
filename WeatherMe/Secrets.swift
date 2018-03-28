@@ -3,7 +3,10 @@
 //  WeatherMe
 //
 //  Created by Emiko Clark on 3/11/18.
-//  Copyright © 2018 Flatiron School. All rights reserved.
+//
+
+//  Created by Sara Ahmad on 3/14/18.
+//  Copyright © 2018 Sara Ahmad. All rights reserved.
 //
 
 import Foundation
