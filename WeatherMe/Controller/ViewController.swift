@@ -13,12 +13,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var isCoreLocationEnabled: Bool?
     let store = CoordinatesDatastore.sharedInstance
     
-    // MARK:- ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    // MARK:- Button Tapped Functions
     @IBAction func getMyLocationWeatherTapped(_ sender: UIButton) {
         self.locationManager = CLLocationManager()
         self.locationManager?.delegate = self
@@ -46,7 +44,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    // MARK:- Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "weatherSegue" {
             if let destinationVC = segue.destination as? WeatherForecastViewController {
@@ -62,7 +59,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    //MARK:- Core Location Delegate Functions
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if self.currentLocation == nil {
             if let personCoordinates = locations.first{

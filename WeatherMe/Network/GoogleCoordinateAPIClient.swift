@@ -29,9 +29,7 @@ class GoogleCoordinateAPIClient {
             do{
             
             let json = try JSONSerialization.jsonObject(with: unwrappedData, options: []) as! [String: Any]
-            
-            //guard let unwrappedJson = json else {print("unwrappedJson did not unwrap"); return }
-            
+                        
             jsonDictionary = json
             
             completion(jsonDictionary)

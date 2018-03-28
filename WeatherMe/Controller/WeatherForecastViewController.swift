@@ -28,10 +28,8 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     @IBOutlet weak var hourlyWeatherTable: UITableView!
     @IBOutlet weak var dailyWeatherColl: UICollectionView!
     
-    //MARK:- View Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-      //ERROR HERE, NOT GETTING COORDINATES
         if self.coordinateHolder != nil {
             guard let unwrappedLat = self.coordinateHolder?.coordinate.latitude else {print("lat did not unwrap"); return}
             guard let unwrappedLng = self.coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}
@@ -65,7 +63,6 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         }
     }
     
-    // MARK:- CollectionView Delegate Functions
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.weatherStore.dailyWeatherArray.count
     }
@@ -131,7 +128,6 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         return cell
     }
     
-    // MARK:- TableView Delegate Functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.weatherStore.hourlyWeatherArray.count
     }
@@ -158,7 +154,6 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         return cell
     }
     
-    //MARK:- Helper Functions
     func getNeededHourlyIcon(icon:String) -> UIImage {
         if icon == "clear-day"  { return UIImage(named:"clear-day")! }
         else if icon == "cloudy"{ return UIImage(named:"cloudy")! }
@@ -277,10 +272,8 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     }
 }
 
-//MARK:-
 extension UIViewController {
     
-    // MARK:- Helper function to show alert box
     /** Helper function to conveniently display an alert */
     func presentAlert(_ title: String, message: String, cancelTitle: String) {
         let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel, handler: nil)
