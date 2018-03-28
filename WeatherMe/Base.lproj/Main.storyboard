@@ -60,7 +60,7 @@
                                 <color key="backgroundColor" red="0.93118476867675781" green="0.46315068006515503" blue="0.2194901704788208" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="VXD-tE-zzk"/>
-                                    <constraint firstAttribute="width" constant="36" id="vvh-jI-ZTm"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="36" id="vvh-jI-ZTm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Go">
@@ -174,7 +174,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7cU-oO-xO3" id="Q7P-oP-zMh" customClass="HourlyWeatherTableViewCell" customModule="WeatherMe" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" horizontalCompressionResistancePriority="754" fixedFrame="YES" text="12 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQN-RD-wLM">
@@ -185,14 +185,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="56&quot;" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoZ-VC-iZc">
-                                                    <rect key="frame" x="287.5" y="0.0" width="37.5" height="61"/>
+                                                    <rect key="frame" x="288" y="0.0" width="36" height="61"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.24723735050396262" green="0.40429836970713223" blue="0.90726562494999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="753" fixedFrame="YES" image="cloudy" translatesAutoresizingMaskIntoConstraints="NO" id="0sk-Zw-97b">
-                                                    <rect key="frame" x="152.5" y="0.0" width="68.5" height="61"/>
+                                                    <rect key="frame" x="153" y="0.0" width="68" height="61"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="tintColor" red="0.24723735050000001" green="0.40429836969999999" blue="0.90726562489999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
