@@ -7,6 +7,11 @@
 //  Copyright © 2018 Sara Ahmad. All rights reserved.
 //
 
+//To do list: 
+//last of the error handling needs to be done tomorrow!
+//button to reset the location settings
+//alertviews for bad input in the textfield - alternative for core location
+
 
 import UIKit
 
