@@ -12,6 +12,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var locationManager: CLLocationManager?
     var currentLocation: CLLocation?
+    var userCurrentLat: Double?
+    var userCurrentLng: Double?
     @IBOutlet weak var zipCodeTextField: UITextField!
     let store = CoordinatesDatastore.sharedInstance
     
@@ -47,13 +49,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "weatherSegue" {
+        if segue.identifier == "weatherSeg" {
             if let destinationVC = segue.destination as? WeatherForecastViewController {
                 if self.currentLocation != nil {
-                    guard let latestCoordinates = self.currentLocation else {print("latestCoordinates did not unwrap"); return}
-                    destinationVC.coordinateHolder = latestCoordinates
+                    guard let neededLat = self.userCurrentLat else {print("neededLat did not unwrap"); return}
+                    guard let neededLng = self.userCurrentLng else {print("neededLng did not unwrap"); return}
+                    destinationVC.currentLat = neededLat
+                    destinationVC.currentLng = neededLng
                 }
-                else if self.zipCodeTextField.text != nil{
+                else if self.zipCodeTextField != nil{
                     guard let neededZipcode = self.zipCodeTextField.text else {print("neededZipcode did not unwrap"); return}
                     destinationVC.zipCode = neededZipcode
                 }
@@ -64,7 +68,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if self.currentLocation == nil {
             if let personCoordinates = locations.first{
-                self.currentLocation = personCoordinates
+                self.userCurrentLat = personCoordinates.coordinate.latitude
+                self.userCurrentLng = personCoordinates.coordinate.longitude
             }
         }
     }

@@ -16,6 +16,8 @@ import CoreLocation
 class WeatherForecastViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource{
     
     var coordinateHolder: CLLocation?
+    var currentLng: Double?
+    var currentLat: Double?
     var zipCode: String?
     let coordinateStore = CoordinatesDatastore.sharedInstance
     let weatherStore = WeatherForecastLocationDatastore.sharedInstance
@@ -33,9 +35,9 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if self.coordinateHolder != nil {
-            guard let unwrappedLat = self.coordinateHolder?.coordinate.latitude else {print("lat did not unwrap"); return}
-            guard let unwrappedLng = self.coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}
+        if self.currentLat != nil && self.currentLng != nil {
+            guard let unwrappedLat = currentLat else {print("lat did not unwrap"); return}
+            guard let unwrappedLng = currentLng else{print("lng did not unwrap"); return}
             do {
                 try self.weatherStore.getWeatherForecastInformation(lat: unwrappedLat, lng: unwrappedLng, completion: { (current, hourly, daily) in
                 self.parseNeededDataAndDisplay()
@@ -67,10 +69,12 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return self.weatherStore.dailyWeatherArray.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dailyWeatherCell", for: indexPath) as! DailyWeatherCollectionViewCell
         let neededRow = indexPath.row
         
@@ -196,6 +200,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     }
     
     func convertToDate (givenTime: Double) -> String {
+        
         let date = Date(timeIntervalSince1970: givenTime)
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = DateFormatter.Style.medium
@@ -205,6 +210,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     }
     
     func dayOfWeek(givenTime: Double) -> String {
+        
         let date = Date(timeIntervalSince1970: givenTime)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
@@ -212,6 +218,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     }
     
     func returnHourFromTime (timeStamp: Double) -> String{
+        
         let date = Date(timeIntervalSince1970: timeStamp)
         let formater = DateFormatter()
         formater.timeZone = TimeZone.current
@@ -223,6 +230,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     }
     
     func parseNeededDataAndDisplay() {
+        
         guard let location = self.weatherStore.currentWeatherArray.first?.timeZone else{print("location did not unwrap"); return}
         guard let time = self.weatherStore.currentWeatherArray.first?.time else{print("time did not unwrap"); return}
         guard let summary = self.weatherStore.currentWeatherArray.first?.summary else{print("summary did not unwrap"); return}
