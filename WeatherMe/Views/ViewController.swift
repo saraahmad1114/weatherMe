@@ -22,13 +22,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     @IBAction func getMyLocationWeatherTapped(_ sender: UIButton) {
+        
         self.locationManager = CLLocationManager()
         self.locationManager?.delegate = self
         self.locationManager?.desiredAccuracy = kCLLocationAccuracyHundredMeters
         self.locationManager?.requestWhenInUseAuthorization()
         self.locationManager?.requestLocation()
         if self.currentLocation?.coordinate.latitude == nil && self.currentLocation?.coordinate.longitude == nil{
-            presentAlert("Unsuccessful Finding Your Location", message: "Please enter a valid address, city or zipcode in the textfield.", cancelTitle: "OK")
+            presentAlert("Unsuccessful at Finding Your Location", message: "Please enter a valid address, city or zipcode in the textfield.", cancelTitle: "OK")
         }
     }
     
@@ -49,11 +50,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("1")
         if segue.identifier == "weatherSeg" {
             if let destinationVC = segue.destination as? WeatherForecastViewController {
                 if self.currentLocation != nil {
                     guard let neededLat = self.userCurrentLat else {print("neededLat did not unwrap"); return}
                     guard let neededLng = self.userCurrentLng else {print("neededLng did not unwrap"); return}
+                    print("********************************LOOK HERE!!!!!")
+                    print(neededLat)
+                    print(neededLng)
+                    print("********************************LOOK HERE!!!!!")
                     destinationVC.currentLat = neededLat
                     destinationVC.currentLng = neededLng
                 }

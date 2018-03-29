@@ -18,7 +18,6 @@ class CoordinatesDatastore {
     var locationCoordinates = [Coordinates]()
     
     func getUserCoordintes (zipcode: String, completion:@escaping ([Coordinates]) -> ()) throws {
-        
         do {
             try GoogleCoordinateAPIClient.getCoordinateInformation(zipCode: zipcode) { (googleAPICoordinatesJson) in
             
