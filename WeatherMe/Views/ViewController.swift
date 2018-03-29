@@ -30,7 +30,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         presentAlert("Location Found", message: "Press Go Button", cancelTitle: "OK")
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "weatherSeg" {
             if let destinationVC = segue.destination as? WeatherForecastViewController {

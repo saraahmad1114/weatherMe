@@ -35,6 +35,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if self.currentLat != nil && self.currentLng != nil {
             guard let unwrappedLat = currentLat else {print("lat did not unwrap"); return}
             guard let unwrappedLng = currentLng else{print("lng did not unwrap"); return}
@@ -46,8 +47,8 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
             } catch let error {
                 print("error here is: \(error.localizedDescription)")
             }
-
         }
+            
         else {
             guard let unwrappedZipcode = self.zipCode else {print("did not unwrap zipcode"); return}
             do {
@@ -66,7 +67,6 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
             } catch let error {
                 print("error is: \(error.localizedDescription)")
             }
-            
         }
     }
     
