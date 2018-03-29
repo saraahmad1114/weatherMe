@@ -73,7 +73,6 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBound" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="getMyWeatherOtherTapped:" destination="lEo-hY-QSG" eventType="touchUpInside" id="hDn-X1-6S0"/>
                                     <segue destination="c6x-J8-Uzh" kind="presentation" identifier="weatherSeg" id="Me4-sJ-Bdp"/>
                                 </connections>
                             </button>

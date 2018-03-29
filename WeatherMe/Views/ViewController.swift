@@ -33,21 +33,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    @IBAction func getMyWeatherOtherTapped(_ sender: UIButton) {
-        if self.zipCodeTextField.text == nil {
-            presentAlert("Error", message: "Please enter valid information in text box.", cancelTitle: "OK")
-        } else {
-            do {
-                try self.store.getUserCoordintes(zipcode: self.zipCodeTextField.text!, completion: { (userCoodinates) in
-                print(userCoodinates)
-                self.presentAlert("Error", message: "Provide valid address, zipcode, or city", cancelTitle: "OK")
-                })
-            }
-            catch let error{
-                print("This is the error \(error.localizedDescription)")
-            }
-        }
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "weatherSeg" {
