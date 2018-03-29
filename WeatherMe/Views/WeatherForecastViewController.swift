@@ -71,15 +71,12 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return self.weatherStore.dailyWeatherArray.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dailyWeatherCell", for: indexPath) as! DailyWeatherCollectionViewCell
         let neededRow = indexPath.row
-        
         if let neededDay = self.weatherStore.dailyWeatherArray[neededRow].dailyTime{
             let day = self.dayOfWeek(givenTime: neededDay)
             let index = day.index(day.startIndex, offsetBy: 3)

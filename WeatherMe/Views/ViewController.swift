@@ -27,9 +27,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.locationManager?.desiredAccuracy = kCLLocationAccuracyHundredMeters
         self.locationManager?.requestWhenInUseAuthorization()
         self.locationManager?.requestLocation()
-        if self.userCurrentLng != nil && self.userCurrentLat != nil{
-            presentAlert("Location Found", message: "Press Go Button", cancelTitle: "OK")
-        }
+        presentAlert("Location Found", message: "Press Go Button", cancelTitle: "OK")
     }
     
     
