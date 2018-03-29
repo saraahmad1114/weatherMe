@@ -152,26 +152,47 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         }
         
         if let neededHourlyIcon = self.weatherStore.hourlyWeatherArray[indexPath.row].hourlyIcon{
-            cell.hourlyIconImage.image = getNeededHourlyIcon(icon: neededHourlyIcon)
+            if neededHourlyIcon == "clear-day"{
+                cell.hourlyIconImage.image = UIImage(named:"clear-day")
+            }
+            else if neededHourlyIcon == "cloudy"{
+                cell.hourlyIconImage.image = UIImage(named:"cloudy")
+            }
+            else if neededHourlyIcon == "fog"{
+                cell.hourlyIconImage.image = UIImage(named:"fog")
+            }
+            else if neededHourlyIcon == "hail"{
+                cell.hourlyIconImage.image = UIImage(named:"hail")
+            }
+            else if neededHourlyIcon == "rain"{
+                cell.hourlyIconImage.image = UIImage(named:"rain")
+            }
+            else if neededHourlyIcon == "sleet"{
+                cell.hourlyIconImage.image = UIImage(named:"sleet")
+            }
+            else if neededHourlyIcon == "snow"{
+                cell.hourlyIconImage.image = UIImage(named:"snow")
+            }
+            else if neededHourlyIcon == "wind"{
+                cell.hourlyIconImage.image = UIImage(named:"wind")
+            }
+            else if neededHourlyIcon == "clear-night"{
+                cell.hourlyIconImage.image = UIImage(named:"clear-night")
+            }
+            else if neededHourlyIcon == "thunderstorm"{
+                cell.hourlyIconImage.image = UIImage(named:"thunderstorm")
+            }
+            else if neededHourlyIcon == "tornado"{
+                cell.hourlyIconImage.image = UIImage(named:"tornado")
+            }
+            else if neededHourlyIcon == "partly-cloudy-day"{
+                cell.hourlyIconImage.image = UIImage(named:"partly-cloudy-day")
+            }
+            else if neededHourlyIcon == "partly-cloudy-night"{
+                cell.hourlyIconImage.image = UIImage(named:"partly-cloudy-night")
+            }
         }
         return cell
-    }
-    
-    func getNeededHourlyIcon(icon:String) -> UIImage {
-        if icon == "clear-day"  { return UIImage(named:"clear-day")! }
-        else if icon == "cloudy"{ return UIImage(named:"cloudy")! }
-        else if icon == "fog"   { return UIImage(named:"fog")! }
-        else if icon == "hail"  { return UIImage(named:"hail")! }
-        else if icon == "rain"  { return UIImage(named:"rain")! }
-        else if icon == "sleet" { return UIImage(named:"sleet")! }
-        else if icon == "snow"  { return UIImage(named:"snow")! }
-        else if icon == "wind"  { return UIImage(named:"wind")! }
-        else if icon == "clear-night" { return UIImage(named:"clear-night")! }
-        else if icon == "thunderstorm"{ return UIImage(named:"thunderstorm")! }
-        else if icon == "tornado"     { return UIImage(named:"tornado")! }
-        else if icon == "partly-cloudy-day"  { return UIImage(named:"partly-cloudy-day")! }
-        else if icon == "partly-cloudy-night"{ return UIImage(named:"partly-cloudy-night")! }
-        return UIImage(named:"clear-day")!
     }
     
     func convertToDate (givenTime: Double) -> String {
@@ -273,7 +294,6 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
 }
 
 extension UIViewController {
-    
     func presentAlert(_ title: String, message: String, cancelTitle: String) {
         let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel, handler: nil)
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
