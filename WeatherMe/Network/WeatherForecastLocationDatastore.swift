@@ -71,7 +71,7 @@ class WeatherForecastLocationDatastore{
             }
         }
         catch let error {
-            print("error loal description is: \(error.localizedDescription)")
+            print("error local description is: \(error.localizedDescription)")
         }
     }
     

@@ -47,10 +47,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("1")
         if segue.identifier == "weatherSegue" {
+            print("2")
             if let destinationVC = segue.destination as? WeatherForecastViewController {
                 if self.currentLocation != nil {
+                    print("3")
                     guard let latestCoordinates = self.currentLocation else {print("latestCoordinates did not unwrap"); return}
+                    print("*******************************")
+                    print(latestCoordinates)
+                    print("*******************************")
                     destinationVC.coordinateHolder = latestCoordinates
                 }
                 else if self.zipCodeTextField.text != nil{
@@ -65,8 +71,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if self.currentLocation == nil {
             if let personCoordinates = locations.first{
                 self.currentLocation = personCoordinates
-//                print(personCoordinates.coordinate.latitude)
-//                print(personCoordinates.coordinate.longitude)
             }
         }
     }

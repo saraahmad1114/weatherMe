@@ -1,2 +1,6 @@
 # weatherMe
-Simple app that allows that displays weather information. 
+Simple app that displays weather information.
+
+
+
+
