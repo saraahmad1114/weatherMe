@@ -69,7 +69,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("core location did not work: \(error)")
+        presentAlert("Location Not Found", message: "Provide zipcode, address or city", cancelTitle: "OK")
     }
 }
 
