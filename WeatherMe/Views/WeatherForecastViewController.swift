@@ -39,7 +39,8 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
             guard let unwrappedLat = currentLat else {print("lat did not unwrap"); return}
             guard let unwrappedLng = currentLng else{print("lng did not unwrap"); return}
             do {
-                try self.weatherStore.getWeatherForecastInformation(lat: unwrappedLat, lng: unwrappedLng, completion: { (current, hourly, daily) in
+                try
+                    self.weatherStore.getWeatherForecastInformation(lat: unwrappedLat, lng: unwrappedLng, completion: { (current, hourly, daily) in
                 self.parseNeededDataAndDisplay()
                 })
             } catch let error {
@@ -50,7 +51,8 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         else {
             guard let unwrappedZipcode = self.zipCode else {print("did not unwrap zipcode"); return}
             do {
-           try self.coordinateStore.getUserCoordintes(zipcode: unwrappedZipcode, completion: { (coordinatesJson) in
+           try
+            self.coordinateStore.getUserCoordintes(zipcode: unwrappedZipcode, completion: { (coordinatesJson) in
                 guard let lat = self.coordinateStore.locationCoordinates.first?.latitude else{print("did not unwrap lat"); return}
                 guard let lng = self.coordinateStore.locationCoordinates.first?.longitude else{print("did not unwrap lng"); return}
             do {
