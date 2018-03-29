@@ -22,14 +22,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     @IBAction func getMyLocationWeatherTapped(_ sender: UIButton) {
-        
         self.locationManager = CLLocationManager()
         self.locationManager?.delegate = self
         self.locationManager?.desiredAccuracy = kCLLocationAccuracyHundredMeters
         self.locationManager?.requestWhenInUseAuthorization()
         self.locationManager?.requestLocation()
         if self.currentLocation?.coordinate.latitude == nil && self.currentLocation?.coordinate.longitude == nil{
-            presentAlert("Unsuccessful at Finding Your Location", message: "Please enter a valid address, city or zipcode in the textfield.", cancelTitle: "OK")
+            presentAlert("Location Found", message: "Press Go Button", cancelTitle: "OK")
         }
     }
     
