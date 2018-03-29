@@ -53,13 +53,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         print("1")
         if segue.identifier == "weatherSeg" {
             if let destinationVC = segue.destination as? WeatherForecastViewController {
-                if self.currentLocation != nil {
+                if self.userCurrentLng != nil && self.userCurrentLat != nil {
                     guard let neededLat = self.userCurrentLat else {print("neededLat did not unwrap"); return}
                     guard let neededLng = self.userCurrentLng else {print("neededLng did not unwrap"); return}
-                    print("********************************LOOK HERE!!!!!")
-                    print(neededLat)
-                    print(neededLng)
-                    print("********************************LOOK HERE!!!!!")
                     destinationVC.currentLat = neededLat
                     destinationVC.currentLng = neededLng
                 }
