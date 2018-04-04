@@ -25,7 +25,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.locationManager?.desiredAccuracy = kCLLocationAccuracyHundredMeters
         self.locationManager?.requestWhenInUseAuthorization()
         self.locationManager?.requestLocation()
-        presentAlert("Location Found", message: "Press Go Button", cancelTitle: "OK")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -48,6 +47,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if self.currentLocation == nil {
             if let personCoordinates = locations.first{
                 self.currentLocation = personCoordinates
+                if self.currentLocation != nil {
+                    presentAlert("Location Found", message: "We have found your location", cancelTitle: "OK")
+                }
             }
         }
     }

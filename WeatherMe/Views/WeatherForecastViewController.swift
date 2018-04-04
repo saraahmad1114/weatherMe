@@ -41,7 +41,13 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if self.coordinateHolder != nil {
+        //Return an Alertview for the user if they do not provide any information
+        if self.coordinateHolder == nil && self.zipCode == nil {
+            presentAlert("Restart Settings", message: "Press button on the right to begin again", cancelTitle: "OK")
+        }
+        
+        //Populate the view controller if the user goes with the core location option
+        else if self.coordinateHolder != nil {
             guard let unwrappedLat = coordinateHolder?.coordinate.latitude else {print("lat did not unwrap"); return}
             guard let unwrappedLng = coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}
             do {
@@ -53,8 +59,9 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
                 print("error here is: \(error.localizedDescription)")
             }
         }
-            
-        else {
+          
+        //Populate the view controller if the user goes with the zipcode/ address/ city option 
+        else if self.zipCode != nil {
             guard let unwrappedZipcode = self.zipCode else {print("did not unwrap zipcode"); return}
             do {
            try
