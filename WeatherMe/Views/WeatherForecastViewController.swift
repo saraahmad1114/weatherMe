@@ -9,8 +9,10 @@
 
 //To do list:
 //last of the error handling needs to be done tomorrow!
-//button to reset the location settings
-//alertviews for bad input in the textfield - alternative for core location
+//the reset button is not working
+//Conditions in which error handling is not working:
+//1. When you have no zipcode or core location coordinates
+//2. the reset button is not working 
 
 
 import UIKit
