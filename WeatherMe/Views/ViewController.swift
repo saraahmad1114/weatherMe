@@ -19,6 +19,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.zipCodeTextField.text = ""
+        self.currentLocation = nil
+        self.locationSuccess = false
+    }
 
     @IBAction func getMyLocationWeatherTapped(_ sender: UIButton) {
         self.locationManager = CLLocationManager()
