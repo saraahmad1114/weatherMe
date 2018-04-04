@@ -12,8 +12,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var locationManager: CLLocationManager?
     var currentLocation: CLLocation?
-    var userCurrentLat: Double?
-    var userCurrentLng: Double?
     @IBOutlet weak var zipCodeTextField: UITextField!
     let store = CoordinatesDatastore.sharedInstance
     
@@ -33,25 +31,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "weatherSeg" {
             if let destinationVC = segue.destination as? WeatherForecastViewController {
-                if self.userCurrentLng != nil && self.userCurrentLat != nil {
-                    guard let neededLat = self.userCurrentLat else {print("neededLat did not unwrap"); return}
-                    guard let neededLng = self.userCurrentLng else {print("neededLng did not unwrap"); return}
-                    destinationVC.currentLat = neededLat
-                    destinationVC.currentLng = neededLng
+                if self.currentLocation != nil {
+                    guard let userLocation = currentLocation else {print("did not pass user location"); return}
+                    destinationVC.coordinateHolder = currentLocation
                 }
+            
                 else if self.zipCodeTextField != nil{
                     guard let neededZipcode = self.zipCodeTextField.text else {print("neededZipcode did not unwrap"); return}
                     destinationVC.zipCode = neededZipcode
                 }
             }
-        }
+            }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if self.currentLocation == nil {
             if let personCoordinates = locations.first{
-                self.userCurrentLat = personCoordinates.coordinate.latitude
-                self.userCurrentLng = personCoordinates.coordinate.longitude
+                self.currentLocation = personCoordinates
             }
         }
     }
@@ -68,5 +64,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         presentAlert("Location Not Found", message: "Provide zipcode, address or city", cancelTitle: "OK")
     }
+
 }
 

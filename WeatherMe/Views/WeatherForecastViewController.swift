@@ -7,7 +7,7 @@
 //  Copyright © 2018 Sara Ahmad. All rights reserved.
 //
 
-//To do list: 
+//To do list:
 //last of the error handling needs to be done tomorrow!
 //button to reset the location settings
 //alertviews for bad input in the textfield - alternative for core location
@@ -41,9 +41,9 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if self.currentLat != nil && self.currentLng != nil {
-            guard let unwrappedLat = currentLat else {print("lat did not unwrap"); return}
-            guard let unwrappedLng = currentLng else{print("lng did not unwrap"); return}
+        if self.coordinateHolder != nil {
+            guard let unwrappedLat = coordinateHolder?.coordinate.latitude else {print("lat did not unwrap"); return}
+            guard let unwrappedLng = coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}
             do {
                 try
                     self.weatherStore.getWeatherForecastInformation(lat: unwrappedLat, lng: unwrappedLng, completion: { (current, hourly, daily) in
