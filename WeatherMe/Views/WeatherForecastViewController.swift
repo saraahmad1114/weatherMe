@@ -310,6 +310,14 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
             self.currentWeatherIcon.image = UIImage(named:"wind")
         }
     }
+    
+    @IBAction func exitButtonTapped(_ sender: Any) {
+        self.dismiss(animated: false, completion: nil)
+        self.coordinateHolder = nil
+        self.zipCode = nil
+        print("Restarted occurred right here")
+    }
+    
 }
 
 extension UIViewController {
