@@ -2,17 +2,10 @@
 //  WeatherForecastViewController.swift
 //  WeatherMe
 //
-//  Created by Sara Ahmad on 3/17/18.
 //  Created by Sara Ahmad on 3/14/18.
 //  Copyright © 2018 Sara Ahmad. All rights reserved.
 //
 
-//To do list:
-//last of the error handling needs to be done tomorrow!
-//the reset button is not working
-//Conditions in which error handling is not working:
-//1. When you have no zipcode or core location coordinates
-//2. the reset button is not working
 
 
 import UIKit
