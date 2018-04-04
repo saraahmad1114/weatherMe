@@ -12,7 +12,7 @@
 //the reset button is not working
 //Conditions in which error handling is not working:
 //1. When you have no zipcode or core location coordinates
-//2. the reset button is not working 
+//2. the reset button is not working
 
 
 import UIKit
@@ -314,9 +314,12 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     }
     
     @IBAction func exitButtonTapped(_ sender: Any) {
+        print("ENTERED HERE")
         self.dismiss(animated: false, completion: nil)
         self.coordinateHolder = nil
         self.zipCode = nil
+        print(self.coordinateHolder)
+        print(self.zipCode)
         print("Restarted occurred right here")
     }
     

@@ -14,6 +14,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var currentLocation: CLLocation?
     @IBOutlet weak var zipCodeTextField: UITextField!
     let store = CoordinatesDatastore.sharedInstance
+    var locationSuccess: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "weatherSeg" {
             if let destinationVC = segue.destination as? WeatherForecastViewController {
+                
+                
                 if self.currentLocation != nil {
                     guard let userLocation = currentLocation else {print("did not pass user location"); return}
                     destinationVC.coordinateHolder = currentLocation
