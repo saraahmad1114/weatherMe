@@ -21,6 +21,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.zipCodeTextField.text = ""
         self.currentLocation = nil
         self.locationSuccess = false

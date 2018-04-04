@@ -200,7 +200,6 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     }
     
     func convertToDate (givenTime: Double) -> String {
-        
         let date = Date(timeIntervalSince1970: givenTime)
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = DateFormatter.Style.medium
@@ -210,7 +209,6 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     }
     
     func dayOfWeek(givenTime: Double) -> String {
-        
         let date = Date(timeIntervalSince1970: givenTime)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
@@ -218,7 +216,6 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     }
     
     func returnHourFromTime (timeStamp: Double) -> String{
-        
         let date = Date(timeIntervalSince1970: timeStamp)
         let formater = DateFormatter()
         formater.timeZone = TimeZone.current
@@ -230,7 +227,6 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     }
     
     func parseNeededDataAndDisplay() {
-        
         guard let location = self.weatherStore.currentWeatherArray.first?.timeZone else{print("location did not unwrap"); return}
         guard let time = self.weatherStore.currentWeatherArray.first?.time else{print("time did not unwrap"); return}
         guard let summary = self.weatherStore.currentWeatherArray.first?.summary else{print("summary did not unwrap"); return}
