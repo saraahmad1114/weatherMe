@@ -14,7 +14,7 @@ class DarkSkyAPIClient {
     class func getWeatherInformation(lat: Double, lng: Double, completion:@escaping([String: Any])->()) throws {
         
         var jsonDictionary = [String: Any]()
-        
+
         let url = "https://api.darksky.net/forecast/\(Secrets.darkSkyApiKey)/\(lat),\(-lng)"
         
         let convertedUrl = URL(string: url)
@@ -32,7 +32,7 @@ class DarkSkyAPIClient {
             let jsonResponseDictionary = try JSONSerialization.jsonObject(with: unwrappedData, options: []) as! [String: Any]
                 
             jsonDictionary = jsonResponseDictionary
-            
+
             completion(jsonDictionary)
             }
             catch let error{

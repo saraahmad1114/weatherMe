@@ -15,16 +15,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var zipCodeTextField: UITextField!
     let store = CoordinatesDatastore.sharedInstance
     var locationSuccess: Bool?
+    var instanceOfWeatherforecast = WeatherForecastViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         self.zipCodeTextField.text = ""
+        self.zipCodeTextField.text = nil 
         self.currentLocation = nil
         self.locationSuccess = false
+        self.instanceOfWeatherforecast.zipCode = nil
+        //print(currentLocation,locationSuccess)
     }
 
     @IBAction func getMyLocationWeatherTapped(_ sender: UIButton) {
@@ -34,6 +38,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.locationManager?.requestWhenInUseAuthorization()
         self.locationManager?.requestLocation()
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "weatherSeg" {
