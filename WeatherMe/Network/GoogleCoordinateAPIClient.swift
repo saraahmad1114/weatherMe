@@ -45,10 +45,25 @@ class GoogleCoordinateAPIClient {
         task.resume()
     }
     
-    class func isAddressValid (zipCode: String, completion:@escaping(Bool)->()) throws{
-        
-        
-        
+    class func isAddressValid (zipCode: String, completion:@escaping(Bool)->()){
+        let zipCode = zipCode.replacingOccurrences(of: " ", with: "+")
+        var isAddressValid = Bool()
+        let url = "https://maps.googleapis.com/maps/api/geocode/json?address=\(zipCode)&key=\(Secrets.googleCoordinateApiKey)"
+        let convertedUrl = URL(string: url)
+        guard let unwrappedConvertedUrl = convertedUrl else {print("unwrappedConvertedUrl did not unwrap"); return}
+        let request = URLRequest(url: unwrappedConvertedUrl)
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            //guard let unwrappedData = data else {print("unwrappedData did not unwrap"); return}
+            guard let httpResponse = response as? HTTPURLResponse else{print("httpResponse did not unwrap"); return}
+            if httpResponse.statusCode == 200 {
+                isAddressValid = true
+            }
+            else if httpResponse.statusCode != 200 {
+                isAddressValid = false
+            }
+            completion(isAddressValid)
+        }
+        task.resume()
     }
     
 }

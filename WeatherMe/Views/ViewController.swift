@@ -19,6 +19,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        GoogleCoordinateAPIClient.isAddressValid(zipCode: "11373") { (isAddressValid) in
+//            print(isAddressValid)
+//        }
     }
 
     
