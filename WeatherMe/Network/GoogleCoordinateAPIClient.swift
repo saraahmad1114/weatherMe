@@ -45,4 +45,10 @@ class GoogleCoordinateAPIClient {
         task.resume()
     }
     
+    class func isAddressValid (zipCode: String, completion:@escaping(Bool)->()) throws{
+        
+        
+        
+    }
+    
 }
