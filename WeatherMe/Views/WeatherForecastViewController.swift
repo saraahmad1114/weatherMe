@@ -56,11 +56,15 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
             do {
            try
             self.coordinateStore.getUserCoordintes(zipcode: unwrappedZipcode, completion: { (coordinatesJson) in
-              
                 guard let lat = self.coordinateStore.locationCoordinates.last?.latitude else{print("did not unwrap lat"); return}
                 guard let lng = self.coordinateStore.locationCoordinates.last?.longitude else{print("did not unwrap lng"); return}
             do {
               try  self.weatherStore.getWeatherForecastInformation(lat: lat, lng: lng, completion: { (current, hourly, daily) in
+                print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+                print(current)
+                print(hourly)
+                print(daily)
+                print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
                    self.parseNeededDataAndDisplay()
                 })
             } catch let error {
