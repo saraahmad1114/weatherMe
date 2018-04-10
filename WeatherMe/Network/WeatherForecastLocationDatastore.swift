@@ -17,6 +17,7 @@ class WeatherForecastLocationDatastore{
     var hourlyWeatherArray = [HourlyWeather]()
     var dailyWeatherArray = [DailyWeather]()
     
+    //Getting JSON and creating the Swift Object
     func getWeatherForecastInformation(lat: Double, lng: Double, completion:@escaping ([CurrentWeather], [HourlyWeather], [DailyWeather]) -> ()) throws{
         do{ try DarkSkyAPIClient.getWeatherInformation(lat: lat, lng: -lng) { (darkSkyJson) in
             guard let jsonDictionary = darkSkyJson as? [String: Any] else {print("first level dictionary did not unwrap"); return}
