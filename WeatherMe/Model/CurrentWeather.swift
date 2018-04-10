@@ -6,11 +6,10 @@
 //  Copyright © 2018 Sara Ahmad. All rights reserved.
 //
 
-
 import Foundation
 
+//Definition of the CurrentWeather Object
 class CurrentWeather {
-    
     var timeZone: String?
     var time: Double?
     var summary: String?

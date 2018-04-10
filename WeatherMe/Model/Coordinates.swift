@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Definition of the Coordinate Object
 class Coordinates{
     
     var latitude: Double?
@@ -19,3 +20,4 @@ class Coordinates{
     }
     
 }
+

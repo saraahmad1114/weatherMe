@@ -9,6 +9,7 @@
 
 import Foundation
 
+//Definition of the HourlyWeather Object
 class HourlyWeather {
 
     var hourlyTime: Double?
