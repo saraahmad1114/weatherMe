@@ -35,7 +35,8 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Populate the view controller if the user goes with the core location option
+        
+        //UserInput - address/zipcode/city
         if self.coordinateHolder != nil {
             guard let unwrappedLat = coordinateHolder?.coordinate.latitude else {print("lat did not unwrap"); return}
             guard let unwrappedLng = coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}
@@ -58,8 +59,6 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
               
                 guard let lat = self.coordinateStore.locationCoordinates.last?.latitude else{print("did not unwrap lat"); return}
                 guard let lng = self.coordinateStore.locationCoordinates.last?.longitude else{print("did not unwrap lng"); return}
-                
-                //main
             do {
               try  self.weatherStore.getWeatherForecastInformation(lat: lat, lng: lng, completion: { (current, hourly, daily) in
                    self.parseNeededDataAndDisplay()
@@ -299,12 +298,15 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         }
     }
     
-    @IBAction func exitButtonTapped(_ sender: Any) {
-        self.dismiss(animated: false, completion: nil)
+    @IBAction func resetButtonTapped(_ sender: Any) {
+        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
         self.coordinateHolder = nil
         self.zipCode = nil
+        print("SECOND VIEW CONTROLLER ********************")
+        print(self.coordinateHolder)
+        print(self.zipCode)
+        print("SECOND VIEW CONTROLLER ********************")
     }
-    
 }
 
 extension UIViewController {

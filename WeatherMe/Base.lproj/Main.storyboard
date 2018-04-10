@@ -140,7 +140,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="exitButtonTapped:" destination="c6x-J8-Uzh" eventType="touchUpInside" id="YQ0-sc-Dbw"/>
+                                    <action selector="resetButtonTapped:" destination="c6x-J8-Uzh" eventType="touchUpInside" id="yCi-26-Arp"/>
                                     <segue destination="lEo-hY-QSG" kind="show" id="AXo-e9-2BJ"/>
                                 </connections>
                             </button>

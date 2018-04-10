@@ -42,6 +42,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 if self.currentLocation != nil {
                     guard let userLocation = currentLocation else {print("did not pass user location"); return}
                     destinationVC.coordinateHolder = currentLocation
+                    print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+                    print("LOOK AT THIS HERE IF YOU ARE USING CORE LOCATION")
+                    print(destinationVC.coordinateHolder?.coordinate.longitude)
+                    print(destinationVC.coordinateHolder?.coordinate.latitude)
+                    print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+                    print("LOOK AT THIS HERE IF YOU ARE USING CORE LOCATION")
                 }
                 else if self.zipCodeTextField != nil{
                     guard let neededZipcode = self.zipCodeTextField.text else {print("neededZipcode did not unwrap"); return}
@@ -55,6 +61,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if self.currentLocation == nil {
             if let personCoordinates = locations.first{
                 self.currentLocation = personCoordinates
+                print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+                print("LOOK AT THIS HERE IF YOU ARE USING CORE LOCATION")
+                print(self.currentLocation?.coordinate.latitude)
+                print(self.currentLocation?.coordinate.longitude)
+                print("LOOK AT THIS HERE IF YOU ARE USING CORE LOCATION")
+                print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
                 if self.currentLocation != nil {
                     presentAlert("Location Found", message: "We have found your location", cancelTitle: "OK")
                 }

@@ -103,10 +103,10 @@
 		0004C6F72066EC6B00FD5A79 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5808149D204CD33B00CE8B6D /* DailyWeatherCollectionViewCell.swift */,
 				1B1710DF1F897C3F0045F064 /* ViewController.swift */,
 				581B5FE1205D72DD00A82E6E /* WeatherForecastViewController.swift */,
 				581B5AE42050846100E8E329 /* HourlyWeatherTableViewCell.swift */,
+				5808149D204CD33B00CE8B6D /* DailyWeatherCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
