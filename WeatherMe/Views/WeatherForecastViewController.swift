@@ -15,6 +15,8 @@ import CoreLocation
 
 class WeatherForecastViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource{
     
+    //found an error in what is being used to update the location label 
+    
     var coordinateHolder: CLLocation?
     var currentLng: Double?
     var currentLat: Double?
