@@ -36,7 +36,6 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //UserInput - address/zipcode/city
         if self.coordinateHolder != nil {
             guard let unwrappedLat = coordinateHolder?.coordinate.latitude else {print("lat did not unwrap"); return}
             guard let unwrappedLng = coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}
@@ -234,13 +233,13 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     
     func parseNeededDataAndDisplay() {
         guard let location = self.weatherStore.currentWeatherArray.first?.timeZone else{print("location did not unwrap"); return}
-        guard let time = self.weatherStore.currentWeatherArray.first?.time else{print("time did not unwrap"); return}
-        guard let summary = self.weatherStore.currentWeatherArray.first?.summary else{print("summary did not unwrap"); return}
-        guard let icon = self.weatherStore.currentWeatherArray.first?.icon else{print("icon did not unwrap"); return}
-        guard let temperature = self.weatherStore.currentWeatherArray.first?.temperature else{print("temperature did not unwrap"); return}
-        guard let precip = self.weatherStore.currentWeatherArray.first?.precipProbability else{print("precipProbability did not unwrap"); return}
-        guard let humidity = self.weatherStore.currentWeatherArray.first?.humidity else{print("humidity did not unwrap"); return}
-        guard let windSpeed = self.weatherStore.currentWeatherArray.first?.windSpeed else{print("windspeed did not unwrap"); return}
+        guard let time = self.weatherStore.currentWeatherArray.last?.time else{print("time did not unwrap"); return}
+        guard let summary = self.weatherStore.currentWeatherArray.last?.summary else{print("summary did not unwrap"); return}
+        guard let icon = self.weatherStore.currentWeatherArray.last?.icon else{print("icon did not unwrap"); return}
+        guard let temperature = self.weatherStore.currentWeatherArray.last?.temperature else{print("temperature did not unwrap"); return}
+        guard let precip = self.weatherStore.currentWeatherArray.last?.precipProbability else{print("precipProbability did not unwrap"); return}
+        guard let humidity = self.weatherStore.currentWeatherArray.last?.humidity else{print("humidity did not unwrap"); return}
+        guard let windSpeed = self.weatherStore.currentWeatherArray.last?.windSpeed else{print("windspeed did not unwrap"); return}
         OperationQueue.main.addOperation {
             self.locationLabel.text = self.returnLocationString(location: location)
             self.summaryLabel.text = summary
