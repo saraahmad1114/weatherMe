@@ -298,14 +298,11 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         }
     }
     
+    //everything is being set to nil 
     @IBAction func resetButtonTapped(_ sender: Any) {
         self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
         self.coordinateHolder = nil
         self.zipCode = nil
-        print("SECOND VIEW CONTROLLER ********************")
-        print(self.coordinateHolder)
-        print(self.zipCode)
-        print("SECOND VIEW CONTROLLER ********************")
     }
 }
 
