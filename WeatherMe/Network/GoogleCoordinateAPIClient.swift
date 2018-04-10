@@ -12,6 +12,7 @@ import Foundation
 
 class GoogleCoordinateAPIClient {
     
+    //Function to get JSON
     class func getCoordinateInformation (zipCode: String, completion:@escaping([String: Any])->()) throws {
         let zipCode = zipCode.replacingOccurrences(of: " ", with: "+")
         var jsonDictionary = [String: Any]()
@@ -33,6 +34,7 @@ class GoogleCoordinateAPIClient {
         task.resume()
     }
     
+    //Function to validate the address/city/zipcode put into the textField 
     class func isAddressValid (zipCode: String, completion:@escaping(Bool)->()){
         let zipCode = zipCode.replacingOccurrences(of: " ", with: "+")
         var isAddressValid = Bool()
