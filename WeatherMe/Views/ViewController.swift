@@ -19,19 +19,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        GoogleCoordinateAPIClient.isAddressValid(zipCode: "11373") { (isAddressValid) in
-//            print(isAddressValid)
-//        }
     }
 
-    
     override func viewWillAppear(_ animated: Bool) {
         self.zipCodeTextField.text = ""
-        self.zipCodeTextField.text = nil 
         self.currentLocation = nil
         self.locationSuccess = false
-        self.instanceOfWeatherforecast.zipCode = nil
-        //print(currentLocation,locationSuccess)
     }
 
     @IBAction func getMyLocationWeatherTapped(_ sender: UIButton) {
@@ -46,13 +39,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "weatherSeg" {
             if let destinationVC = segue.destination as? WeatherForecastViewController {
-                
-                
                 if self.currentLocation != nil {
                     guard let userLocation = currentLocation else {print("did not pass user location"); return}
                     destinationVC.coordinateHolder = currentLocation
                 }
-            
                 else if self.zipCodeTextField != nil{
                     guard let neededZipcode = self.zipCodeTextField.text else {print("neededZipcode did not unwrap"); return}
                     destinationVC.zipCode = neededZipcode
