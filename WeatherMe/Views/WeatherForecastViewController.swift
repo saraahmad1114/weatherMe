@@ -36,6 +36,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //UserInput - address/zipcode/city
         if self.coordinateHolder != nil {
             guard let unwrappedLat = coordinateHolder?.coordinate.latitude else {print("lat did not unwrap"); return}
             guard let unwrappedLng = coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}
@@ -59,11 +60,6 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
                 guard let lng = self.coordinateStore.locationCoordinates.last?.longitude else{print("did not unwrap lng"); return}
             do {
               try  self.weatherStore.getWeatherForecastInformation(lat: lat, lng: lng, completion: { (current, hourly, daily) in
-                print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
-                print(current)
-                print(hourly)
-                print(daily)
-                print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
                    self.parseNeededDataAndDisplay()
                 })
             } catch let error {
@@ -301,7 +297,6 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         }
     }
     
-    //everything is being set to nil 
     @IBAction func resetButtonTapped(_ sender: Any) {
         self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
         self.coordinateHolder = nil
