@@ -6,8 +6,6 @@
 //  Copyright © 2018 Sara Ahmad. All rights reserved.
 //
 
-
-
 import UIKit
 
 import UIKit
@@ -15,7 +13,7 @@ import CoreLocation
 
 class WeatherForecastViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource{
     
-    //found an error in what is being used to update the location label 
+    //found an error in what is being used to update the location label
     
     var coordinateHolder: CLLocation?
     var currentLng: Double?
