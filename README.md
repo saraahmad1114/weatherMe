@@ -12,6 +12,8 @@ Simple app that displays weather information.
 9. Error handling using throws, do, try, catch 
 10. Using AlertViews 
 11. Creating Extensions 
+12. Used MVC design pattern - will be using the MVVM method later on 
+
 
 
 
