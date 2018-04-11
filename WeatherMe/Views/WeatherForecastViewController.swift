@@ -6,6 +6,8 @@
 //  Copyright © 2018 Sara Ahmad. All rights reserved.
 //
 
+
+
 import UIKit
 
 import UIKit
@@ -13,15 +15,18 @@ import CoreLocation
 
 class WeatherForecastViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource{
     
-    //found an error in what is being used to update the location label
-    
     var coordinateHolder: CLLocation?
     var currentLng: Double?
     var currentLat: Double?
     var zipCode: String?
+    
     let coordinateStore = CoordinatesDatastore.sharedInstance
     let weatherStore = WeatherForecastLocationDatastore.sharedInstance
     
+    var currentWeatherForecast = [CurrentWeather]()
+    var hourlyWeatherForecast = [HourlyWeather]()
+    var dailyWeatherForecast = [DailyWeather]()
+
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var completeDateLabel: UILabel!
     @IBOutlet weak var currentWeatherIcon: UIImageView!
@@ -72,6 +77,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         }
     }
     
+    //Daily Weather is being displayed by the Collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.weatherStore.dailyWeatherArray.count
     }
@@ -136,6 +142,8 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         return cell
     }
     
+    
+    //Hourly Weather is being displayed
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.weatherStore.hourlyWeatherArray.count
     }
@@ -228,7 +236,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     }
     
     func parseNeededDataAndDisplay() {
-        guard let location = self.weatherStore.currentWeatherArray.first?.timeZone else{print("location did not unwrap"); return}
+        guard let location = self.weatherStore.currentWeatherArray.last?.timeZone else{print("location did not unwrap"); return}
         guard let time = self.weatherStore.currentWeatherArray.last?.time else{print("time did not unwrap"); return}
         guard let summary = self.weatherStore.currentWeatherArray.last?.summary else{print("summary did not unwrap"); return}
         guard let icon = self.weatherStore.currentWeatherArray.last?.icon else{print("icon did not unwrap"); return}
