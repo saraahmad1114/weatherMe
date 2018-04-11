@@ -13,7 +13,7 @@ Simple app that displays weather information.
 10. Using AlertViews 
 11. Creating Extensions 
 12. Using DateFormatter() to convert unix timestamp into day and hourly time 
-13. Used MVC design pattern - will be using the MVVM method later on 
+13. Used MVC design pattern - will be using the MVVM design pattern later on 
 
 
 
