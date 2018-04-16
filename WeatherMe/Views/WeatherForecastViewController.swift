@@ -15,14 +15,19 @@ import CoreLocation
 
 class WeatherForecastViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource{
     
+    //variables to hold coordinates from core location
     var coordinateHolder: CLLocation?
+    
+    //variables to hold user input
     var currentLng: Double?
     var currentLat: Double?
     var zipCode: String?
     
+    //reference to the functions in the datastore parsing json and turning it into Swift objects
     let coordinateStore = CoordinatesDatastore.sharedInstance
     let weatherStore = WeatherForecastLocationDatastore.sharedInstance
     
+    //variables to hold the contents of the function calls
     var currentWeatherForecast = [CurrentWeather]()
     var hourlyWeatherForecast = [HourlyWeather]()
     var dailyWeatherForecast = [DailyWeather]()
@@ -309,6 +314,9 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
         self.coordinateHolder = nil
         self.zipCode = nil
+        self.currentWeatherForecast.removeAll()
+        self.hourlyWeatherForecast.removeAll()
+        self.dailyWeatherForecast.removeAll()
     }
 }
 
