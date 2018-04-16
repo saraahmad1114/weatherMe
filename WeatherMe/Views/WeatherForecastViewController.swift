@@ -51,8 +51,11 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         self.currentWeatherForecast.removeAll()
         self.hourlyWeatherForecast.removeAll()
         self.dailyWeatherForecast.removeAll()
-        self.currentLat = nil
-        self.currentLng = nil
+//        print(self.currentWeatherForecast)
+//        print(self.hourlyWeatherForecast)
+//        print(self.dailyWeatherForecast)
+//        self.currentLat = nil
+//        self.currentLng = nil
     }
     
     override func viewDidLoad() {
