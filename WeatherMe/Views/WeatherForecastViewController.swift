@@ -41,10 +41,23 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     @IBOutlet weak var hourlyWeatherTable: UITableView!
     @IBOutlet weak var dailyWeatherColl: UICollectionView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        createEmptyState()
+    }
+    
+    func createEmptyState() {
+        self.coordinateHolder = nil
+        self.zipCode = nil
+        self.currentWeatherForecast.removeAll()
+        self.hourlyWeatherForecast.removeAll()
+        self.dailyWeatherForecast.removeAll()
+        self.currentLat = nil
+        self.currentLng = nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //DONE
         //CORE LOCATION OPTION
         if self.coordinateHolder != nil {
             guard let unwrappedLat = coordinateHolder?.coordinate.latitude else {print("lat did not unwrap"); return}
@@ -66,26 +79,27 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         else if self.zipCode != nil {
             guard let unwrappedZipcode = self.zipCode else {print("did not unwrap zipcode"); return}
             do {
-           try
-            self.coordinateStore.getUserCoordintes(zipcode: unwrappedZipcode, completion: { (coordinatesJson) in
-                self.currentLat = coordinatesJson.first?.latitude
-                self.currentLng = coordinatesJson.first?.longitude
-                guard let lat = self.currentLat else {print("did not unwrap latitude for core location"); return}
-                guard let lng = self.currentLng else {print("did not unwrap longitude for core location"); return}
-            do {
-              try self.weatherStore.getWeatherForecastInformation(lat: lat, lng: lng, completion: { (current, hourly, daily) in
-                self.currentWeatherForecast = current
-                self.hourlyWeatherForecast = hourly
-                self.dailyWeatherForecast = daily
-                   self.parseNeededDataAndDisplay()
+               try
+                self.coordinateStore.getUserCoordintes(zipcode: unwrappedZipcode, completion: { (coordinatesJson) in
+                    self.currentLat = coordinatesJson.first?.latitude
+                    self.currentLng = coordinatesJson.first?.longitude
+                    guard let lat = self.currentLat else {print("did not unwrap latitude for core location"); return}
+                    guard let lng = self.currentLng else {print("did not unwrap longitude for core location"); return}
+                    
+                    do {
+                      try self.weatherStore.getWeatherForecastInformation(lat: lat, lng: lng, completion: { (current, hourly, daily) in
+                        self.currentWeatherForecast = current
+                        self.hourlyWeatherForecast = hourly
+                        self.dailyWeatherForecast = daily
+                           self.parseNeededDataAndDisplay()
+                        })
+                    } catch let error {
+                        print("error is: \(error.localizedDescription)")
+                    }
                 })
-            } catch let error {
-                print("error is: \(error.localizedDescription)")
-            }
-            })
-            } catch let error {
-                print("error is: \(error.localizedDescription)")
-            }
+                } catch let error {
+                    print("error is: \(error.localizedDescription)")
+                }
         }
     }
     
@@ -323,7 +337,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     }
     
     
-    //EVERYTHING IS RESET ONCE YOU HIT THE RESET BUTTON AND TAKES YOU OVER THE SETTINGS VIEW CONTROLLER TO PROVIDE ANOTHER LOCATION FOR THE WEATHER FORECAST 
+    //EVERYTHING IS RESET ONCE YOU HIT THE RESET BUTTON AND TAKES YOU OVER THE SETTINGS VIEW CONTROLLER TO PROVIDE ANOTHER LOCATION FOR THE WEATHER FORECAST
     @IBAction func resetButtonTapped(_ sender: Any) {
         self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
         self.coordinateHolder = nil
