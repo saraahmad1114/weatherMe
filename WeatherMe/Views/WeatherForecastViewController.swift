@@ -66,6 +66,9 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
             do {
            try
             self.coordinateStore.getUserCoordintes(zipcode: unwrappedZipcode, completion: { (coordinatesJson) in
+                
+                //self.currentLat = coordinatesJson.first.
+                
                 guard let lat = self.coordinateStore.locationCoordinates.last?.latitude else{print("did not unwrap lat"); return}
                 guard let lng = self.coordinateStore.locationCoordinates.last?.longitude else{print("did not unwrap lng"); return}
             do {
@@ -317,6 +320,8 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         self.currentWeatherForecast.removeAll()
         self.hourlyWeatherForecast.removeAll()
         self.dailyWeatherForecast.removeAll()
+        self.currentLat = nil
+        self.currentLng = nil 
     }
 }
 
