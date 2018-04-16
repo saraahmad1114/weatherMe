@@ -15,10 +15,11 @@ class CoordinatesDatastore {
     static let sharedInstance = CoordinatesDatastore()
     private init() {}
     
-    var locationCoordinates = [Coordinates]()
+    //var locationCoordinates = [Coordinates]()
     
     //Getting JSON and creating the Swift Object 
     func getUserCoordintes (zipcode: String, completion:@escaping ([Coordinates]) -> ()) throws {
+        var locationCoordinates = [Coordinates]()
         do {
             try GoogleCoordinateAPIClient.getCoordinateInformation(zipCode: zipcode) { (googleAPICoordinatesJson) in
             guard let secondLevelArray = googleAPICoordinatesJson["results"] as? Array<Any> else {print("did not unwrap at the second level"); return}
@@ -28,8 +29,8 @@ class CoordinatesDatastore {
             guard let locationLat = locationDictionary["lat"] as? Double else {print("did not unwrap latitude"); return}
             guard let locationLng = locationDictionary["lng"] as? Double else {print("did not unwrap longitude"); return}
             let coordinatesObject = Coordinates.init(latitude: locationLat, longitude: locationLng)
-            self.locationCoordinates.append(coordinatesObject)
-            completion(self.locationCoordinates)
+            locationCoordinates.append(coordinatesObject)
+            completion(locationCoordinates)
             }
         }
         catch let error {

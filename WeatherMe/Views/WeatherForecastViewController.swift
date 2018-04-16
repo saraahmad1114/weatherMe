@@ -51,11 +51,6 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         self.currentWeatherForecast.removeAll()
         self.hourlyWeatherForecast.removeAll()
         self.dailyWeatherForecast.removeAll()
-//        print(self.currentWeatherForecast)
-//        print(self.hourlyWeatherForecast)
-//        print(self.dailyWeatherForecast)
-//        self.currentLat = nil
-//        self.currentLng = nil
     }
     
     override func viewDidLoad() {
@@ -267,7 +262,9 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     }
     
     func parseNeededDataAndDisplay() {
+        
         //EVERYTHING BEING LABELS HERE IS COMING FROM THE ARRAYS THAT ARE BEING SET FROM THE SWIFT OBJECTS RETURNING FROM THE FUNCTIONS IN THE DATASTORE
+        
         guard let location = self.currentWeatherForecast.first?.timeZone else{print("location did not unwrap"); return}
         guard let time = self.currentWeatherForecast.first?.time else{print("time did not unwrap"); return}
         guard let summary = self.currentWeatherForecast.first?.summary else{print("summary did not unwrap"); return}
@@ -276,6 +273,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         guard let precip = self.currentWeatherForecast.first?.precipProbability else{print("precipProbability did not unwrap"); return}
         guard let humidity = self.currentWeatherForecast.first?.humidity else{print("humidity did not unwrap"); return}
         guard let windSpeed = self.currentWeatherForecast.first?.windSpeed else{print("windspeed did not unwrap"); return}
+        
         OperationQueue.main.addOperation {
             self.locationLabel.text = self.returnLocationString(location: location)
             self.summaryLabel.text = summary
