@@ -32,6 +32,8 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     var hourlyWeatherForecast = [HourlyWeather]()
     var dailyWeatherForecast = [DailyWeather]()
 
+    
+    //LABELS TO BE POPULATED FOR THE CURRENT WEATHER
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var completeDateLabel: UILabel!
     @IBOutlet weak var currentWeatherIcon: UIImageView!
@@ -46,6 +48,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         //UserInput - address/zipcode/city
         if self.coordinateHolder != nil {
             guard let unwrappedLat = coordinateHolder?.coordinate.latitude else {print("lat did not unwrap"); return}
@@ -59,7 +62,9 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
                 print("error here is: \(error.localizedDescription)")
             }
         }
-          
+        
+            
+            
         //Populate the view controller if the user goes with the zipcode/ address/ city option 
         else if self.zipCode != nil {
             guard let unwrappedZipcode = self.zipCode else {print("did not unwrap zipcode"); return}
@@ -85,7 +90,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         }
     }
     
-    //Daily Weather is being displayed by the Collection view
+    //Daily Weather is being displayed by the Collection view - DAILY WEATHER FORECAST ARRAY NEEDS TO BE USED HERE
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.weatherStore.dailyWeatherArray.count
     }
@@ -151,7 +156,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     }
     
     
-    //Hourly Weather is being displayed
+    //Hourly Weather is being displayed -- HOURLY WEATHER FORECAST NEEDED TO BE USED HERE TO POPULATED LABELS
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.weatherStore.hourlyWeatherArray.count
     }
@@ -216,6 +221,8 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         return cell
     }
     
+    
+    //CREATE AN EXTENSION TO ORGANIZE ALL OF THESE
     func convertToDate (givenTime: Double) -> String {
         let date = Date(timeIntervalSince1970: givenTime)
         let dateFormatter = DateFormatter()
@@ -266,6 +273,8 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         }
     }
     
+    
+    //THIS FUNCTION WILL MOST LIKELY BE OMITTED
     func returnLocationString (location: String) -> String{
         var locationString = location.components(separatedBy: "/")
         return locationString[1].replacingOccurrences(of: "_", with: " ")
@@ -321,9 +330,11 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         self.hourlyWeatherForecast.removeAll()
         self.dailyWeatherForecast.removeAll()
         self.currentLat = nil
-        self.currentLng = nil 
+        self.currentLng = nil
     }
 }
+
+//NEEDS TO BE PUT INTO ANOTHER EXTENSION FILE FOR ORGANIZATION PURPOSES
 
 extension UIViewController {
     func presentAlert(_ title: String, message: String, cancelTitle: String) {
