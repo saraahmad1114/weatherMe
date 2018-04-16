@@ -6,10 +6,6 @@
 //  Copyright © 2018 Sara Ahmad. All rights reserved.
 //
 
-
-
-import UIKit
-
 import UIKit
 import CoreLocation
 
@@ -47,6 +43,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         
         //UserInput - address/zipcode/city
