@@ -43,16 +43,18 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        //UserInput - address/zipcode/city
+
+        //DONE
+        //CORE LOCATION OPTION
         if self.coordinateHolder != nil {
             guard let unwrappedLat = coordinateHolder?.coordinate.latitude else {print("lat did not unwrap"); return}
             guard let unwrappedLng = coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}
             do {
                 try
                     self.weatherStore.getWeatherForecastInformation(lat: unwrappedLat, lng: unwrappedLng, completion: { (current, hourly, daily) in
+                        self.currentWeatherForecast = current
+                        self.hourlyWeatherForecast = hourly
+                        self.dailyWeatherForecast = daily
                 self.parseNeededDataAndDisplay()
                 })
             } catch let error {
@@ -60,21 +62,21 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
             }
         }
         
-            
-            
-        //Populate the view controller if the user goes with the zipcode/ address/ city option 
+        //USER INPUT, INSTEAD OF CORE LOCATION
         else if self.zipCode != nil {
             guard let unwrappedZipcode = self.zipCode else {print("did not unwrap zipcode"); return}
             do {
            try
             self.coordinateStore.getUserCoordintes(zipcode: unwrappedZipcode, completion: { (coordinatesJson) in
-                
-                //self.currentLat = coordinatesJson.first.
-                
-                guard let lat = self.coordinateStore.locationCoordinates.last?.latitude else{print("did not unwrap lat"); return}
-                guard let lng = self.coordinateStore.locationCoordinates.last?.longitude else{print("did not unwrap lng"); return}
+                self.currentLat = coordinatesJson.first?.latitude
+                self.currentLng = coordinatesJson.first?.longitude
+                guard let lat = self.currentLat else {print("did not unwrap latitude for core location"); return}
+                guard let lng = self.currentLng else {print("did not unwrap longitude for core location"); return}
             do {
-              try  self.weatherStore.getWeatherForecastInformation(lat: lat, lng: lng, completion: { (current, hourly, daily) in
+              try self.weatherStore.getWeatherForecastInformation(lat: lat, lng: lng, completion: { (current, hourly, daily) in
+                self.currentWeatherForecast = current
+                self.hourlyWeatherForecast = hourly
+                self.dailyWeatherForecast = daily
                    self.parseNeededDataAndDisplay()
                 })
             } catch let error {
@@ -89,26 +91,26 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     
     //Daily Weather is being displayed by the Collection view - DAILY WEATHER FORECAST ARRAY NEEDS TO BE USED HERE
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.weatherStore.dailyWeatherArray.count
+        return self.dailyWeatherForecast.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dailyWeatherCell", for: indexPath) as! DailyWeatherCollectionViewCell
         let neededRow = indexPath.row
-        if let neededDay = self.weatherStore.dailyWeatherArray[neededRow].dailyTime{
+        if let neededDay = self.dailyWeatherForecast[neededRow].dailyTime{
             let day = self.dayOfWeek(givenTime: neededDay)
             let index = day.index(day.startIndex, offsetBy: 3)
             let smallerDay = day[..<index]
             cell.dailyDayLabel.text = String(smallerDay)
         }
     
-        if let neededTempHigh = self.weatherStore.dailyWeatherArray[neededRow].dailyTemperatureHigh{
-            if let neededTempLow = self.weatherStore.dailyWeatherArray[neededRow].dailyTemperatureLow{
+        if let neededTempHigh = self.dailyWeatherForecast[neededRow].dailyTemperatureHigh{
+            if let neededTempLow = self.dailyWeatherForecast[neededRow].dailyTemperatureLow{
                 cell.dailyTempLabel.text = "\(String(Int(neededTempHigh))) / \(String(Int(neededTempLow)))"
             }
         }
         
-        if let neededIcon = self.weatherStore.dailyWeatherArray[neededRow].dailyIcon{
+        if let neededIcon = self.dailyWeatherForecast[neededRow].dailyIcon{
             if neededIcon == "clear-day"{
                 cell.dailyIconImage.image = UIImage(named:"clear-day")
             }
@@ -152,10 +154,10 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         return cell
     }
     
-    
+    //HOURLY WEATHER IS BEING UPDATED IN THE TABLEVIEW
     //Hourly Weather is being displayed -- HOURLY WEATHER FORECAST NEEDED TO BE USED HERE TO POPULATED LABELS
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.weatherStore.hourlyWeatherArray.count
+        return self.hourlyWeatherForecast.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -165,16 +167,16 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "hourlyWeatherCell", for: indexPath) as! HourlyWeatherTableViewCell
         
-        if let neededHourlyTime = self.weatherStore.hourlyWeatherArray[indexPath.row].hourlyTime{
+        if let neededHourlyTime = self.hourlyWeatherForecast[indexPath.row].hourlyTime{
             let cellTime = self.returnHourFromTime(timeStamp: neededHourlyTime)
             cell.hourlyTimeLabel.text = cellTime
         }
         
-        if let needeHourlytemperature = self.weatherStore.hourlyWeatherArray[indexPath.row].hourlyTemperature{
+        if let needeHourlytemperature = self.hourlyWeatherForecast[indexPath.row].hourlyTemperature{
             cell.hourlyTempLabel.text = String(Int(needeHourlytemperature))
         }
         
-        if let neededHourlyIcon = self.weatherStore.hourlyWeatherArray[indexPath.row].hourlyIcon{
+        if let neededHourlyIcon = self.hourlyWeatherForecast[indexPath.row].hourlyIcon{
             if neededHourlyIcon == "clear-day"{
                 cell.hourlyIconImage.image = UIImage(named:"clear-day")
             }
@@ -248,14 +250,15 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     }
     
     func parseNeededDataAndDisplay() {
-        guard let location = self.weatherStore.currentWeatherArray.last?.timeZone else{print("location did not unwrap"); return}
-        guard let time = self.weatherStore.currentWeatherArray.last?.time else{print("time did not unwrap"); return}
-        guard let summary = self.weatherStore.currentWeatherArray.last?.summary else{print("summary did not unwrap"); return}
-        guard let icon = self.weatherStore.currentWeatherArray.last?.icon else{print("icon did not unwrap"); return}
-        guard let temperature = self.weatherStore.currentWeatherArray.last?.temperature else{print("temperature did not unwrap"); return}
-        guard let precip = self.weatherStore.currentWeatherArray.last?.precipProbability else{print("precipProbability did not unwrap"); return}
-        guard let humidity = self.weatherStore.currentWeatherArray.last?.humidity else{print("humidity did not unwrap"); return}
-        guard let windSpeed = self.weatherStore.currentWeatherArray.last?.windSpeed else{print("windspeed did not unwrap"); return}
+        //EVERYTHING BEING LABELS HERE IS COMING FROM THE ARRAYS THAT ARE BEING SET FROM THE SWIFT OBJECTS RETURNING FROM THE FUNCTIONS IN THE DATASTORE
+        guard let location = self.currentWeatherForecast.first?.timeZone else{print("location did not unwrap"); return}
+        guard let time = self.currentWeatherForecast.first?.time else{print("time did not unwrap"); return}
+        guard let summary = self.currentWeatherForecast.first?.summary else{print("summary did not unwrap"); return}
+        guard let icon = self.currentWeatherForecast.first?.icon else{print("icon did not unwrap"); return}
+        guard let temperature = self.currentWeatherForecast.first?.temperature else{print("temperature did not unwrap"); return}
+        guard let precip = self.currentWeatherForecast.first?.precipProbability else{print("precipProbability did not unwrap"); return}
+        guard let humidity = self.currentWeatherForecast.first?.humidity else{print("humidity did not unwrap"); return}
+        guard let windSpeed = self.currentWeatherForecast.first?.windSpeed else{print("windspeed did not unwrap"); return}
         OperationQueue.main.addOperation {
             self.locationLabel.text = self.returnLocationString(location: location)
             self.summaryLabel.text = summary
@@ -319,6 +322,8 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         }
     }
     
+    
+    //EVERYTHING IS RESET ONCE YOU HIT THE RESET BUTTON AND TAKES YOU OVER THE SETTINGS VIEW CONTROLLER TO PROVIDE ANOTHER LOCATION FOR THE WEATHER FORECAST 
     @IBAction func resetButtonTapped(_ sender: Any) {
         self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
         self.coordinateHolder = nil
@@ -332,7 +337,6 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
 }
 
 //NEEDS TO BE PUT INTO ANOTHER EXTENSION FILE FOR ORGANIZATION PURPOSES
-
 extension UIViewController {
     func presentAlert(_ title: String, message: String, cancelTitle: String) {
         let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel, handler: nil)
