@@ -13,11 +13,7 @@ struct Coordinates{
     var latitude: Double?
     var longitude: Double?
     var locationName: String
-    
-//    init(latitude: Double, longitude: Double){
-//        self.latitude = latitude
-//        self.longitude = longitude
-//    }
+
     init(latitude: Double, longitude: Double, locationName: String) {
         self.latitude = latitude
         self.longitude = longitude
