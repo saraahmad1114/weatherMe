@@ -14,6 +14,7 @@ class WeatherForecastLocationDatastore{
     private init() {}
     
     func getWeatherForecastInformation(lat: Double, lng: Double, completion:@escaping ([CurrentWeather],
+        
         [HourlyWeather], [DailyWeather]) -> ()) throws{
         
         var currentWeatherArray = [CurrentWeather]()

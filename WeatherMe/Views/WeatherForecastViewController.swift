@@ -57,7 +57,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         //CORE LOCATION OPTION
         if self.coordinateHolder != nil {
             guard let unwrappedLat = coordinateHolder?.coordinate.latitude else {print("lat did not unwrap"); return}
-            guard let unwrappedLng = coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}
+            guard let unwrappedLng = coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}            
             do {
                 try
                     self.weatherStore.getWeatherForecastInformation(lat: unwrappedLat, lng: unwrappedLng, completion: { (current, hourly, daily) in
@@ -259,9 +259,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     }
     
     func parseNeededDataAndDisplay() {
-        
-        //EVERYTHING BEING LABELS HERE IS COMING FROM THE ARRAYS THAT ARE BEING SET FROM THE SWIFT OBJECTS RETURNING FROM THE FUNCTIONS IN THE DATASTORE
-        
+
         guard let location = self.currentWeatherForecast.first?.timeZone else{print("location did not unwrap"); return}
         guard let time = self.currentWeatherForecast.first?.time else{print("time did not unwrap"); return}
         guard let summary = self.currentWeatherForecast.first?.summary else{print("summary did not unwrap"); return}
@@ -275,8 +273,8 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
             self.locationLabel.text = self.returnLocationString(location: location)
             self.summaryLabel.text = summary
             self.precipitationLabel.text = "Precipitation: \(String(precip * 100)) %"
-            self.humdityLabel.text = "Humidity: \(String(Int(humidity * 100))) %"
-            self.windSpeedLabel?.text = "Wind Speed: \(String(Int(windSpeed))) mph"
+            self.humdityLabel.text = "Humidity: \(String(humidity * 100)) %"
+            self.windSpeedLabel?.text = "Wind Speed: \(String(windSpeed)) mph"
             self.currentTempLabel.text = "\(String(Int(temperature))) °F"
             self.returnImageForIcon(icon: icon)
             self.completeDateLabel.text = "\(self.dayOfWeek(givenTime: time)), \(self.convertToDate(givenTime: time))"
