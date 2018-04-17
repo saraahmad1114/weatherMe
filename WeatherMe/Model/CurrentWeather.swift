@@ -8,8 +8,8 @@
 
 import Foundation
 
-//Definition of the CurrentWeather Object
-class CurrentWeather {
+struct CurrentWeather {
+    
     var timeZone: String?
     var time: Double?
     var summary: String?

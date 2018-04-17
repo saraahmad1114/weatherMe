@@ -46,6 +46,8 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     func createEmptyState() {
         self.coordinateHolder = nil
         self.zipCode = nil
+        self.currentLng = nil
+        self.currentLat = nil
         self.currentWeatherForecast.removeAll()
         self.hourlyWeatherForecast.removeAll()
         self.dailyWeatherForecast.removeAll()
@@ -57,7 +59,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         //CORE LOCATION OPTION
         if self.coordinateHolder != nil {
             guard let unwrappedLat = coordinateHolder?.coordinate.latitude else {print("lat did not unwrap"); return}
-            guard let unwrappedLng = coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}            
+            guard let unwrappedLng = coordinateHolder?.coordinate.longitude else{print("lng did not unwrap"); return}
             do {
                 try
                     self.weatherStore.getWeatherForecastInformation(lat: unwrappedLat, lng: unwrappedLng, completion: { (current, hourly, daily) in
@@ -229,7 +231,6 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         return cell
     }
     
-    
     //CREATE AN EXTENSION TO ORGANIZE ALL OF THESE
     func convertToDate (givenTime: Double) -> String {
         let date = Date(timeIntervalSince1970: givenTime)
@@ -284,10 +285,16 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     }
     
     
-    //THIS FUNCTION WILL MOST LIKELY BE OMITTED
+    //WORKS FOR CORE LOCATION, IN TERMS OF GETTING THE RIGHT LOCATION
     func returnLocationString (location: String) -> String{
         var locationString = location.components(separatedBy: "/")
         return locationString[1].replacingOccurrences(of: "_", with: " ")
+    }
+    
+    //WORKS FOR USER INPUT 
+    func returnLocationStringForUser (location: String) -> String{
+        var locationString = location.components(separatedBy: "/")
+        return locationString[0].replacingOccurrences(of: "_", with: " ")
     }
     
     func returnImageForIcon (icon: String){

@@ -11,7 +11,6 @@ import Foundation
 
 class DarkSkyAPIClient {
     
-    //Function to get JSON
     class func getWeatherInformation(lat: Double, lng: Double, completion:@escaping([String: Any])->()) throws {
         var jsonDictionary = [String: Any]()
         let url = "https://api.darksky.net/forecast/\(Secrets.darkSkyApiKey)/\(lat),\(-lng)"

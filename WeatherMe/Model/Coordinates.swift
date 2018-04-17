@@ -8,8 +8,7 @@
 
 import Foundation
 
-//Definition of the Coordinate Object
-class Coordinates{
+struct Coordinates{
     
     var latitude: Double?
     var longitude: Double?
