@@ -90,13 +90,13 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
                     guard let location = coordinatesJson.first?.locationName else{print("did not unwrap location for core location"); return}
                     
                     
-                    
                     do {
                       try self.weatherStore.getWeatherForecastInformation(lat: lat, lng: lng, completion: { (current, hourly, daily) in
                         self.currentWeatherForecast = current
                         self.hourlyWeatherForecast = hourly
                         self.dailyWeatherForecast = daily
                            self.parseNeededDataAndDisplay()
+                        //updating uilabels here 
                         })
                     } catch let error {
                         print("error is: \(error.localizedDescription)")
