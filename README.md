@@ -14,6 +14,7 @@ Simple app that displays weather information.
 11. Creating Extensions 
 12. Using DateFormatter() to convert unix timestamp into day and hourly time 
 13. Used MVC design pattern - will be using the MVVM design pattern later on 
+14. Uses of structs and classes 
 
 
 

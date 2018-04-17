@@ -6,10 +6,10 @@
 //  Copyright © 2018 Sara Ahmad. All rights reserved.
 //
 
-import Foundation
+import Foundation=
 
 //Definition of the HourlyWeather Object
-class DailyWeather{
+struct DailyWeather{
     
     var dailyTime: Double?
     var dailyTemperatureHigh: Double?
