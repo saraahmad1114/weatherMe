@@ -66,9 +66,11 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
                         self.currentWeatherForecast = current
                         self.hourlyWeatherForecast = hourly
                         self.dailyWeatherForecast = daily
-                self.parseNeededDataAndDisplay()
-                //start updating uilabels here
-                        
+                guard let location = self.currentWeatherForecast.first?.timeZone else{print("location did not unwrap"); return}
+                        OperationQueue.main.addOperation {
+                            self.locationLabel.text = self.returnLocationString(location: location)
+                        }
+                        self.parseNeededDataAndDisplay()                        
                 })
             } catch let error {
                 print("error here is: \(error.localizedDescription)")
@@ -81,22 +83,18 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
             do {
                try
                 self.coordinateStore.getUserCoordintes(zipcode: unwrappedZipcode, completion: { (coordinatesJson) in
-                    
-//                    self.currentLat = coordinatesJson.first?.latitude
-//                    self.currentLng = coordinatesJson.first?.longitude
-                    
                     guard let lat = coordinatesJson.first?.latitude else {print("did not unwrap latitude for core location"); return}
                     guard let lng = coordinatesJson.first?.longitude else {print("did not unwrap longitude for core location"); return}
                     guard let location = coordinatesJson.first?.locationName else{print("did not unwrap location for core location"); return}
-                    
-                    
                     do {
                       try self.weatherStore.getWeatherForecastInformation(lat: lat, lng: lng, completion: { (current, hourly, daily) in
                         self.currentWeatherForecast = current
                         self.hourlyWeatherForecast = hourly
                         self.dailyWeatherForecast = daily
+                            OperationQueue.main.addOperation {
+                                self.locationLabel.text = location
+                            }
                            self.parseNeededDataAndDisplay()
-                        //updating uilabels here 
                         })
                     } catch let error {
                         print("error is: \(error.localizedDescription)")
@@ -268,7 +266,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     
     func parseNeededDataAndDisplay() {
 
-        guard let location = self.currentWeatherForecast.first?.timeZone else{print("location did not unwrap"); return}
+//        guard let location = self.currentWeatherForecast.first?.timeZone else{print("location did not unwrap"); return}
         guard let time = self.currentWeatherForecast.first?.time else{print("time did not unwrap"); return}
         guard let summary = self.currentWeatherForecast.first?.summary else{print("summary did not unwrap"); return}
         guard let icon = self.currentWeatherForecast.first?.icon else{print("icon did not unwrap"); return}
@@ -278,7 +276,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         guard let windSpeed = self.currentWeatherForecast.first?.windSpeed else{print("windspeed did not unwrap"); return}
         
         OperationQueue.main.addOperation {
-            self.locationLabel.text = self.returnLocationString(location: location)
+            //self.locationLabel.text = self.returnLocationString(location: location)
             self.summaryLabel.text = summary
             self.precipitationLabel.text = "Precipitation: \(String(precip * 100)) %"
             self.humdityLabel.text = "Humidity: \(String(humidity * 100)) %"

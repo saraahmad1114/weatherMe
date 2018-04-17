@@ -6,7 +6,7 @@
 //  Copyright © 2018 Sara Ahmad. All rights reserved.
 //
 
-import Foundation=
+import Foundation
 
 //Definition of the HourlyWeather Object
 struct DailyWeather{
