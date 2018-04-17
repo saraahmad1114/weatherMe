@@ -15,7 +15,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     var coordinateHolder: CLLocation?
     
     //variables to hold user input
-    var locationName: String? 
+    var locationName: String?
     var currentLng: Double?
     var currentLat: Double?
     var zipCode: String?
@@ -81,10 +81,13 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
                try
                 self.coordinateStore.getUserCoordintes(zipcode: unwrappedZipcode, completion: { (coordinatesJson) in
                     
+                    self.locationName = coordinatesJson.first?.locationName
                     self.currentLat = coordinatesJson.first?.latitude
                     self.currentLng = coordinatesJson.first?.longitude
+                    
                     guard let lat = self.currentLat else {print("did not unwrap latitude for core location"); return}
                     guard let lng = self.currentLng else {print("did not unwrap longitude for core location"); return}
+                    guard let location = self.locationName else{print("did not unwrap locationName for core location"); return}
                     
                     do {
                       try self.weatherStore.getWeatherForecastInformation(lat: lat, lng: lng, completion: { (current, hourly, daily) in
