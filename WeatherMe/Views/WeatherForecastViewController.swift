@@ -28,8 +28,6 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     var hourlyWeatherForecast = [HourlyWeather]()
     var dailyWeatherForecast = [DailyWeather]()
 
-    
-    //LABELS TO BE POPULATED FOR THE CURRENT WEATHER
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var completeDateLabel: UILabel!
     @IBOutlet weak var currentWeatherIcon: UIImageView!
@@ -101,7 +99,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         }
     }
     
-    //Daily Weather is being displayed by the Collection view - DAILY WEATHER FORECAST ARRAY NEEDS TO BE USED HERE
+    //DAILY WEATHER
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.dailyWeatherForecast.count
     }
@@ -166,8 +164,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         return cell
     }
     
-    //HOURLY WEATHER IS BEING UPDATED IN THE TABLEVIEW
-    //Hourly Weather is being displayed -- HOURLY WEATHER FORECAST NEEDED TO BE USED HERE TO POPULATED LABELS
+    //HOURLY WEATHER
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.hourlyWeatherForecast.count
     }
@@ -277,7 +274,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
         OperationQueue.main.addOperation {
             self.locationLabel.text = self.returnLocationString(location: location)
             self.summaryLabel.text = summary
-            self.precipitationLabel.text = "Precipitation: \(String(Int(precip * 100))) %"
+            self.precipitationLabel.text = "Precipitation: \(String(precip * 100)) %"
             self.humdityLabel.text = "Humidity: \(String(Int(humidity * 100))) %"
             self.windSpeedLabel?.text = "Wind Speed: \(String(Int(windSpeed))) mph"
             self.currentTempLabel.text = "\(String(Int(temperature))) °F"
@@ -338,7 +335,7 @@ class WeatherForecastViewController: UIViewController,  UITableViewDataSource, U
     }
     
     
-    //EVERYTHING IS RESET ONCE YOU HIT THE RESET BUTTON AND TAKES YOU OVER THE SETTINGS VIEW CONTROLLER TO PROVIDE ANOTHER LOCATION FOR THE WEATHER FORECAST
+    //EVERYTHING IS RESET ONCE YOU HIT THE RESET BUTTON
     @IBAction func resetButtonTapped(_ sender: Any) {
         self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
         self.coordinateHolder = nil
