@@ -15,7 +15,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var zipCodeTextField: UITextField!
     let store = CoordinatesDatastore.sharedInstance
     var locationSuccess: Bool?
-    var instanceOfWeatherforecast = WeatherForecastViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()

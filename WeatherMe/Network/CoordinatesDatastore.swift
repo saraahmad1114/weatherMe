@@ -21,7 +21,6 @@ class CoordinatesDatastore {
         var locationCoordinates = [Coordinates]()
         
         do {
-            
             try GoogleCoordinateAPIClient.getCoordinateInformation(zipCode: zipcode) { (googleAPICoordinatesJson) in
             
                 guard let secondLevelArray = googleAPICoordinatesJson["results"] as? Array<Any> else {print("did not unwrap at the second level"); return}
