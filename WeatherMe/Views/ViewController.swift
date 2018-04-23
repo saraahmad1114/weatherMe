@@ -14,7 +14,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var currentLocation: CLLocation?
     @IBOutlet weak var zipCodeTextField: UITextField!
     let store = CoordinatesDatastore.sharedInstance
-    var locationSuccess: Bool?
+    var userInputLocationSuccess: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         self.zipCodeTextField.text = ""
         self.currentLocation = nil
-        self.locationSuccess = false
+        self.userInputLocationSuccess = false
     }
 
     @IBAction func getMyLocationWeatherTapped(_ sender: UIButton) {
@@ -48,8 +48,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 }
             }
             }
+        //add another segue
     }
     
+    
+    //add another function to stop or make the segue go through!
+    
+    
+    
+    //Core Location functions DO NOT CHANGE THESE AT ALL
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if self.currentLocation == nil {
             if let personCoordinates = locations.first{
