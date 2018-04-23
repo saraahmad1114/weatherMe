@@ -29,14 +29,6 @@ class CoordinatesDatastore {
                 guard let firstElementFromArray = secondLevelArray[0] as? [String : Any] else {print("did not unwrap at the third level"); return}
                 
                 guard let locationName = firstElementFromArray["formatted_address"] as? String else {print("did not unwrap locationName"); return}
-                
-                //start changing it here!
-                
-//                guard let addressComponentValueArray = firstElementFromArray["address_components"] as? Array<Any> else{print("did not unwrap addressComponentValueArray"); return}
-//
-//                guard let thirdElementAddressComponentValueArray = addressComponentValueArray[2] as? [String: Any] else{print("did not unwrap thirdElementAddressComponentValueArray"); return}
-//
-//                guard let locationName = thirdElementAddressComponentValueArray["long_name"] as? String else{print("did not unwrap locationName"); return}
             
                 guard let geometryDictionary = firstElementFromArray["geometry"] as? [String: Any] else {print("did not unwrap at the fourth level"); return}
             
