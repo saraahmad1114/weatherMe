@@ -15,6 +15,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var zipCodeTextField: UITextField!
     let store = CoordinatesDatastore.sharedInstance
     var userInputLocationSuccess: Bool?
+    var coreLocationSuccess: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,24 +37,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "userInputSegue" {
+        if segue.identifier == "coreLocationSegue" {
             if let destinationVC = segue.destination as? WeatherForecastViewController {
-                if self.currentLocation != nil {
                     guard let userLocation = currentLocation else {print("did not pass user location"); return}
                     destinationVC.coordinateHolder = currentLocation
                 }
-                else if self.zipCodeTextField != nil{
-                    guard let neededZipcode = self.zipCodeTextField.text else {print("neededZipcode did not unwrap"); return}
-                    destinationVC.zipCode = neededZipcode
+            }
+        else if segue.identifier == "userInputsegue"{
+            if let destinationVC = segue.destination as? WeatherForecastViewController {
+                guard let neededZipcode = self.zipCodeTextField.text else {print("neededZipcode did not unwrap"); return}
+                destinationVC.zipCode = neededZipcode
                 }
             }
-            }
-        //add another segue with another identifier so that you know what you are passing on.
-        
-    }
+        }
     
-    //this function definitely needs to be filled out
-    //add another function to stop or make the segue go through!
 //    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
 //        if password incorrect {
 //            return false
@@ -68,7 +65,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if self.currentLocation == nil {
             if let personCoordinates = locations.first{
                 self.currentLocation = personCoordinates
-                self.userInputLocationSuccess = true
+                self.coreLocationSuccess = true
                 if self.currentLocation != nil {
                     presentAlert("Location Found", message: "We have found your location", cancelTitle: "OK")
                 }
