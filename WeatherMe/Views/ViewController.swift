@@ -48,12 +48,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 }
             }
             }
-        //add another segue
+        //add another segue with another identifier so that you know what you are passing on.
+        
     }
     
-    
+    //this function definitely needs to be filled out
     //add another function to stop or make the segue go through!
-    
+//    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+//        if password incorrect {
+//            return false
+//        }else {
+//            return true
+//        }
+//    }
     
     
     //Core Location functions DO NOT CHANGE THESE AT ALL
