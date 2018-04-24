@@ -68,6 +68,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if self.currentLocation == nil {
             if let personCoordinates = locations.first{
                 self.currentLocation = personCoordinates
+                self.userInputLocationSuccess = true
                 if self.currentLocation != nil {
                     presentAlert("Location Found", message: "We have found your location", cancelTitle: "OK")
                 }
