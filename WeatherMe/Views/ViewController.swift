@@ -65,7 +65,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+    
+    func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if identifier == "coreLocationSegue"{
             if self.coreLocationSuccess == true {
                 return true
@@ -85,7 +86,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-    //Core Location functions DO NOT CHANGE THESE AT ALL
+    //MARK: CORE LOCATION FUNCTIONS 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if self.currentLocation == nil {
             if let personCoordinates = locations.first{
