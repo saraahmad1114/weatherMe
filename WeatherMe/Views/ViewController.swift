@@ -25,6 +25,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.zipCodeTextField.text = ""
         self.currentLocation = nil
         self.userInputLocationSuccess = false
+        self.coreLocationSuccess = false
     }
 
     @IBAction func getMyLocationWeatherTapped(_ sender: UIButton) {
@@ -36,7 +37,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func goButtonTapped(_ sender: Any) {
-        
+        if let userText = self.zipCodeTextField.text{
+            GoogleCoordinateAPIClient.isAddressValid(zipCode: userText) { (boolValue) in
+                if boolValue == true {
+                    self.userInputLocationSuccess = true
+                }
+                else if boolValue == false {
+                    self.userInputLocationSuccess = false
+                    self.presentAlert("Invalid Input", message: "RE-Enter zip code, city or address", cancelTitle: "OK")
+                }
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -54,13 +65,24 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
     
-//    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-//        if password incorrect {
-//            return false
-//        }else {
-//            return true
-//        }
-//    }
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        if identifier == "coreLocationSegue"{
+            if self.coreLocationSuccess == true {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+        else if identifier == "userInputsegue"{
+            if self.userInputLocationSuccess == true {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+    }
     
     
     //Core Location functions DO NOT CHANGE THESE AT ALL
