@@ -74,6 +74,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBound" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="goButtonTapped:" destination="lEo-hY-QSG" eventType="touchUpInside" id="KVb-XI-viR"/>
                                     <segue destination="c6x-J8-Uzh" kind="presentation" identifier="userInputSegue" id="Me4-sJ-Bdp"/>
                                 </connections>
                             </button>

@@ -35,6 +35,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.locationManager?.requestLocation()
     }
     
+    @IBAction func goButtonTapped(_ sender: Any) {
+        
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "coreLocationSegue" {
