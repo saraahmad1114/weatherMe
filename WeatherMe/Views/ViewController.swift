@@ -51,39 +51,45 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("1")
         if segue.identifier == "coreLocationSegue" {
             if let destinationVC = segue.destination as? WeatherForecastViewController {
+                if self.currentLocation != nil && self.coreLocationSuccess == true{
                     guard let userLocation = currentLocation else {print("did not pass user location"); return}
                     destinationVC.coordinateHolder = currentLocation
                 }
             }
+        }
         else if segue.identifier == "userInputsegue"{
             if let destinationVC = segue.destination as? WeatherForecastViewController {
+                if self.zipCodeTextField.text != nil && self.userInputLocationSuccess == true {
                 guard let neededZipcode = self.zipCodeTextField.text else {print("neededZipcode did not unwrap"); return}
                 destinationVC.zipCode = neededZipcode
                 }
             }
         }
-    
-    
-    func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        if identifier == "coreLocationSegue"{
-            if self.coreLocationSuccess == true {
-                return true
-            }
-            else {
-                return false
-            }
-        }
-        else if identifier == "userInputsegue"{
-            if self.userInputLocationSuccess == true {
-                return true
-            }
-            else {
-                return false
-            }
-        }
     }
+    
+    
+//    func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+//        if identifier == "coreLocationSegue"{
+//            if self.coreLocationSuccess == true {
+//                return true
+//            }
+//            else {
+//                return false
+//            }
+//        }
+//        else if identifier == "userInputsegue"{
+//            if self.userInputLocationSuccess == true {
+//                return true
+//            }
+//            else {
+//                return false
+//            }
+//        }
+//        return false
+//    }
     
     
     //MARK: CORE LOCATION FUNCTIONS
