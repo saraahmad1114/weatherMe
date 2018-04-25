@@ -86,7 +86,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-    //MARK: CORE LOCATION FUNCTIONS 
+    //MARK: CORE LOCATION FUNCTIONS
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if self.currentLocation == nil {
             if let personCoordinates = locations.first{
