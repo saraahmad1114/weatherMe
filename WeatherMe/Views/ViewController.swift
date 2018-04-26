@@ -51,7 +51,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("1")
         if segue.identifier == "coreLocationSegue" {
             if let destinationVC = segue.destination as? WeatherForecastViewController {
                 if self.currentLocation != nil && self.coreLocationSuccess == true{
