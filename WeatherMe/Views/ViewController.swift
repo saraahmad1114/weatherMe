@@ -41,8 +41,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             GoogleCoordinateAPIClient.isAddressValid(zipCode: userText) { (boolValue) in
                 if boolValue == true {
                     self.userInputLocationSuccess = true
+                    OperationQueue.main.addOperation {
+                        self.performSegue(withIdentifier: "locationSegue", sender: self.currentLocation)
+                    }
                 }
                 else if boolValue == false {
+                    
                     self.userInputLocationSuccess = false
                 }
             }
