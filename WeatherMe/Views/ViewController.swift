@@ -51,31 +51,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "coreLocationSegue" {
-//            if let destinationVC = segue.destination as? WeatherForecastViewController {
-//                if self.currentLocation != nil && self.coreLocationSuccess == true{
-//                    guard let userLocation = currentLocation else {print("did not pass user location"); return}
-//                    destinationVC.coordinateHolder = currentLocation
-//                }
-//            }
-//        }
-         if segue.identifier == "userInputsegue"{
+         if segue.identifier == "locationSegue"{
             if let destinationVC = segue.destination as? WeatherForecastViewController {
-                if self.zipCodeTextField.text != nil && self.userInputLocationSuccess == true {
+                if self.currentLocation != nil && self.coreLocationSuccess == true{
+                guard let userLocation = currentLocation else {print("did not pass user location"); return}
+                destinationVC.coordinateHolder = currentLocation
+                }
+                else if self.zipCodeTextField.text != nil && self.userInputLocationSuccess == true {
                 guard let neededZipcode = self.zipCodeTextField.text else {print("neededZipcode did not unwrap"); return}
                 destinationVC.zipCode = neededZipcode
                 }
             }
         }
     }
-    
 
-    
-     func shouldPerformSegueWithIdentifier(identifier: String ,sender: AnyObject?) -> Bool {
-        
-        return !(identifier == "coreLocationSegue" && self.coreLocationSuccess!)
-        
-    }
     
     
     //MARK: CORE LOCATION FUNCTIONS
@@ -84,12 +73,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             if let personCoordinates = locations.first{
                 self.currentLocation = personCoordinates
                 self.coreLocationSuccess = true
-                performSegue(withIdentifier: "coreLocationSegue", sender: WeatherForecastViewController())
-                let destinationVC = WeatherForecastViewController()
-                guard let userLocation = currentLocation else {print("did not pass user location"); return}
-                destinationVC.coordinateHolder = currentLocation
+                    presentAlert("Location Found", message: "Hit Go button to proceed", cancelTitle: "OK")
                 if self.currentLocation != nil {
-                    presentAlert("Location Found", message: "We have found your location", cancelTitle: "OK")
+                    presentAlert("Location Not Found", message: "Provide city, zip code or address in the textfield", cancelTitle: "OK")
                 }
             }
         }

@@ -53,7 +53,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="getMyLocationWeatherTapped:" destination="lEo-hY-QSG" eventType="touchUpInside" id="Xqf-8e-PDa"/>
-                                    <segue destination="c6x-J8-Uzh" kind="presentation" identifier="coreLocationSegue" id="Xyn-qS-ouR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHS-fp-G4a">
@@ -75,7 +74,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="goButtonTapped:" destination="lEo-hY-QSG" eventType="touchUpInside" id="KVb-XI-viR"/>
-                                    <segue destination="c6x-J8-Uzh" kind="presentation" identifier="userInputSegue" id="Me4-sJ-Bdp"/>
+                                    <segue destination="c6x-J8-Uzh" kind="presentation" identifier="locationSegue" id="Me4-sJ-Bdp"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter City, State, or Zipcode" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontForContentSizeCategory="YES" minimumFontSize="20" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="aly-vB-xmx">
@@ -384,7 +383,4 @@
         <image name="myWeatherLogo" width="199" height="43"/>
         <image name="settingsButton" width="40" height="40"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="Xyn-qS-ouR"/>
-    </inferredMetricsTieBreakers>
 </document>
