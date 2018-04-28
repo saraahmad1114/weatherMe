@@ -69,7 +69,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    
+    //see if this works 
 //    func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
 //        if identifier == "coreLocationSegue"{
 //            if self.coreLocationSuccess == true {
