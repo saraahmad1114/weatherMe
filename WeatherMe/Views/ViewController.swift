@@ -45,7 +45,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 if boolValue == true {
                     self.userInputLocationSuccess = true
                     OperationQueue.main.addOperation {
-                        self.performSegue(withIdentifier: "locationSegue", sender: self.currentLocation)
+                        self.performSegue(withIdentifier: "locationSegue", sender: sender)
                     }
                 }
                 else if boolValue == false {
