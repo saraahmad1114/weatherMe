@@ -53,7 +53,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "coreLocationSegue" {
             if let destinationVC = segue.destination as? WeatherForecastViewController {
-                if self.currentLocation != nil && self.coreLocationSuccess == true{
+                if self.currentLocation != nil {
                     guard let userLocation = currentLocation else {print("did not pass user location"); return}
                     destinationVC.coordinateHolder = currentLocation
                 }
@@ -69,7 +69,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    //see if this works 
+    //see if this works
 //    func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
 //        if identifier == "coreLocationSegue"{
 //            if self.coreLocationSuccess == true {
@@ -96,6 +96,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if self.currentLocation == nil {
             if let personCoordinates = locations.first{
                 self.currentLocation = personCoordinates
+//                print("**********************************************")
+//                print(self.currentLocation?.coordinate.latitude)
+//                print(self.currentLocation?.coordinate.longitude)
+//                print("**********************************************")
                 self.coreLocationSuccess = true
                 if self.currentLocation != nil {
                     presentAlert("Location Found", message: "We have found your location", cancelTitle: "OK")
