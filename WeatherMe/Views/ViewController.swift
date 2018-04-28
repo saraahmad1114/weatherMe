@@ -51,15 +51,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "coreLocationSegue" {
-            if let destinationVC = segue.destination as? WeatherForecastViewController {
-                if self.currentLocation != nil {
-                    guard let userLocation = currentLocation else {print("did not pass user location"); return}
-                    destinationVC.coordinateHolder = currentLocation
-                }
-            }
-        }
-        else if segue.identifier == "userInputsegue"{
+//        if segue.identifier == "coreLocationSegue" {
+//            if let destinationVC = segue.destination as? WeatherForecastViewController {
+//                if self.currentLocation != nil && self.coreLocationSuccess == true{
+//                    guard let userLocation = currentLocation else {print("did not pass user location"); return}
+//                    destinationVC.coordinateHolder = currentLocation
+//                }
+//            }
+//        }
+         if segue.identifier == "userInputsegue"{
             if let destinationVC = segue.destination as? WeatherForecastViewController {
                 if self.zipCodeTextField.text != nil && self.userInputLocationSuccess == true {
                 guard let neededZipcode = self.zipCodeTextField.text else {print("neededZipcode did not unwrap"); return}
