@@ -69,26 +69,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    //see if this works
-//    func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-//        if identifier == "coreLocationSegue"{
-//            if self.coreLocationSuccess == true {
-//                return true
-//            }
-//            else {
-//                return false
-//            }
-//        }
-//        else if identifier == "userInputsegue"{
-//            if self.userInputLocationSuccess == true {
-//                return true
-//            }
-//            else {
-//                return false
-//            }
-//        }
-//        return false
-//    }
+
+    
+     func shouldPerformSegueWithIdentifier(identifier: String ,sender: AnyObject?) -> Bool {
+        
+        return !(identifier == "coreLocationSegue" && self.coreLocationSuccess!)
+        
+    }
     
     
     //MARK: CORE LOCATION FUNCTIONS
@@ -96,11 +83,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if self.currentLocation == nil {
             if let personCoordinates = locations.first{
                 self.currentLocation = personCoordinates
-//                print("**********************************************")
-//                print(self.currentLocation?.coordinate.latitude)
-//                print(self.currentLocation?.coordinate.longitude)
-//                print("**********************************************")
                 self.coreLocationSuccess = true
+                performSegue(withIdentifier: "coreLocationSegue", sender: WeatherForecastViewController())
+                let destinationVC = WeatherForecastViewController()
+                guard let userLocation = currentLocation else {print("did not pass user location"); return}
+                destinationVC.coordinateHolder = currentLocation
                 if self.currentLocation != nil {
                     presentAlert("Location Found", message: "We have found your location", cancelTitle: "OK")
                 }
