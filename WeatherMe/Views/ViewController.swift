@@ -44,7 +44,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 }
                 else if boolValue == false {
                     self.userInputLocationSuccess = false
-                    self.presentAlert("Invalid Input", message: "RE-Enter zip code, city or address", cancelTitle: "OK")
                 }
             }
         }
@@ -63,6 +62,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 }
             }
         }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "locationSegue"{
+            if self.coreLocationSuccess == true && self.currentLocation != nil {
+                return true
+            }
+            else if self.userInputLocationSuccess == true && self.zipCodeTextField.text != nil {
+                return true
+            }
+        }
+        self.presentAlert("Invalid Input", message: "RE-Enter zip code, city or address", cancelTitle: "OK")
+        return false
     }
 
     
