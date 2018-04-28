@@ -3,7 +3,7 @@
 //  WeatherMe
 //  Created by Sara Ahmad on 3/14/18.
 //  Copyright © 2018 Sara Ahmad. All rights reserved.
-//
+
 
 import UIKit
 import CoreLocation
@@ -28,6 +28,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.coreLocationSuccess = false
     }
 
+    //Starting up core Location
     @IBAction func getMyLocationWeatherTapped(_ sender: UIButton) {
         self.locationManager = CLLocationManager()
         self.locationManager?.delegate = self
@@ -36,6 +37,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.locationManager?.requestLocation()
     }
     
+    
+    //the segue should be performed there!
     @IBAction func goButtonTapped(_ sender: Any) {
         if let userText = self.zipCodeTextField.text{
             GoogleCoordinateAPIClient.isAddressValid(zipCode: userText) { (boolValue) in
@@ -46,13 +49,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     }
                 }
                 else if boolValue == false {
-                    
                     self.userInputLocationSuccess = false
                 }
             }
         }
     }
     
+    //Prepare for segue, which will most likely be broken up
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
          if segue.identifier == "locationSegue"{
             if let destinationVC = segue.destination as? WeatherForecastViewController {
@@ -68,6 +71,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    
+    //MARK: Whether the segue should go through
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "locationSegue"{
             if self.coreLocationSuccess == true && self.currentLocation != nil {
