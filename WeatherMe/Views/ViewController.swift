@@ -28,7 +28,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.coreLocationSuccess = false
     }
 
-    //Starting up core Location
     @IBAction func getMyLocationWeatherTapped(_ sender: UIButton) {
         self.locationManager = CLLocationManager()
         self.locationManager?.delegate = self
@@ -38,35 +37,34 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-    //the segue should be performed there!
     @IBAction func goButtonTapped(_ sender: Any) {
         if let userText = self.zipCodeTextField.text{
             GoogleCoordinateAPIClient.isAddressValid(zipCode: userText) { (boolValue) in
                 if boolValue == true {
                     self.userInputLocationSuccess = true
-                    OperationQueue.main.addOperation {
-                        self.performSegue(withIdentifier: "locationSegue", sender: sender)
-                    }
+                    self.performSegue(withIdentifier: "goButtonSegue", sender: self.zipCodeTextField.text)
                 }
                 else if boolValue == false {
                     self.userInputLocationSuccess = false
+                    self.presentAlert("Invalid Input", message: "Please re-enter valid input", cancelTitle: "OK")
+                    self.shouldPerformSegue(withIdentifier: "goButtonSegue", sender: sender)
                 }
             }
         }
     }
     
-    //Prepare for segue, which will most likely be broken up
+    //MARK: What to pass in each of these segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         if segue.identifier == "locationSegue"{
+         if segue.identifier == "goButtonSegue"{
             if let destinationVC = segue.destination as? WeatherForecastViewController {
-                if self.currentLocation != nil && self.coreLocationSuccess == true{
-                guard let userLocation = currentLocation else {print("did not pass user location"); return}
-                destinationVC.coordinateHolder = currentLocation
-                }
-                else if self.zipCodeTextField.text != nil && self.userInputLocationSuccess == true {
                 guard let neededZipcode = self.zipCodeTextField.text else {print("neededZipcode did not unwrap"); return}
                 destinationVC.zipCode = neededZipcode
-                }
+            }
+        }
+         else if segue.identifier == "coreLocationButtonSegue"{
+            if let destinationVC = segue.destination as? WeatherForecastViewController {
+            guard let userLocation = currentLocation else {print("did not pass user location"); return}
+            destinationVC.coordinateHolder = currentLocation
             }
         }
     }
@@ -82,7 +80,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 return true
             }
         }
-        self.presentAlert("Invalid Input", message: "RE-Enter zip code, city or address", cancelTitle: "OK")
         return false
     }
 
@@ -94,10 +91,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             if let personCoordinates = locations.first{
                 self.currentLocation = personCoordinates
                 self.coreLocationSuccess = true
-                    presentAlert("Location Found", message: "Hit Go button to proceed", cancelTitle: "OK")
-                if self.currentLocation != nil {
-                    presentAlert("Location Not Found", message: "Provide city, zip code or address in the textfield", cancelTitle: "OK")
-                }
+                self.presentAlert("Location Found", message: "Your Location was found", cancelTitle: "OK")
+                self.performSegue(withIdentifier: "coreLocationButtonSegue", sender: sender)
             }
         }
     }
@@ -113,6 +108,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         presentAlert("Location Not Found", message: "Provide zipcode, address or city", cancelTitle: "OK")
+        self.shouldPerformSegue(withIdentifier: "coreLocationButton", sender: (Any).self)
     }
 
 }
