@@ -42,19 +42,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             GoogleCoordinateAPIClient.isAddressValid(zipCode: userText) { (boolValue) in
                 if boolValue == true {
                     self.userInputLocationSuccess = true
-                    self.performSegue(withIdentifier: "goButtonSegue", sender: self.zipCodeTextField.text)
+                    self.performSegue(withIdentifier: "goButtonSegue", sender: self)
                 }
                 else if boolValue == false {
                     self.userInputLocationSuccess = false
                     self.presentAlert("Invalid Input", message: "Please re-enter valid input", cancelTitle: "OK")
-                    self.shouldPerformSegue(withIdentifier: "goButtonSegue", sender: sender)
+                    self.shouldPerformSegue(withIdentifier: "goButtonSegue", sender: self)
                 }
             }
         }
     }
     
     //MARK: What to pass in each of these segues
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
          if segue.identifier == "goButtonSegue"{
             if let destinationVC = segue.destination as? WeatherForecastViewController {
                 guard let neededZipcode = self.zipCodeTextField.text else {print("neededZipcode did not unwrap"); return}
@@ -63,26 +63,29 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
          else if segue.identifier == "coreLocationButtonSegue"{
             if let destinationVC = segue.destination as? WeatherForecastViewController {
-            guard let userLocation = currentLocation else {print("did not pass user location"); return}
-            destinationVC.coordinateHolder = currentLocation
+                guard let userLocation = currentLocation else {print("did not pass user location"); return}
+                destinationVC.coordinateHolder = currentLocation
             }
+            
         }
+        
     }
     
     
     //MARK: Whether the segue should go through
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == "locationSegue"{
+        if identifier == "coreLocationButtonSegue"{
             if self.coreLocationSuccess == true && self.currentLocation != nil {
                 return true
             }
-            else if self.userInputLocationSuccess == true && self.zipCodeTextField.text != nil {
-                return true
-            }
+        }
+        else if identifier == "goButtonSegue"{
+                if self.userInputLocationSuccess == true && self.zipCodeTextField.text != nil {
+                    return true
+                }
         }
         return false
     }
-
     
     
     //MARK: CORE LOCATION FUNCTIONS
@@ -92,7 +95,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 self.currentLocation = personCoordinates
                 self.coreLocationSuccess = true
                 self.presentAlert("Location Found", message: "Your Location was found", cancelTitle: "OK")
-                self.performSegue(withIdentifier: "coreLocationButtonSegue", sender: sender)
+                self.performSegue(withIdentifier: "coreLocationButtonSegue", sender: self)
             }
         }
     }
@@ -108,8 +111,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         presentAlert("Location Not Found", message: "Provide zipcode, address or city", cancelTitle: "OK")
-        self.shouldPerformSegue(withIdentifier: "coreLocationButton", sender: (Any).self)
+        self.shouldPerformSegue(withIdentifier: "coreLocationButton", sender: self)
     }
-
 }
-
