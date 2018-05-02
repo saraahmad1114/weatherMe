@@ -8,6 +8,10 @@
 import UIKit
 import CoreLocation
 
+//MARK: TO DO LIST:
+//1. implement an activity indicator, just to provide enough time before you segue over - core location
+//2. implement an activity indicator, just to provide enough time before you segue over - user input 
+
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var locationManager: CLLocationManager?
