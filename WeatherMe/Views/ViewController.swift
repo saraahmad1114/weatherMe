@@ -10,7 +10,7 @@ import CoreLocation
 
 //MARK: TO DO LIST:
 //1. implement an activity indicator, just to provide enough time before you segue over - core location
-//2. implement an activity indicator, just to provide enough time before you segue over - user input 
+//2. implement an activity indicator, just to provide enough time before you segue over - user input
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -44,6 +44,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func goButtonTapped(_ sender: Any) {
         if let userText = self.zipCodeTextField.text{
             GoogleCoordinateAPIClient.isAddressValid(zipCode: userText) { (boolValue) in
+                //activity indicator needs to go here with a while loop, so that it proceeds over, showing the user that the location is being found.
                 if boolValue == true {
                     self.userInputLocationSuccess = true
                     self.performSegue(withIdentifier: "goButtonSegue", sender: self)
