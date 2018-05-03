@@ -20,6 +20,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     let store = CoordinatesDatastore.sharedInstance
     var userInputLocationSuccess: Bool?
     var coreLocationSuccess: Bool?
+    @IBOutlet weak var locationProgressSpinner: UIActivityIndicatorView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +42,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.locationManager?.requestLocation()
     }
     
-    
     @IBAction func goButtonTapped(_ sender: Any) {
         if let userText = self.zipCodeTextField.text{
             GoogleCoordinateAPIClient.isAddressValid(zipCode: userText) { (boolValue) in
@@ -60,6 +61,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     //MARK: What to pass in each of these segues
     func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("ENTERED INTO THE SEGUE FUNCTION")
          if segue.identifier == "goButtonSegue"{
             if let destinationVC = segue.destination as? WeatherForecastViewController {
                 guard let neededZipcode = self.zipCodeTextField.text else {print("neededZipcode did not unwrap"); return}
@@ -71,11 +73,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 guard let userLocation = currentLocation else {print("did not pass user location"); return}
                 destinationVC.coordinateHolder = currentLocation
             }
-            
         }
-        
     }
-    
     
     //MARK: Whether the segue should go through
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -95,12 +94,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     //MARK: CORE LOCATION FUNCTIONS
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        //activity indicator here to show the user location is being found
         if self.currentLocation == nil {
             if let personCoordinates = locations.first{
                 self.currentLocation = personCoordinates
+                print("*************************************************")
+                print(self.currentLocation?.coordinate.latitude)
+                print(self.currentLocation?.coordinate.longitude)
+                print("*************************************************")
                 self.coreLocationSuccess = true
                 self.presentAlert("Location Found", message: "Your Location was found", cancelTitle: "OK")
+                if self.coreLocationSuccess == true {
+                    print("ENTERED INTO HERE!!!!!!!!!!!!!!")
                 self.performSegue(withIdentifier: "coreLocationButtonSegue", sender: self)
+                }
             }
         }
     }
