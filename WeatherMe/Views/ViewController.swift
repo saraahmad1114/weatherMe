@@ -91,9 +91,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-    //MARK: CORE LOCATION FUNCTIONS
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        //activity indicator here to show the user location is being found
         if self.currentLocation == nil {
             if let personCoordinates = locations.first{
                 self.currentLocation = personCoordinates
