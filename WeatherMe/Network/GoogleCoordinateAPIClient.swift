@@ -10,6 +10,11 @@
 
 import Foundation
 
+//MARK: TO DO LIST:
+//1. install cocoapod
+//2. progress spinner
+//3. add to the project 
+
 class GoogleCoordinateAPIClient {
     
     class func getCoordinateInformation (zipCode: String, completion:@escaping([String: Any])->()) throws {
