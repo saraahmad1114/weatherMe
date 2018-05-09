@@ -42,7 +42,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             GoogleCoordinateAPIClient.isAddressValid(zipCode: userText) { (boolValue) in
                 if boolValue == true {
                     self.userInputLocationSuccess = true
-                    OperationQueue.main.addOperation {
+                    DispatchQueue.main.async {
                         self.performSegue(withIdentifier: "goButtonSegue", sender: self)
                         self.locationProgressSpinner.stopAnimating()
                     }
@@ -52,7 +52,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     self.locationProgressSpinner.hidesWhenStopped = true 
                     self.locationProgressSpinner.startAnimating()
                     self.presentAlert("Invalid Input", message: "Please re-enter valid input", cancelTitle: "OK")
-                    self.shouldPerformSegue(withIdentifier: "goButtonSegue", sender: self)
                 }
             }
         }
