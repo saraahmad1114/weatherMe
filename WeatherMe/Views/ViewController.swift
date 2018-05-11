@@ -8,6 +8,7 @@
 import UIKit
 import CoreLocation
 
+
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var locationManager: CLLocationManager?
@@ -16,7 +17,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     let store = CoordinatesDatastore.sharedInstance
     var userInputLocationSuccess: Bool?
     var coreLocationSuccess: Bool?
-    @IBOutlet weak var locationProgressSpinner: UIActivityIndicatorView!
+    //@IBOutlet weak var locationProgressSpinner: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,13 +45,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     self.userInputLocationSuccess = true
                     DispatchQueue.main.async {
                         self.performSegue(withIdentifier: "goButtonSegue", sender: self)
-                        self.locationProgressSpinner.stopAnimating()
+                        //self.locationProgressSpinner.stopAnimating()
                     }
                 }
                 else if boolValue == false {
                     self.userInputLocationSuccess = false
-                    self.locationProgressSpinner.hidesWhenStopped = true 
-                    self.locationProgressSpinner.startAnimating()
+                    //self.locationProgressSpinner.hidesWhenStopped = true 
+                    //self.locationProgressSpinner.startAnimating()
                     self.presentAlert("Invalid Input", message: "Please re-enter valid input", cancelTitle: "OK")
                 }
             }
