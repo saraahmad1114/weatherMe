@@ -87,10 +87,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mQb-ys-r0T">
-                                <rect key="frame" x="179" y="473" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -110,7 +106,6 @@
                         <viewLayoutGuide key="safeArea" id="ayM-7N-PV5"/>
                     </view>
                     <connections>
-                        <outlet property="locationProgressSpinner" destination="mQb-ys-r0T" id="Caa-V0-oqY"/>
                         <outlet property="zipCodeTextField" destination="aly-vB-xmx" id="8PM-El-sl2"/>
                     </connections>
                 </viewController>
@@ -192,7 +187,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="56&quot;" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoZ-VC-iZc">
-                                                    <rect key="frame" x="288.5" y="0.0" width="35" height="61"/>
+                                                    <rect key="frame" x="289" y="0.0" width="35" height="61"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.24723735050396262" green="0.40429836970713223" blue="0.90726562494999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

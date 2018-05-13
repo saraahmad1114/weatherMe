@@ -7,7 +7,7 @@
 
 import UIKit
 import CoreLocation
-
+import SVProgressHUD
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -17,10 +17,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     let store = CoordinatesDatastore.sharedInstance
     var userInputLocationSuccess: Bool?
     var coreLocationSuccess: Bool?
-    //@IBOutlet weak var locationProgressSpinner: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SVProgressHUD.setDefaultMaskType(.black)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -44,12 +44,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 if boolValue == true {
                     self.userInputLocationSuccess = true
                     DispatchQueue.main.async {
+                        SVProgressHUD.show(withStatus: "Checking your location")
                         self.performSegue(withIdentifier: "goButtonSegue", sender: self)
                     }
                 }
                 else if boolValue == false {
                     self.userInputLocationSuccess = false
-
+                    SVProgressHUD.dismiss()
                     self.presentAlert("Invalid Input", message: "Please re-enter valid input", cancelTitle: "OK")
                 }
             }
@@ -91,16 +92,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if self.currentLocation == nil {
             if let personCoordinates = locations.first{
                 self.currentLocation = personCoordinates
-                print("*************************************************")
-                print(self.currentLocation?.coordinate.latitude)
-                print(self.currentLocation?.coordinate.longitude)
-                print("*************************************************")
                 self.coreLocationSuccess = true
                 self.presentAlert("Location Found", message: "Your Location was found", cancelTitle: "OK")
-                if self.coreLocationSuccess == true {
-                    print("ENTERED INTO HERE!!!!!!!!!!!!!!")
                 self.performSegue(withIdentifier: "coreLocationButtonSegue", sender: self)
-                }
+            }
+            else {
+                SVProgressHUD.show(withStatus: "Trying to find your location")
             }
         }
     }
