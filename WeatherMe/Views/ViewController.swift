@@ -45,20 +45,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     self.userInputLocationSuccess = true
                     DispatchQueue.main.async {
                         self.performSegue(withIdentifier: "goButtonSegue", sender: self)
-                        //self.locationProgressSpinner.stopAnimating()
                     }
                 }
                 else if boolValue == false {
                     self.userInputLocationSuccess = false
-                    //self.locationProgressSpinner.hidesWhenStopped = true 
-                    //self.locationProgressSpinner.startAnimating()
+
                     self.presentAlert("Invalid Input", message: "Please re-enter valid input", cancelTitle: "OK")
                 }
             }
         }
     }
     
-    //MARK: What to pass in each of these segues
     func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         print("ENTERED INTO THE SEGUE FUNCTION")
          if segue.identifier == "goButtonSegue"{
@@ -75,7 +72,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    //MARK: Whether the segue should go through
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "coreLocationButtonSegue"{
             if self.coreLocationSuccess == true && self.currentLocation != nil {
