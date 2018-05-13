@@ -43,8 +43,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             GoogleCoordinateAPIClient.isAddressValid(zipCode: userText) { (boolValue) in
                 if boolValue == true {
                     self.userInputLocationSuccess = true
+                    self.presentAlert("Location Found", message: "We have found your location", cancelTitle: "OK")
                     DispatchQueue.main.async {
-                        SVProgressHUD.show(withStatus: "Checking your location")
                         self.performSegue(withIdentifier: "goButtonSegue", sender: self)
                     }
                 }
