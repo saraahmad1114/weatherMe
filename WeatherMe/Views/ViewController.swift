@@ -44,10 +44,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             GoogleCoordinateAPIClient.isAddressValid(zipCode: userText) { (boolValue) in
                 if boolValue == true {
                     self.userInputLocationSuccess = true
-                    self.presentAlert("Location Found", message: "We have found your location", cancelTitle: "OK")
                     DispatchQueue.main.async {
-                        self.performSegue(withIdentifier: "goButtonSegue", sender: self)
                         SVProgressHUD.dismiss()
+                        self.presentAlert("Valid Input", message: "Found Forecast", cancelTitle: "OK")
+                        self.performSegue(withIdentifier: "goButtonSegue", sender: self)
                     }
                 }
                 else if boolValue == false {
@@ -91,15 +91,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        SVProgressHUD.show(withStatus: "Finding your location")
         if self.currentLocation == nil {
+            SVProgressHUD.dismiss()
             if let personCoordinates = locations.first{
                 self.currentLocation = personCoordinates
                 self.coreLocationSuccess = true
                 self.presentAlert("Location Found", message: "Your Location was found", cancelTitle: "OK")
                 self.performSegue(withIdentifier: "coreLocationButtonSegue", sender: self)
-            }
-            else {
-                SVProgressHUD.show(withStatus: "Trying to find your location")
             }
         }
     }
@@ -114,6 +113,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        SVProgressHUD.dismiss()
         presentAlert("Location Not Found", message: "Provide zipcode, address or city", cancelTitle: "OK")
         self.shouldPerformSegue(withIdentifier: "coreLocationButton", sender: self)
     }
