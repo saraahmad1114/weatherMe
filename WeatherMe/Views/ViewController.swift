@@ -39,6 +39,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func goButtonTapped(_ sender: Any) {
+        SVProgressHUD.show(withStatus: "Finding Your Location")
         if let userText = self.zipCodeTextField.text{
             GoogleCoordinateAPIClient.isAddressValid(zipCode: userText) { (boolValue) in
                 if boolValue == true {
@@ -46,11 +47,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     self.presentAlert("Location Found", message: "We have found your location", cancelTitle: "OK")
                     DispatchQueue.main.async {
                         self.performSegue(withIdentifier: "goButtonSegue", sender: self)
+                        SVProgressHUD.dismiss()
                     }
                 }
                 else if boolValue == false {
-                    self.userInputLocationSuccess = false
                     SVProgressHUD.dismiss()
+                    self.userInputLocationSuccess = false
                     self.presentAlert("Invalid Input", message: "Please re-enter valid input", cancelTitle: "OK")
                 }
             }
