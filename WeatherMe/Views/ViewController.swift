@@ -59,7 +59,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
          if segue.identifier == "goButtonSegue"{
             if let destinationVC = segue.destination as? WeatherForecastViewController {
                 guard let neededZipcode = self.zipCodeTextField.text else {print("neededZipcode did not unwrap"); return}
