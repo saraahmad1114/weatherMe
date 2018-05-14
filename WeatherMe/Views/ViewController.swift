@@ -60,7 +60,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("ENTERED INTO THE SEGUE FUNCTION")
          if segue.identifier == "goButtonSegue"{
             if let destinationVC = segue.destination as? WeatherForecastViewController {
                 guard let neededZipcode = self.zipCodeTextField.text else {print("neededZipcode did not unwrap"); return}
@@ -82,13 +81,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
         else if identifier == "goButtonSegue"{
-                if self.userInputLocationSuccess == true && self.zipCodeTextField.text != nil {
-                    return true
-                }
+            if self.userInputLocationSuccess == true && self.zipCodeTextField.text != nil {
+                return true
+            }
         }
         return false
     }
-    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         SVProgressHUD.show(withStatus: "Finding your location")
