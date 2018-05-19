@@ -54,6 +54,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     SVProgressHUD.dismiss()
                     self.userInputLocationSuccess = false
                     self.presentAlert("Invalid Input", message: "Please re-enter valid input", cancelTitle: "OK")
+                    self.performSegue(withIdentifier: "goButtonSegue", sender: self)
                 }
             }
         }
@@ -96,7 +97,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 self.currentLocation = personCoordinates
                 self.coreLocationSuccess = true
                 self.presentAlert("Location Found", message: "Your Location was found", cancelTitle: "OK")
-                self.performSegue(withIdentifier: "coreLocationButtonSegue", sender: self)
+                self.shouldPerformSegue(withIdentifier: "coreLocationButton", sender: self)
             }
         }
     }
