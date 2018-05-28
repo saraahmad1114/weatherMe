@@ -7,6 +7,10 @@
 //  Copyright © 2018 Sara Ahmad. All rights reserved.
 //
 
+//MARK: To Do List:
+//1. look over the logic
+//2. fix the logic and make things work 
+
 
 import Foundation
 
