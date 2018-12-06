@@ -9,11 +9,10 @@
 
 
 import Foundation
+//import RxSwift
+//import RxCocoa
+//1. Go ahead and convert all your network requests to 
 
-//MARK: TO DO LIST:
-//1. install cocoapod
-//2. progress spinner
-//3. add to the project 
 
 class GoogleCoordinateAPIClient {
     

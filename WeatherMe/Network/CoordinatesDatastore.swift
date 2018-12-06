@@ -14,6 +14,8 @@
 
 import Foundation
 
+//By using the decodable protocol, I could probably rid of this file 
+
 class CoordinatesDatastore {
     
     static let sharedInstance = CoordinatesDatastore()
